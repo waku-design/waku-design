@@ -944,13 +944,15 @@
       </div>
     </div>
 
-    <form class="contact-form" id="contact-form" onsubmit="event.preventDefault(); alert('プロトタイプです。');">
+    <form class="contact-form" id="contact-form" action="https://formspree.io/f/mojrebeb" method="POST">
       <div class="row">
-        <div><label>NAME / お名前</label><input type="text" required /></div>
-        <div><label>EMAIL / メール</label><input type="email" required /></div>
+        <div><label for="cf-name">NAME / お名前</label><input id="cf-name" type="text" name="name" required /></div>
+        <div><label for="cf-email">EMAIL / メール</label><input id="cf-email" type="email" name="email" required /></div>
       </div>
-      <div><label>SUBJECT / 件名</label><input type="text" /></div>
-      <div><label>MESSAGE / ご相談内容</label><textarea required></textarea></div>
+      <div><label for="cf-subject">SUBJECT / 件名</label><input id="cf-subject" type="text" name="subject" /></div>
+      <div><label for="cf-message">MESSAGE / ご相談内容</label><textarea id="cf-message" name="message" required></textarea></div>
+      <input type="hidden" name="_language" value="ja" />
+      <input type="hidden" name="_subject" value="【WAKU DESIGN】お問合せが届きました" />
       <button type="submit">送信する  /  SEND</button>
     </form>
   </div>
