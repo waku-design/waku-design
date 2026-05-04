@@ -75,17 +75,36 @@
     margin-bottom: 80px;
   }
 
-  /* IMAGE COL */
-  .work-image-col { display: flex; flex-direction: column; gap: 20px; }
-  .work-image-col img {
-    width: 100%; display: block;
+  /* FLYER SLIDER */
+  .flyer-slider { }
+  .slider-main-wrap {
+    display: flex; align-items: center; gap: 14px;
+  }
+  .slider-main-img {
+    flex: 1; width: 100%; display: block;
     box-shadow: 0 12px 48px rgba(42,26,31,0.14);
+    transition: opacity 0.25s;
   }
-  .flyer-label {
-    font-family: var(--serif-en); font-style: italic;
-    font-size: 10px; letter-spacing: 0.32em; color: var(--c-sub);
-    margin-bottom: 6px;
+  .slider-arrow {
+    background: none; border: none;
+    font-size: 32px; line-height: 1;
+    color: var(--c-sub); cursor: pointer;
+    padding: 8px 4px; flex-shrink: 0;
+    transition: color 0.25s, opacity 0.25s;
+    font-family: var(--serif-en);
   }
+  .slider-arrow:hover { color: var(--c-ink); }
+  .slider-arrow:disabled { opacity: 0.18; cursor: default; pointer-events: none; }
+  .slider-thumbs {
+    display: flex; gap: 10px; margin-top: 12px;
+  }
+  .slider-thumb {
+    width: 68px; display: block; cursor: pointer;
+    opacity: 0.42; border: 2px solid transparent;
+    box-shadow: 0 2px 10px rgba(42,26,31,0.1);
+    transition: opacity 0.25s, border-color 0.25s;
+  }
+  .slider-thumb.active { opacity: 1; border-color: var(--c-red); }
 
   /* INFO COL */
   .work-cat {
@@ -221,13 +240,16 @@
   <div class="work-detail-layout">
 
     <div class="work-image-col">
-      <div>
-        <div class="flyer-label">Front</div>
-        <img src="images/flyer-ota-so.jpg" alt="太田光 &amp; 曾朗基 Flute &amp; Guitar スプリング・コンサート 表面" />
-      </div>
-      <div>
-        <div class="flyer-label">Back</div>
-        <img src="images/flyer-ota-so-back.jpg" alt="太田光 &amp; 曾朗基 Flute &amp; Guitar スプリング・コンサート 裏面" />
+      <div class="flyer-slider">
+        <div class="slider-main-wrap">
+          <button class="slider-arrow prev" aria-label="前へ">&#8249;</button>
+          <img class="slider-main-img" src="images/flyer-ota-so.jpg" alt="太田光 &amp; 曾朗基 Flute &amp; Guitar スプリング・コンサート 表面" />
+          <button class="slider-arrow next" aria-label="次へ">&#8250;</button>
+        </div>
+        <div class="slider-thumbs">
+          <img class="slider-thumb active" src="images/flyer-ota-so.jpg" alt="表面" />
+          <img class="slider-thumb" src="images/flyer-ota-so-back.jpg" alt="裏面" />
+        </div>
       </div>
     </div>
 
@@ -302,5 +324,30 @@
   <div class="bottom">© 2026 — WAKU DESIGN — KAZUYA KUWATA</div>
 </footer>
 
+<script>
+  document.querySelectorAll('.flyer-slider').forEach(slider => {
+    const thumbs = Array.from(slider.querySelectorAll('.slider-thumb'));
+    const mainImg = slider.querySelector('.slider-main-img');
+    const prevBtn = slider.querySelector('.slider-arrow.prev');
+    const nextBtn = slider.querySelector('.slider-arrow.next');
+    let current = 0;
+    function show(i) {
+      current = i;
+      mainImg.style.opacity = '0';
+      setTimeout(() => {
+        mainImg.src = thumbs[i].src;
+        mainImg.alt = thumbs[i].alt;
+        mainImg.style.opacity = '1';
+      }, 120);
+      thumbs.forEach((t, j) => t.classList.toggle('active', j === i));
+      prevBtn.disabled = i === 0;
+      nextBtn.disabled = i === thumbs.length - 1;
+    }
+    prevBtn.addEventListener('click', () => show(current - 1));
+    nextBtn.addEventListener('click', () => show(current + 1));
+    thumbs.forEach((t, j) => t.addEventListener('click', () => show(j)));
+    show(0);
+  });
+</script>
 </body>
 </html>
