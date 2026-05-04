@@ -128,76 +128,51 @@
   }
   .hero-text .cta-row .secondary:hover { border-color: var(--c-ink); }
 
+  /* ============= HERO SLIDESHOW ============= */
   .hero-visual {
     aspect-ratio: 4/5;
-    background: var(--c-ink);
     position: relative; overflow: hidden;
-    display: flex; align-items: center; justify-content: center;
   }
-  /* 五線譜ライン */
-  .staff-lines {
-    position: absolute;
-    top: 50%; left: 8%; right: 8%;
-    transform: translateY(-50%);
-    display: flex; flex-direction: column;
-    gap: 22px;
-    pointer-events: none;
+  .hero-slideshow {
+    position: absolute; inset: 0;
   }
-  .staff-lines span {
-    display: block; height: 1px;
-    background: rgba(247,239,224,0.18);
+  .hero-slideshow .slide {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    animation: hero-fade 20s infinite;
   }
-  /* 大きな装飾文字 */
-  .visual-bg-char {
-    font-family: var(--serif-jp);
-    font-size: clamp(140px, 18vw, 220px);
-    font-weight: 300;
-    line-height: 1;
-    color: rgba(247,239,224,0.05);
-    position: absolute;
-    letter-spacing: -0.04em;
-    user-select: none;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
+  .hero-slideshow .slide:nth-child(1) { animation-delay: 0s; }
+  .hero-slideshow .slide:nth-child(2) { animation-delay: 5s; }
+  .hero-slideshow .slide:nth-child(3) { animation-delay: 10s; }
+  .hero-slideshow .slide:nth-child(4) { animation-delay: 15s; }
+  @keyframes hero-fade {
+    0%, 100% { opacity: 0; }
+    5%, 22%  { opacity: 1; }
+    27%      { opacity: 0; }
   }
-  /* 中央のモノグラム */
-  .visual-mono {
-    position: relative;
-    text-align: center;
-  }
-  .visual-mono .wd {
-    font-family: var(--serif-en);
-    font-style: italic;
-    font-size: clamp(42px, 5vw, 64px);
-    font-weight: 400;
-    color: rgba(247,239,224,0.82);
-    letter-spacing: 0.18em;
-    display: block;
-    line-height: 1;
-  }
-  .visual-mono .rule-top,
-  .visual-mono .rule-btm {
-    display: block;
-    width: 56px; height: 1px;
-    background: rgba(247,239,224,0.3);
-    margin: 16px auto;
-  }
-  .visual-mono .sub {
-    font-family: var(--serif-en);
-    font-style: italic;
-    font-size: 9px;
-    letter-spacing: 0.36em;
-    color: rgba(247,239,224,0.42);
-    display: block;
-  }
-  /* 右下キャプション */
   .visual-caption {
-    position: absolute; bottom: 18px; right: 18px;
+    position: absolute; bottom: 14px; right: 14px;
     font-family: var(--serif-en); font-style: italic;
     font-size: 9px; letter-spacing: 0.26em;
-    color: rgba(247,239,224,0.28);
+    color: rgba(247,239,224,0.55);
     writing-mode: vertical-rl;
     text-orientation: mixed;
+    z-index: 3;
+  }
+  /* ヒーロースタッツ */
+  .hero-stats {
+    display: flex; gap: 24px; flex-wrap: wrap;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--c-line);
+    font-family: var(--serif-en); font-style: italic;
+    font-size: 11px; letter-spacing: 0.24em; color: var(--c-sub);
+  }
+  .hero-stats strong {
+    font-style: normal; font-weight: 600;
+    color: var(--c-ink); margin-right: 4px;
   }
 
   .hero-bottom {
@@ -802,17 +777,18 @@
         <a class="primary" href="#contact">制作のご相談 →</a>
         <a class="secondary" href="works.html">実績を見る</a>
       </div>
+      <div class="hero-stats">
+        <span><strong>5+</strong> works</span>
+        <span><strong>since</strong> 2024</span>
+        <span><strong>4</strong> categories</span>
+      </div>
     </div>
     <div class="hero-visual">
-      <div class="staff-lines">
-        <span></span><span></span><span></span><span></span><span></span>
-      </div>
-      <span class="visual-bg-char">音</span>
-      <div class="visual-mono">
-        <span class="rule-top"></span>
-        <span class="wd">W D</span>
-        <span class="rule-btm"></span>
-        <span class="sub">Designing for Classical Music</span>
+      <div class="hero-slideshow">
+        <img class="slide" src="images/flyer-miki-relemit.jpg" alt="三木多聞 サクソフォンリサイタル Relemit" />
+        <img class="slide" src="images/flyer-saxophone-orch.jpg" alt="大阪音大サクソフォーンオーケストラ 運命" />
+        <img class="slide" src="images/flyer-ota-so.jpg" alt="太田光 & 曾朗基 スプリング・コンサート" />
+        <img class="slide" src="images/flyer-takagi-wind.jpg" alt="髙木毅 Memorial Wind Band Special Concert" />
       </div>
       <span class="visual-caption">WAKU DESIGN · 2026</span>
     </div>
@@ -823,72 +799,12 @@
   </div>
 </section>
 
-<!-- STATEMENT -->
-<section class="statement">
-  <div class="statement-inner reveal">
-    <p class="label">Statement</p>
-    <h2>音楽家の手元から、<br />聴き手の手元まで。</h2>
-    <p>演奏会のフライヤー一枚が、来てくださる方の最初の体験になります。プログラム冊子、チケット、ホームページ。コンサートの周りには、音と同じくらい大切な「ものづくり」がいくつもあります。</p>
-    <p>演奏する側の感覚と、デザインの言語。両方の現場から、音楽家一人ひとりの佇まいに合うかたちを丁寧に組み立てます。派手な装飾よりも、長く手元に置きたくなる静けさを大切にしています。</p>
-    <p class="sig">— Kazuya Kuwata, WAKU DESIGN</p>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section class="services" id="services">
-  <div class="sec-head reveal">
-    <div>
-      <p class="label">Services</p>
-    </div>
-    <h2>提供するデザイン</h2>
-    <p class="meta">— 04 categories</p>
-  </div>
-  <div class="svc-list reveal">
-    <a href="services.html#concert" class="svc-row">
-      <div class="num">01</div>
-      <div class="title">
-        <h3>コンサートデザイン</h3>
-        <small>Concert Design</small>
-      </div>
-      <div class="desc">フライヤー・プログラム冊子・チケットを一貫して。コンセプトの言語化からお手伝いします。</div>
-      <div class="arrow">→</div>
-    </a>
-    <a href="services.html#web" class="svc-row">
-      <div class="num">02</div>
-      <div class="title">
-        <h3>Webサイト・LP制作</h3>
-        <small>Website · Landing Page</small>
-      </div>
-      <div class="desc">演奏家・音楽事務所向けのホームページ、公演特設LP。継続的に運用しやすい構成でご提案。</div>
-      <div class="arrow">→</div>
-    </a>
-    <a href="services.html#photo" class="svc-row">
-      <div class="num">03</div>
-      <div class="title">
-        <h3>コンサート記録写真</h3>
-        <small>Concert Photography</small>
-      </div>
-      <div class="desc">本番中・リハーサル・楽屋まで、演奏者の表情と空気を残す写真撮影。</div>
-      <div class="arrow">→</div>
-    </a>
-    <a href="services.html#sns" class="svc-row">
-      <div class="num">04</div>
-      <div class="title">
-        <h3>SNS素材・ジャケット類</h3>
-        <small>SNS · CD Jacket · Thumbnail</small>
-      </div>
-      <div class="desc">SNS投稿テンプレ、YouTubeサムネ、CDジャケット、名刺、ロゴ。単発でもお気軽に。</div>
-      <div class="arrow">→</div>
-    </a>
-  </div>
-</section>
-
 <!-- WORKS -->
 <section class="works" id="works">
   <div class="sec-head reveal">
     <p class="label">Works</p>
     <h2>制作実績</h2>
-    <p class="meta">— Selected projects</p>
+    <p class="meta">— 5+ works · since 2024</p>
   </div>
   <div class="works-inner reveal">
 
@@ -949,6 +865,66 @@
       <div class="works-cat-coming">準備中 · To be updated</div>
     </div>
 
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="sec-head reveal">
+    <div>
+      <p class="label">Services</p>
+    </div>
+    <h2>提供するデザイン</h2>
+    <p class="meta">— 04 categories</p>
+  </div>
+  <div class="svc-list reveal">
+    <a href="services.html#concert" class="svc-row">
+      <div class="num">01</div>
+      <div class="title">
+        <h3>コンサートデザイン</h3>
+        <small>Concert Design</small>
+      </div>
+      <div class="desc">フライヤー・プログラム冊子・チケットを一貫して。コンセプトの言語化からお手伝いします。</div>
+      <div class="arrow">→</div>
+    </a>
+    <a href="services.html#web" class="svc-row">
+      <div class="num">02</div>
+      <div class="title">
+        <h3>Webサイト・LP制作</h3>
+        <small>Website · Landing Page</small>
+      </div>
+      <div class="desc">演奏家・音楽事務所向けのホームページ、公演特設LP。継続的に運用しやすい構成でご提案。</div>
+      <div class="arrow">→</div>
+    </a>
+    <a href="services.html#photo" class="svc-row">
+      <div class="num">03</div>
+      <div class="title">
+        <h3>コンサート記録写真</h3>
+        <small>Concert Photography</small>
+      </div>
+      <div class="desc">本番中・リハーサル・楽屋まで、演奏者の表情と空気を残す写真撮影。</div>
+      <div class="arrow">→</div>
+    </a>
+    <a href="services.html#sns" class="svc-row">
+      <div class="num">04</div>
+      <div class="title">
+        <h3>SNS素材・ジャケット類</h3>
+        <small>SNS · CD Jacket · Thumbnail</small>
+      </div>
+      <div class="desc">SNS投稿テンプレ、YouTubeサムネ、CDジャケット、名刺、ロゴ。単発でもお気軽に。</div>
+      <div class="arrow">→</div>
+    </a>
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<section class="statement">
+  <div class="statement-inner reveal">
+    <p class="label">Statement</p>
+    <h2>音楽家の手元から、<br />聴き手の手元まで。</h2>
+    <p>演奏会のフライヤー一枚が、来てくださる方の最初の体験になります。プログラム冊子、チケット、ホームページ。コンサートの周りには、音と同じくらい大切な「ものづくり」がいくつもあります。</p>
+    <p>演奏する側の感覚と、デザインの言語。両方の現場から、音楽家一人ひとりの佇まいに合うかたちを丁寧に組み立てます。派手な装飾よりも、長く手元に置きたくなる静けさを大切にしています。</p>
+    <p class="sig">— Kazuya Kuwata, WAKU DESIGN</p>
   </div>
 </section>
 
