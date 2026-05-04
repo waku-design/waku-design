@@ -365,13 +365,14 @@
     gap: 14px;
   }
   .service-card {
-    min-height: 176px;
+    min-height: 292px;
     border: 1px solid var(--c-line);
     background: var(--c-bg);
-    padding: 22px 20px 20px;
+    padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow: hidden;
     transition: transform 0.28s ease, background 0.28s ease, border-color 0.28s ease;
   }
   .service-card:hover {
@@ -379,6 +380,20 @@
     background: var(--c-paper);
     border-color: var(--c-red);
   }
+  .service-visual {
+    aspect-ratio: 16 / 9;
+    background: var(--c-cream-deep);
+    overflow: hidden;
+    margin-bottom: 18px;
+  }
+  .service-visual img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(0.86) contrast(0.98);
+    transition: transform 0.45s ease;
+  }
+  .service-card:hover .service-visual img { transform: scale(1.04); }
   .service-card small {
     display: block;
     font-family: var(--serif-en);
@@ -387,6 +402,7 @@
     letter-spacing: 0.26em;
     color: var(--c-red);
     margin-bottom: 10px;
+    padding: 0 20px;
   }
   .service-card h4 {
     font-size: 18px;
@@ -394,15 +410,18 @@
     letter-spacing: 0.1em;
     line-height: 1.55;
     margin-bottom: 10px;
+    padding: 0 20px;
   }
   .service-card p {
     font-size: 12px;
     line-height: 1.9;
     letter-spacing: 0.04em;
     color: var(--c-sub);
+    padding: 0 20px;
   }
   .service-card .arrow {
     margin-top: 20px;
+    padding: 0 20px 20px;
     font-family: var(--serif-en);
     font-style: italic;
     font-size: 12px;
@@ -445,59 +464,6 @@
     line-height: 1.75;
     letter-spacing: 0.04em;
     color: var(--c-sub);
-  }
-
-  /* ============= COLUMN ============= */
-  .column {
-    padding: 108px 44px;
-    background: var(--c-bg);
-  }
-  .column-grid {
-    max-width: 1240px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-  }
-  .column-card {
-    background: var(--c-paper);
-    border: 1px solid var(--c-line);
-    padding: 28px;
-    min-height: 220px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.28s ease, border-color 0.28s ease;
-  }
-  .column-card:hover { transform: translateY(-4px); border-color: var(--c-red); }
-  .column-card .cat {
-    font-family: var(--serif-en);
-    font-style: italic;
-    font-size: 10px;
-    letter-spacing: 0.3em;
-    color: var(--c-red);
-    margin-bottom: 14px;
-  }
-  .column-card h3 {
-    font-size: 18px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    line-height: 1.65;
-    margin-bottom: 14px;
-  }
-  .column-card p {
-    font-size: 12px;
-    line-height: 1.95;
-    letter-spacing: 0.05em;
-    color: var(--c-sub);
-  }
-  .column-card .read {
-    margin-top: 22px;
-    font-family: var(--serif-en);
-    font-style: italic;
-    font-size: 12px;
-    letter-spacing: 0.2em;
-    color: var(--c-ink);
   }
 
   /* ============= WORKS ============= */
@@ -814,7 +780,7 @@
   footer ul a:hover { color: var(--c-red); }
   footer .bottom { border-top: 1px solid var(--c-line); margin-top: 48px; padding-top: 22px; text-align: center; color: var(--c-sub); font-size: 10px; letter-spacing: 0.32em; font-family: var(--serif-en); font-style: italic;}
 
-  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 1.1s ease, transform 1.1s ease; }
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
   /* ============= TWEAKS PANEL ============= */
@@ -919,7 +885,7 @@
   @media (max-width: 880px) {
     header { padding: 14px 20px;}
     nav ul { display: none; }
-    .statement, .services, .works, .about, .concerts, .contact, .column { padding-left: 20px; padding-right: 20px;}
+    .statement, .services, .works, .about, .concerts, .contact { padding-left: 20px; padding-right: 20px;}
     .hero { padding: 0; }
     .hero-stage { min-height: 560px; padding: 42px 20px; }
     .hero-copy h1 { font-size: 38px; letter-spacing: 0.06em; }
@@ -937,7 +903,6 @@
     .service-group-head { grid-template-columns: 1fr; gap: 10px; }
     .service-card-grid { grid-template-columns: 1fr 1fr; }
     .service-flow { grid-template-columns: 1fr 1fr; }
-    .column-grid { grid-template-columns: 1fr; }
     .concert-row .tags, .concert-row .arrow { display: none; }
     .concert-row .date { display: none; }
     .concert-row .info .info-date-m { display: block; font-family: var(--serif-en); font-style: italic; font-size: 11px; letter-spacing: 0.16em; color: var(--c-red); margin-bottom: 5px; }
@@ -950,7 +915,6 @@
     .works { padding-top: 72px; padding-bottom: 72px; }
     .about { padding-top: 72px; padding-bottom: 72px; }
     .concerts { padding-top: 72px; padding-bottom: 72px; }
-    .column { padding-top: 72px; padding-bottom: 72px; }
     .contact { padding-top: 80px; padding-bottom: 80px; }
     .concert-row { grid-template-columns: 52px 1fr; gap: 14px; }
     .works-grid { gap: 16px; }
@@ -963,7 +927,7 @@
     .hero-quick,
     .service-card-grid,
     .service-flow { grid-template-columns: 1fr; }
-    .service-card { min-height: 150px; }
+    .service-card { min-height: 260px; }
   }
 
 </style>
@@ -1047,54 +1011,6 @@
   </div>
 </section>
 
-<!-- CONCERTS -->
-<section class="concerts" id="concerts">
-  <div class="sec-head reveal">
-    <p class="label">Concert Info</p>
-    <h2>コンサート情報</h2>
-  </div>
-  <div class="concerts-inner reveal">
-    <div class="concerts-list">
-      <a class="concert-row" href="work-miki-relemit.html">
-        <div class="thumb"><img src="images/flyer-miki-relemit.jpg" alt="三木多聞 Relemit"/></div>
-        <div class="date"><span class="d-date">2027.03.05</span><span class="d-time">開演 19:00</span></div>
-        <div class="info">
-          <span class="info-date-m">2027.03.05（金）· 開演 19:00</span>
-          <h4>三木多聞 サクソフォンリサイタル「Relemit」卒業公演</h4>
-          <span class="venue">兵庫県立芸術文化センター 神戸女学院小ホール</span>
-        </div>
-        <div class="tags"><span>兵庫</span><span>サクソフォン</span></div>
-        <div class="arrow">→</div>
-      </a>
-      <a class="concert-row" href="work-saxophone-orch.html">
-        <div class="thumb"><img src="images/flyer-saxophone-orch.jpg" alt="大阪音大サクソフォーンオーケストラ 運命"/></div>
-        <div class="date"><span class="d-date">2025.12.14</span><span class="d-time">開演 14:00</span></div>
-        <div class="info">
-          <span class="info-date-m">2025.12.14（日）· 開演 14:00</span>
-          <h4>第40回 大阪音楽大学サクソフォーンオーケストラコンサート「運命」</h4>
-          <span class="venue">ザ・カレッジ・オペラハウス</span>
-        </div>
-        <div class="tags"><span>大阪</span><span>オーケストラ</span></div>
-        <div class="arrow">→</div>
-      </a>
-      <a class="concert-row" href="work-ota-so.html">
-        <div class="thumb"><img src="images/flyer-ota-so.jpg" alt="太田光 &amp; 曾朗基 Spring Concert"/></div>
-        <div class="date"><span class="d-date">2025.03.22</span><span class="d-time">開演 17:00</span></div>
-        <div class="info">
-          <span class="info-date-m">2025.03.22（土）· 開演 17:00</span>
-          <h4>太田光 &amp; 曾朗基 Flute &amp; Guitar スプリング・コンサート</h4>
-          <span class="venue">LA PAZ（大阪市北区天神橋）</span>
-        </div>
-        <div class="tags"><span>大阪</span><span>室内楽</span></div>
-        <div class="arrow">→</div>
-      </a>
-    </div>
-    <div style="text-align:right;margin-top:24px;">
-      <a href="concerts.html" style="font-family:'Hoefler Text',serif;font-style:italic;font-size:12px;letter-spacing:0.22em;color:var(--c-sub);transition:color 0.3s;border-bottom:1px solid var(--c-line);padding-bottom:2px;">コンサート情報一覧 →</a>
-    </div>
-  </div>
-</section>
-
 <!-- SERVICES -->
 <section class="services" id="services">
   <div class="sec-head reveal">
@@ -1112,19 +1028,19 @@
       </div>
       <div class="service-card-grid">
         <a class="service-card" href="service-concert.html">
-          <div><small>Flyer</small><h4>フライヤー・ポスター</h4><p>公演の第一印象をつくるメインビジュアルを制作します。</p></div>
+          <div><div class="service-visual"><img src="images/flyer-miki-relemit.jpg" alt="" /></div><small>Flyer</small><h4>フライヤー・ポスター</h4><p>公演の第一印象をつくるメインビジュアルを制作します。</p></div>
           <div class="arrow">詳しく見る →</div>
         </a>
         <a class="service-card" href="service-concert.html">
-          <div><small>Program</small><h4>プログラム冊子</h4><p>曲目解説やプロフィールを読みやすく整えます。</p></div>
+          <div><div class="service-visual"><img src="images/flyer-miki-relemit-back.jpg" alt="" /></div><small>Program</small><h4>プログラム冊子</h4><p>曲目解説やプロフィールを読みやすく整えます。</p></div>
           <div class="arrow">詳しく見る →</div>
         </a>
         <a class="service-card" href="service-concert.html">
-          <div><small>Ticket</small><h4>チケット</h4><p>フライヤーと統一感のあるチケットを制作します。</p></div>
+          <div><div class="service-visual"><img src="images/flyer-ota-so-back.jpg" alt="" /></div><small>Ticket</small><h4>チケット</h4><p>フライヤーと統一感のあるチケットを制作します。</p></div>
           <div class="arrow">詳しく見る →</div>
         </a>
         <a class="service-card" href="service-web.html">
-          <div><small>Website</small><h4>公演LP・Webサイト</h4><p>情報整理、予約導線、公開後の運用まで見据えて設計します。</p></div>
+          <div><div class="service-visual"><img src="images/hero-1.jpg" alt="" /></div><small>Website</small><h4>公演LP・Webサイト</h4><p>情報整理、予約導線、公開後の運用まで見据えて設計します。</p></div>
           <div class="arrow">詳しく見る →</div>
         </a>
       </div>
@@ -1140,19 +1056,19 @@
       </div>
       <div class="service-card-grid">
         <a class="service-card" href="service-photo.html">
-          <div><small>Photo</small><h4>コンサート記録写真</h4><p>本番、リハーサル、舞台裏の空気を自然に残します。</p></div>
+          <div><div class="service-visual"><img src="images/portrait.jpg" alt="" /></div><small>Photo</small><h4>コンサート記録写真</h4><p>本番、リハーサル、舞台裏の空気を自然に残します。</p></div>
           <div class="arrow">詳しく見る →</div>
         </a>
         <a class="service-card" href="services.html#sns">
-          <div><small>SNS</small><h4>SNS投稿画像</h4><p>告知、リマインド、終演報告まで使いやすい画像を制作します。</p></div>
+          <div><div class="service-visual"><img src="images/hero-2.jpg" alt="" /></div><small>SNS</small><h4>SNS投稿画像</h4><p>告知、リマインド、終演報告まで使いやすい画像を制作します。</p></div>
           <div class="arrow">相談する →</div>
         </a>
         <a class="service-card" href="services.html#sns">
-          <div><small>Identity</small><h4>名刺・ロゴ</h4><p>演奏家としての印象を揃える小さなツールも整えます。</p></div>
+          <div><div class="service-visual"><img src="images/hero-3.jpg" alt="" /></div><small>Identity</small><h4>名刺・ロゴ</h4><p>演奏家としての印象を揃える小さなツールも整えます。</p></div>
           <div class="arrow">相談する →</div>
         </a>
         <a class="service-card" href="services.html#sns">
-          <div><small>Other</small><h4>CD・動画まわり</h4><p>ジャケット、サムネイルなど単発制作も承ります。</p></div>
+          <div><div class="service-visual"><img src="images/flyer-saxophone-orch.jpg" alt="" /></div><small>Other</small><h4>CD・動画まわり</h4><p>ジャケット、サムネイルなど単発制作も承ります。</p></div>
           <div class="arrow">相談する →</div>
         </a>
       </div>
@@ -1163,40 +1079,6 @@
     <div class="flow-step"><span>Step 02</span><strong>整理</strong><p>必要な制作物と優先順位を一緒に決めます。</p></div>
     <div class="flow-step"><span>Step 03</span><strong>制作</strong><p>方向性を共有しながらデザインを進めます。</p></div>
     <div class="flow-step"><span>Step 04</span><strong>納品</strong><p>印刷・公開・告知に使える形でお渡しします。</p></div>
-  </div>
-</section>
-
-<!-- COLUMN -->
-<section class="column">
-  <div class="sec-head reveal">
-    <p class="label">Guide</p>
-    <h2>はじめての制作メモ</h2>
-  </div>
-  <div class="column-grid reveal">
-    <a class="column-card" href="service-concert.html">
-      <div>
-        <p class="cat">Concert Design</p>
-        <h3>演奏会チラシで最初に決めること</h3>
-        <p>曲目、会場、ターゲット、使う写真。依頼前に整理しておくと進めやすい項目をまとめます。</p>
-      </div>
-      <div class="read">読む →</div>
-    </a>
-    <a class="column-card" href="service-web.html">
-      <div>
-        <p class="cat">Website</p>
-        <h3>公演LPに載せたい情報</h3>
-        <p>日時、出演者、予約導線、プロフィールなど、見に来た人が迷わないページ構成の考え方です。</p>
-      </div>
-      <div class="read">読む →</div>
-    </a>
-    <a class="column-card" href="services.html">
-      <div>
-        <p class="cat">Order Flow</p>
-        <h3>相談から納品までの流れ</h3>
-        <p>初めての方でも安心して依頼できるように、制作の進み方と確認ポイントを整理しています。</p>
-      </div>
-      <div class="read">読む →</div>
-    </a>
   </div>
 </section>
 
@@ -1285,15 +1167,64 @@
       <p class="label">About the Designer</p>
       <h2>桑田 一哉<span class="en">Kazuya Kuwata</span></h2>
       <p class="tag">音楽とデザイン、両方の現場から。</p>
-      <p>音大で研鑽を積みながら、クラシック音楽に特化したデザイン事業 WAKU DESIGN を運営。フライヤー・プログラム・Web・記録写真まで、音楽家の活動に必要なビジュアルを一貫して手がけています。</p>
+      <p>大阪音楽大学 作曲専攻で学びながら、クラシック音楽に特化したデザイン事業 WAKU DESIGN を運営。フライヤー・プログラム・Web・記録写真まで、音楽家の活動に必要なビジュアルを一貫して手がけています。</p>
       <p>演奏する側だからこそわかる「音の佇まい」と、デザインの力。両方を生かして、音楽家一人ひとりの魅力が、長く手元に残るかたちで届くよう心がけています。</p>
       <div class="about-fact">
         <div class="row"><div class="k">— FIELD</div><div class="v">Classical Music Design</div></div>
-        <div class="row"><div class="k">— SINCE</div><div class="v">2024</div></div>
-        <div class="row"><div class="k">— BASE</div><div class="v">Tokyo, Japan</div></div>
-        <div class="row"><div class="k">— STUDY</div><div class="v">音楽大学 在学中</div></div>
+        <div class="row"><div class="k">— SINCE</div><div class="v">2023</div></div>
+        <div class="row"><div class="k">— BASE</div><div class="v">Osaka, Japan</div></div>
+        <div class="row"><div class="k">— STUDY</div><div class="v">大阪音楽大学 作曲専攻 在学中</div></div>
+        <div class="row"><div class="k">— TECH</div><div class="v">情報処理工学科 卒業</div></div>
       </div>
       <p style="margin-top:28px;"><a href="about.html" style="font-size:12px;letter-spacing:0.22em;color:var(--c-sub);border-bottom:1px solid var(--c-line);padding-bottom:3px;transition:color 0.3s;">わたしについて、詳しく →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- CONCERTS -->
+<section class="concerts" id="concerts">
+  <div class="sec-head reveal">
+    <p class="label">Concert Info</p>
+    <h2>コンサート情報</h2>
+  </div>
+  <div class="concerts-inner reveal">
+    <div class="concerts-list">
+      <a class="concert-row" href="work-miki-relemit.html">
+        <div class="thumb"><img src="images/flyer-miki-relemit.jpg" alt="三木多聞 Relemit"/></div>
+        <div class="date"><span class="d-date">2027.03.05</span><span class="d-time">開演 19:00</span></div>
+        <div class="info">
+          <span class="info-date-m">2027.03.05（金）· 開演 19:00</span>
+          <h4>三木多聞 サクソフォンリサイタル「Relemit」卒業公演</h4>
+          <span class="venue">兵庫県立芸術文化センター 神戸女学院小ホール</span>
+        </div>
+        <div class="tags"><span>兵庫</span><span>サクソフォン</span></div>
+        <div class="arrow">→</div>
+      </a>
+      <a class="concert-row" href="work-saxophone-orch.html">
+        <div class="thumb"><img src="images/flyer-saxophone-orch.jpg" alt="大阪音大サクソフォーンオーケストラ 運命"/></div>
+        <div class="date"><span class="d-date">2025.12.14</span><span class="d-time">開演 14:00</span></div>
+        <div class="info">
+          <span class="info-date-m">2025.12.14（日）· 開演 14:00</span>
+          <h4>第40回 大阪音楽大学サクソフォーンオーケストラコンサート「運命」</h4>
+          <span class="venue">ザ・カレッジ・オペラハウス</span>
+        </div>
+        <div class="tags"><span>大阪</span><span>オーケストラ</span></div>
+        <div class="arrow">→</div>
+      </a>
+      <a class="concert-row" href="work-ota-so.html">
+        <div class="thumb"><img src="images/flyer-ota-so.jpg" alt="太田光 &amp; 曾朗基 Spring Concert"/></div>
+        <div class="date"><span class="d-date">2025.03.22</span><span class="d-time">開演 17:00</span></div>
+        <div class="info">
+          <span class="info-date-m">2025.03.22（土）· 開演 17:00</span>
+          <h4>太田光 &amp; 曾朗基 Flute &amp; Guitar スプリング・コンサート</h4>
+          <span class="venue">LA PAZ（大阪市北区天神橋）</span>
+        </div>
+        <div class="tags"><span>大阪</span><span>室内楽</span></div>
+        <div class="arrow">→</div>
+      </a>
+    </div>
+    <div style="text-align:right;margin-top:24px;">
+      <a href="concerts.html" style="font-family:'Hoefler Text',serif;font-style:italic;font-size:12px;letter-spacing:0.22em;color:var(--c-sub);transition:color 0.3s;border-bottom:1px solid var(--c-line);padding-bottom:2px;">コンサート情報一覧 →</a>
     </div>
   </div>
 </section>
