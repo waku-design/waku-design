@@ -83,116 +83,182 @@
     letter-spacing: 0.2em;
   }
   nav .cta:hover { background: var(--c-ink); color: var(--c-bg); }
+  .nav-service { position: relative; }
+  .nav-service > a { display: inline-flex; align-items: center; gap: 6px; }
+  .nav-service > a::before {
+    content: '';
+    width: 4px; height: 4px;
+    border-right: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+    transform: rotate(45deg) translateY(-2px);
+    order: 2;
+    opacity: 0.55;
+  }
+  .nav-submenu {
+    position: absolute;
+    top: calc(100% + 18px); left: -18px;
+    min-width: 250px;
+    display: grid;
+    gap: 0;
+    padding: 10px;
+    list-style: none;
+    background: rgba(255,255,255,0.98);
+    border: 1px solid var(--c-line);
+    box-shadow: 0 18px 42px rgba(42,26,31,0.12);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
+  }
+  .nav-service:hover .nav-submenu,
+  .nav-service:focus-within .nav-submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .nav-submenu a {
+    display: block;
+    padding: 10px 12px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    line-height: 1.45;
+    color: var(--c-ink);
+  }
+  .nav-submenu a::after { display: none; }
+  .nav-submenu a:hover { background: var(--c-bg); color: var(--c-red); }
 
   /* ============= HERO ============= */
   .hero {
     position: relative;
-    background: var(--c-bg);
-    padding: 72px 44px 80px;
+    background: var(--c-ink);
+    color: var(--c-bg);
+    padding: 0;
   }
-  .hero-inner {
-    max-width: 1240px; margin: 0 auto;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
-    align-items: center;
+  .hero-stage {
+    position: relative;
+    min-height: min(760px, calc(100svh - 72px));
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: 84px 44px;
   }
-  .hero-text { padding-bottom: 24px; }
-  .hero-text .eyebrow {
-    font-family: var(--serif-en); font-style: italic;
-    font-size: 12px; letter-spacing: 0.32em; color: var(--c-red);
-    margin-bottom: 28px;
-    display: flex; align-items: center; gap: 14px;
-  }
-  .hero-text .eyebrow::before {
-    content: ''; width: 32px; height: 1px; background: var(--c-red);
-  }
-  .hero-text h1 {
-    font-family: var(--serif-jp);
-    font-size: clamp(34px, 4.6vw, 56px);
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    line-height: 1.55;
-    color: var(--c-ink);
-    margin-bottom: 28px;
-  }
-  .hero-text h1 br { display: block; }
-  .hero-text .lead {
-    font-size: 14px; line-height: 2.1; color: var(--c-sub);
-    letter-spacing: 0.06em; max-width: 460px;
-    margin-bottom: 36px;
-  }
-  .hero-text .cta-row {
-    display: flex; gap: 14px; flex-wrap: wrap;
-  }
-  .hero-text .cta-row a {
-    padding: 14px 28px;
-    font-size: 12px; letter-spacing: 0.2em;
-    transition: all 0.3s;
-  }
-  .hero-text .cta-row .primary {
-    background: var(--c-ink); color: var(--c-bg);
-  }
-  .hero-text .cta-row .primary:hover { background: var(--c-red); }
-  .hero-text .cta-row .secondary {
-    border: 1px solid var(--c-line); color: var(--c-ink);
-  }
-  .hero-text .cta-row .secondary:hover { border-color: var(--c-ink); }
-
-  /* ============= HERO SLIDESHOW ============= */
-  .hero-visual {
-    aspect-ratio: 4/5;
-    position: relative; overflow: hidden;
-  }
-  .hero-slideshow {
-    position: absolute; inset: 0;
-  }
+  .hero-slideshow,
   .hero-slideshow .slide {
     position: absolute; inset: 0;
     width: 100%; height: 100%;
+  }
+  .hero-slideshow .slide {
     object-fit: cover;
     opacity: 0;
     animation: hero-fade 32s infinite;
+    transform: scale(1.02);
   }
   .hero-slideshow .slide:nth-child(1) { animation-delay: 0s; }
   .hero-slideshow .slide:nth-child(2) { animation-delay: 8s; }
   .hero-slideshow .slide:nth-child(3) { animation-delay: 16s; }
   .hero-slideshow .slide:nth-child(4) { animation-delay: 24s; }
+  .hero-stage::after {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(90deg, rgba(42,26,31,0.72) 0%, rgba(42,26,31,0.46) 42%, rgba(42,26,31,0.18) 100%),
+      linear-gradient(0deg, rgba(42,26,31,0.62) 0%, rgba(42,26,31,0) 52%);
+    z-index: 1;
+  }
   @keyframes hero-fade {
     0%, 100% { opacity: 0; }
     5%, 22%  { opacity: 1; }
     27%      { opacity: 0; }
   }
-  .visual-caption {
-    position: absolute; bottom: 14px; right: 14px;
-    font-family: var(--serif-en); font-style: italic;
-    font-size: 9px; letter-spacing: 0.26em;
-    color: rgba(247,239,224,0.55);
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    z-index: 3;
+  .hero-copy {
+    position: relative;
+    z-index: 2;
+    max-width: 1240px;
+    width: 100%;
+    margin: 0 auto;
   }
-  /* ヒーロースタッツ */
-  .hero-stats {
-    display: flex; gap: 24px; flex-wrap: wrap;
-    margin-top: 28px;
-    padding-top: 20px;
-    border-top: 1px solid var(--c-line);
-    font-family: var(--serif-en); font-style: italic;
-    font-size: 11px; letter-spacing: 0.24em; color: var(--c-sub);
+  .hero-copy .eyebrow {
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    margin-bottom: 18px;
+    color: rgba(251,247,238,0.82);
   }
-  .hero-stats strong {
-    font-style: normal; font-weight: 600;
-    color: var(--c-ink); margin-right: 4px;
+  .hero-copy h1 {
+    font-size: clamp(35px, 5.4vw, 72px);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    line-height: 1.35;
+    margin-bottom: 22px;
+    max-width: 820px;
   }
-
-  .hero-bottom {
-    max-width: 1240px; margin: 60px auto 0;
-    display: flex; justify-content: space-between; align-items: center;
-    border-top: 1px solid var(--c-line);
-    padding-top: 22px;
-    font-family: var(--serif-en); font-style: italic;
-    font-size: 11px; letter-spacing: 0.28em; color: var(--c-sub);
+  .hero-copy .lead {
+    max-width: 620px;
+    font-size: 15px;
+    line-height: 2.05;
+    letter-spacing: 0.06em;
+    color: rgba(251,247,238,0.84);
+    margin-bottom: 34px;
   }
-  .hero-bottom .right { color: var(--c-ink); }
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .hero-actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 12px 24px;
+    border: 1px solid rgba(251,247,238,0.7);
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    background: rgba(251,247,238,0.92);
+    color: var(--c-ink);
+    transition: background 0.25s, color 0.25s, border-color 0.25s;
+  }
+  .hero-actions a.secondary {
+    background: rgba(42,26,31,0.16);
+    color: var(--c-bg);
+  }
+  .hero-actions a:hover {
+    background: var(--c-red);
+    border-color: var(--c-red);
+    color: var(--c-bg);
+  }
+  .hero-quick {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid rgba(251,247,238,0.18);
+    border-left: 1px solid rgba(251,247,238,0.18);
+    background: rgba(42,26,31,0.96);
+  }
+  .hero-quick a {
+    min-height: 94px;
+    padding: 20px 22px;
+    border-right: 1px solid rgba(251,247,238,0.18);
+    color: var(--c-bg);
+    transition: background 0.25s, color 0.25s;
+  }
+  .hero-quick a:hover { background: var(--c-bg); color: var(--c-ink); }
+  .hero-quick span {
+    display: block;
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    color: var(--c-red);
+    margin-bottom: 7px;
+  }
+  .hero-quick strong {
+    display: block;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    line-height: 1.5;
+  }
 
   /* ============= COMMON SECTION ============= */
   .sec-head {
@@ -259,44 +325,180 @@
 
   /* ============= SERVICES ============= */
   .services {
-    padding: 120px 44px;
+    padding: 112px 44px 120px;
     background: var(--c-paper);
     border-top: 1px solid var(--c-line);
     border-bottom: 1px solid var(--c-line);
   }
-  .svc-list {
-    max-width: 1240px; margin: 0 auto;
+  .service-groups { max-width: 1240px; margin: 0 auto; display: grid; gap: 44px; }
+  .service-group {
+    border-top: 1px solid var(--c-line);
+    padding-top: 24px;
   }
-  .svc-row {
-    display: grid; grid-template-columns: 60px 280px 1fr auto;
-    gap: 40px; align-items: center;
-    padding: 36px 0;
-    border-bottom: 1px solid var(--c-line);
-    transition: padding 0.4s, background 0.4s;
+  .service-group-head {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 36px;
+    margin-bottom: 22px;
+    align-items: baseline;
   }
-  .svc-row:first-child { border-top: 1px solid var(--c-line); }
-  .svc-row:hover { padding-left: 12px; background: var(--c-bg); }
-  .svc-row .num {
+  .service-group-head .num {
     font-family: var(--serif-en); font-style: italic;
-    font-size: 22px; color: var(--c-red); letter-spacing: 0.06em;
+    font-size: 14px; color: var(--c-red); letter-spacing: 0.2em;
   }
-  .svc-row .title h3 {
-    font-family: var(--serif-jp); font-size: 19px; font-weight: 500;
-    letter-spacing: 0.14em; margin-bottom: 6px;
+  .service-group-head h3 {
+    font-family: var(--serif-jp);
+    font-size: clamp(20px, 2.2vw, 28px);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    line-height: 1.55;
   }
-  .svc-row .title small {
-    font-family: var(--serif-en); font-style: italic;
-    font-size: 11px; letter-spacing: 0.28em; color: var(--c-sub);
+  .service-group-head p {
+    font-size: 13px;
+    line-height: 2;
+    letter-spacing: 0.05em;
+    color: var(--c-sub);
   }
-  .svc-row .desc {
-    font-size: 13px; line-height: 1.95; color: var(--c-sub);
+  .service-card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .service-card {
+    min-height: 176px;
+    border: 1px solid var(--c-line);
+    background: var(--c-bg);
+    padding: 22px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.28s ease, background 0.28s ease, border-color 0.28s ease;
+  }
+  .service-card:hover {
+    transform: translateY(-4px);
+    background: var(--c-paper);
+    border-color: var(--c-red);
+  }
+  .service-card small {
+    display: block;
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 10px;
+    letter-spacing: 0.26em;
+    color: var(--c-red);
+    margin-bottom: 10px;
+  }
+  .service-card h4 {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+  .service-card p {
+    font-size: 12px;
+    line-height: 1.9;
     letter-spacing: 0.04em;
+    color: var(--c-sub);
   }
-  .svc-row .arrow {
-    font-family: var(--serif-en); font-size: 18px; color: var(--c-ink);
-    opacity: 0.4; transition: opacity 0.3s, transform 0.3s;
+  .service-card .arrow {
+    margin-top: 20px;
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: var(--c-ink);
   }
-  .svc-row:hover .arrow { opacity: 1; transform: translateX(6px); color: var(--c-red); }
+  .service-flow {
+    max-width: 1240px;
+    margin: 48px auto 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--c-line);
+    border-left: 1px solid var(--c-line);
+  }
+  .flow-step {
+    min-height: 104px;
+    padding: 18px 20px;
+    border-right: 1px solid var(--c-line);
+    border-bottom: 1px solid var(--c-line);
+    background: var(--c-paper);
+  }
+  .flow-step span {
+    display: block;
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    color: var(--c-red);
+    margin-bottom: 7px;
+  }
+  .flow-step strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    margin-bottom: 5px;
+  }
+  .flow-step p {
+    font-size: 11px;
+    line-height: 1.75;
+    letter-spacing: 0.04em;
+    color: var(--c-sub);
+  }
+
+  /* ============= COLUMN ============= */
+  .column {
+    padding: 108px 44px;
+    background: var(--c-bg);
+  }
+  .column-grid {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .column-card {
+    background: var(--c-paper);
+    border: 1px solid var(--c-line);
+    padding: 28px;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.28s ease, border-color 0.28s ease;
+  }
+  .column-card:hover { transform: translateY(-4px); border-color: var(--c-red); }
+  .column-card .cat {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--c-red);
+    margin-bottom: 14px;
+  }
+  .column-card h3 {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    line-height: 1.65;
+    margin-bottom: 14px;
+  }
+  .column-card p {
+    font-size: 12px;
+    line-height: 1.95;
+    letter-spacing: 0.05em;
+    color: var(--c-sub);
+  }
+  .column-card .read {
+    margin-top: 22px;
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: var(--c-ink);
+  }
 
   /* ============= WORKS ============= */
   .works {
@@ -717,8 +919,14 @@
   @media (max-width: 880px) {
     header { padding: 14px 20px;}
     nav ul { display: none; }
-    .hero, .statement, .services, .works, .about, .concerts, .contact { padding-left: 20px; padding-right: 20px;}
-    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .statement, .services, .works, .about, .concerts, .contact, .column { padding-left: 20px; padding-right: 20px;}
+    .hero { padding: 0; }
+    .hero-stage { min-height: 560px; padding: 42px 20px; }
+    .hero-copy h1 { font-size: 38px; letter-spacing: 0.06em; }
+    .hero-copy .lead { font-size: 13px; line-height: 2; }
+    .hero-actions a { width: 100%; }
+    .hero-quick { grid-template-columns: 1fr 1fr; }
+    .hero-quick a { min-height: 88px; padding: 17px 16px; }
     .works-grid { grid-template-columns: repeat(2, 1fr); }
     .work-item.web-feature { grid-column: 1 / -1; max-width: none; }
     .about-inner { grid-template-columns: 1fr; gap: 36px; }
@@ -726,8 +934,10 @@
     .contact-options { grid-template-columns: 1fr; }
     .contact-form .row { grid-template-columns: 1fr; }
     .footer-inner { grid-template-columns: 1fr; gap: 32px; }
-    .svc-row { grid-template-columns: 40px 1fr; gap: 16px; }
-    .svc-row .desc, .svc-row .arrow { display: none; }
+    .service-group-head { grid-template-columns: 1fr; gap: 10px; }
+    .service-card-grid { grid-template-columns: 1fr 1fr; }
+    .service-flow { grid-template-columns: 1fr 1fr; }
+    .column-grid { grid-template-columns: 1fr; }
     .concert-row .tags, .concert-row .arrow { display: none; }
     .concert-row .date { display: none; }
     .concert-row .info .info-date-m { display: block; font-family: var(--serif-en); font-style: italic; font-size: 11px; letter-spacing: 0.16em; color: var(--c-red); margin-bottom: 5px; }
@@ -735,20 +945,25 @@
     .sec-head .meta { grid-column: 1; text-align: left;}
   
     .nav-toggle { display: flex; }
-    .hero { padding-top: 44px; padding-bottom: 44px; }
-    .hero-inner { min-height: unset; gap: 32px; }
-    .hero-visual { aspect-ratio: unset; height: 240px; }
-    .hero-bottom { display: none; }
-    .visual-bg-char { font-size: 100px; }
     .statement { padding-top: 72px; padding-bottom: 72px; }
     .services { padding-top: 72px; padding-bottom: 72px; }
     .works { padding-top: 72px; padding-bottom: 72px; }
     .about { padding-top: 72px; padding-bottom: 72px; }
     .concerts { padding-top: 72px; padding-bottom: 72px; }
+    .column { padding-top: 72px; padding-bottom: 72px; }
     .contact { padding-top: 80px; padding-bottom: 80px; }
     .concert-row { grid-template-columns: 52px 1fr; gap: 14px; }
     .works-grid { gap: 16px; }
     .about-fact .row { grid-template-columns: 90px 1fr; }
+  }
+
+  @media (max-width: 560px) {
+    .hero-stage { min-height: 600px; }
+    .hero-copy h1 { font-size: 32px; }
+    .hero-quick,
+    .service-card-grid,
+    .service-flow { grid-template-columns: 1fr; }
+    .service-card { min-height: 150px; }
   }
 
 </style>
@@ -762,20 +977,31 @@
   </div>
   <nav>
     <ul>
-      <li><a href="services.html">サービス</a></li>
+      <li class="nav-service">
+        <a href="services.html">サービス</a>
+        <ul class="nav-submenu">
+          <li><a href="service-concert.html">フライヤー・プログラム・チケット</a></li>
+          <li><a href="service-web.html">Webサイト・公演LP</a></li>
+          <li><a href="service-photo.html">コンサート記録写真</a></li>
+          <li><a href="services.html#sns">SNS素材・名刺・ロゴ</a></li>
+        </ul>
+      </li>
       <li><a href="works.html">実績</a></li>
       <li><a href="about.html">わたしについて</a></li>
       <li><a href="concerts.html">コンサート情報</a></li>
       <li><a class="cta" href="#contact">お問合せ</a></li>
     </ul>
   </nav>
-  <button class="nav-toggle" id="navToggle" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+  <button class="nav-toggle" id="navToggle" type="button" aria-label="メニューを開く"><span></span><span></span><span></span></button>
 </header>
 <div class="nav-overlay" id="navOverlay">
   <span class="ov-logo">WAKU DESIGN</span>
-  <button class="ov-close" id="navClose" aria-label="閉じる">×</button>
+  <button class="ov-close" id="navClose" type="button" aria-label="閉じる">×</button>
   <ul>
     <li><a href="services.html">サービス</a></li>
+    <li><a href="service-concert.html">フライヤー・プログラム</a></li>
+    <li><a href="service-web.html">Webサイト・LP</a></li>
+    <li><a href="service-photo.html">記録写真</a></li>
     <li><a href="works.html">実績</a></li>
     <li><a href="about.html">わたしについて</a></li>
     <li><a href="concerts.html">コンサート情報</a></li>
@@ -785,35 +1011,192 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-inner reveal">
-    <div class="hero-text">
-      <p class="eyebrow">For Classical Musicians</p>
-      <h1>音楽の佇まいを、<br /><span style="white-space:nowrap">ひとつのデザインへ。</span></h1>
-      <p class="lead">演奏会フライヤーからWebサイト、記録写真まで。<br />クラシック音楽の現場に必要なデザインを、現役音大生がひとつずつ丁寧に手がけています。</p>
-      <div class="cta-row">
-        <a class="primary" href="#contact">制作のご相談 →</a>
-        <a class="secondary" href="works.html">実績を見る</a>
-      </div>
-      <div class="hero-stats">
-        <span><strong>5+</strong> works</span>
-        <span><strong>since</strong> 2024</span>
-        <span><strong>4</strong> categories</span>
-      </div>
+  <div class="hero-stage">
+    <div class="hero-slideshow" aria-hidden="true">
+      <img class="slide" src="images/hero-1.jpg" alt="" />
+      <img class="slide" src="images/hero-2.jpg" alt="" />
+      <img class="slide" src="images/hero-3.jpg" alt="" />
+      <img class="slide" src="images/hero-4.jpg" alt="" />
     </div>
-    <div class="hero-visual">
-      <div class="hero-slideshow">
-        <!-- hero-1.jpg〜hero-4.jpg を images/ フォルダに入れると自動反映 -->
-        <img class="slide" src="images/hero-1.jpg" alt="WAKU DESIGN works 1" />
-        <img class="slide" src="images/hero-2.jpg" alt="WAKU DESIGN works 2" />
-        <img class="slide" src="images/hero-3.jpg" alt="WAKU DESIGN works 3" />
-        <img class="slide" src="images/hero-4.jpg" alt="WAKU DESIGN works 4" />
+    <div class="hero-copy reveal">
+      <p class="eyebrow">クラシック音楽家・演奏会主催者のためのデザイン</p>
+      <h1>音楽の魅力が、<br />きちんと届く形へ。</h1>
+      <p class="lead">演奏会フライヤー、プログラム、チケット、Webサイト、記録写真まで。演奏する側の感覚とデザインの視点から、相談しやすく、使いやすく、長く残る制作物を整えます。</p>
+      <div class="hero-actions">
+        <a href="#services">依頼できるものを見る</a>
+        <a class="secondary" href="#contact">制作を相談する</a>
       </div>
-      <span class="visual-caption">WAKU DESIGN · 2026</span>
     </div>
   </div>
-  <div class="hero-bottom">
-    <span>WAKU DESIGN — 桑田 一哉</span>
-    <span class="right">N° 001 / Spring 2026</span>
+  <nav class="hero-quick" aria-label="主なサービス">
+    <a href="service-concert.html"><span>01</span><strong>フライヤー・ポスター</strong></a>
+    <a href="service-concert.html"><span>02</span><strong>プログラム・チケット</strong></a>
+    <a href="service-web.html"><span>03</span><strong>Webサイト・公演LP</strong></a>
+    <a href="service-photo.html"><span>04</span><strong>コンサート記録写真</strong></a>
+  </nav>
+</section>
+
+<!-- STATEMENT -->
+<section class="statement">
+  <div class="statement-inner reveal">
+    <p class="label">Concept</p>
+    <h2>音楽家の手元から、<br />聴き手の手元まで。</h2>
+    <p>演奏会のフライヤー一枚が、来てくださる方の最初の体験になります。プログラム冊子、チケット、ホームページ。コンサートの周りには、音と同じくらい大切な「ものづくり」がいくつもあります。</p>
+    <p>WAKU DESIGNは、派手に飾ることよりも、演奏家の佇まいと公演の魅力がきちんと伝わることを大切にしています。初めて依頼する方にも分かりやすい流れで、必要な制作物を一緒に整理します。</p>
+    <p class="sig">— Kazuya Kuwata, WAKU DESIGN</p>
+  </div>
+</section>
+
+<!-- CONCERTS -->
+<section class="concerts" id="concerts">
+  <div class="sec-head reveal">
+    <p class="label">Concert Info</p>
+    <h2>コンサート情報</h2>
+  </div>
+  <div class="concerts-inner reveal">
+    <div class="concerts-list">
+      <a class="concert-row" href="work-miki-relemit.html">
+        <div class="thumb"><img src="images/flyer-miki-relemit.jpg" alt="三木多聞 Relemit"/></div>
+        <div class="date"><span class="d-date">2027.03.05</span><span class="d-time">開演 19:00</span></div>
+        <div class="info">
+          <span class="info-date-m">2027.03.05（金）· 開演 19:00</span>
+          <h4>三木多聞 サクソフォンリサイタル「Relemit」卒業公演</h4>
+          <span class="venue">兵庫県立芸術文化センター 神戸女学院小ホール</span>
+        </div>
+        <div class="tags"><span>兵庫</span><span>サクソフォン</span></div>
+        <div class="arrow">→</div>
+      </a>
+      <a class="concert-row" href="work-saxophone-orch.html">
+        <div class="thumb"><img src="images/flyer-saxophone-orch.jpg" alt="大阪音大サクソフォーンオーケストラ 運命"/></div>
+        <div class="date"><span class="d-date">2025.12.14</span><span class="d-time">開演 14:00</span></div>
+        <div class="info">
+          <span class="info-date-m">2025.12.14（日）· 開演 14:00</span>
+          <h4>第40回 大阪音楽大学サクソフォーンオーケストラコンサート「運命」</h4>
+          <span class="venue">ザ・カレッジ・オペラハウス</span>
+        </div>
+        <div class="tags"><span>大阪</span><span>オーケストラ</span></div>
+        <div class="arrow">→</div>
+      </a>
+      <a class="concert-row" href="work-ota-so.html">
+        <div class="thumb"><img src="images/flyer-ota-so.jpg" alt="太田光 &amp; 曾朗基 Spring Concert"/></div>
+        <div class="date"><span class="d-date">2025.03.22</span><span class="d-time">開演 17:00</span></div>
+        <div class="info">
+          <span class="info-date-m">2025.03.22（土）· 開演 17:00</span>
+          <h4>太田光 &amp; 曾朗基 Flute &amp; Guitar スプリング・コンサート</h4>
+          <span class="venue">LA PAZ（大阪市北区天神橋）</span>
+        </div>
+        <div class="tags"><span>大阪</span><span>室内楽</span></div>
+        <div class="arrow">→</div>
+      </a>
+    </div>
+    <div style="text-align:right;margin-top:24px;">
+      <a href="concerts.html" style="font-family:'Hoefler Text',serif;font-style:italic;font-size:12px;letter-spacing:0.22em;color:var(--c-sub);transition:color 0.3s;border-bottom:1px solid var(--c-line);padding-bottom:2px;">コンサート情報一覧 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="sec-head reveal">
+    <p class="label">Service Menu</p>
+    <h2>依頼できるもの</h2>
+  </div>
+  <div class="service-groups reveal">
+    <div class="service-group">
+      <div class="service-group-head">
+        <div>
+          <p class="num">01 / Concert</p>
+          <h3>演奏会をつくる</h3>
+        </div>
+        <p>チラシから当日配布物、公演ページまで。演奏会に必要な制作物をまとめて整えます。</p>
+      </div>
+      <div class="service-card-grid">
+        <a class="service-card" href="service-concert.html">
+          <div><small>Flyer</small><h4>フライヤー・ポスター</h4><p>公演の第一印象をつくるメインビジュアルを制作します。</p></div>
+          <div class="arrow">詳しく見る →</div>
+        </a>
+        <a class="service-card" href="service-concert.html">
+          <div><small>Program</small><h4>プログラム冊子</h4><p>曲目解説やプロフィールを読みやすく整えます。</p></div>
+          <div class="arrow">詳しく見る →</div>
+        </a>
+        <a class="service-card" href="service-concert.html">
+          <div><small>Ticket</small><h4>チケット</h4><p>フライヤーと統一感のあるチケットを制作します。</p></div>
+          <div class="arrow">詳しく見る →</div>
+        </a>
+        <a class="service-card" href="service-web.html">
+          <div><small>Website</small><h4>公演LP・Webサイト</h4><p>情報整理、予約導線、公開後の運用まで見据えて設計します。</p></div>
+          <div class="arrow">詳しく見る →</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="service-group" id="other">
+      <div class="service-group-head">
+        <div>
+          <p class="num">02 / Activity</p>
+          <h3>音楽活動を広げる</h3>
+        </div>
+        <p>SNSやプロフィール、記録写真など、演奏会の前後で必要になる見せ方も相談できます。</p>
+      </div>
+      <div class="service-card-grid">
+        <a class="service-card" href="service-photo.html">
+          <div><small>Photo</small><h4>コンサート記録写真</h4><p>本番、リハーサル、舞台裏の空気を自然に残します。</p></div>
+          <div class="arrow">詳しく見る →</div>
+        </a>
+        <a class="service-card" href="services.html#sns">
+          <div><small>SNS</small><h4>SNS投稿画像</h4><p>告知、リマインド、終演報告まで使いやすい画像を制作します。</p></div>
+          <div class="arrow">相談する →</div>
+        </a>
+        <a class="service-card" href="services.html#sns">
+          <div><small>Identity</small><h4>名刺・ロゴ</h4><p>演奏家としての印象を揃える小さなツールも整えます。</p></div>
+          <div class="arrow">相談する →</div>
+        </a>
+        <a class="service-card" href="services.html#sns">
+          <div><small>Other</small><h4>CD・動画まわり</h4><p>ジャケット、サムネイルなど単発制作も承ります。</p></div>
+          <div class="arrow">相談する →</div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="service-flow reveal">
+    <div class="flow-step"><span>Step 01</span><strong>相談</strong><p>目的、時期、ご予算を簡単に確認します。</p></div>
+    <div class="flow-step"><span>Step 02</span><strong>整理</strong><p>必要な制作物と優先順位を一緒に決めます。</p></div>
+    <div class="flow-step"><span>Step 03</span><strong>制作</strong><p>方向性を共有しながらデザインを進めます。</p></div>
+    <div class="flow-step"><span>Step 04</span><strong>納品</strong><p>印刷・公開・告知に使える形でお渡しします。</p></div>
+  </div>
+</section>
+
+<!-- COLUMN -->
+<section class="column">
+  <div class="sec-head reveal">
+    <p class="label">Guide</p>
+    <h2>はじめての制作メモ</h2>
+  </div>
+  <div class="column-grid reveal">
+    <a class="column-card" href="service-concert.html">
+      <div>
+        <p class="cat">Concert Design</p>
+        <h3>演奏会チラシで最初に決めること</h3>
+        <p>曲目、会場、ターゲット、使う写真。依頼前に整理しておくと進めやすい項目をまとめます。</p>
+      </div>
+      <div class="read">読む →</div>
+    </a>
+    <a class="column-card" href="service-web.html">
+      <div>
+        <p class="cat">Website</p>
+        <h3>公演LPに載せたい情報</h3>
+        <p>日時、出演者、予約導線、プロフィールなど、見に来た人が迷わないページ構成の考え方です。</p>
+      </div>
+      <div class="read">読む →</div>
+    </a>
+    <a class="column-card" href="services.html">
+      <div>
+        <p class="cat">Order Flow</p>
+        <h3>相談から納品までの流れ</h3>
+        <p>初めての方でも安心して依頼できるように、制作の進み方と確認ポイントを整理しています。</p>
+      </div>
+      <div class="read">読む →</div>
+    </a>
   </div>
 </section>
 
@@ -843,7 +1226,7 @@
           <div class="work-title">大阪音楽大学サクソフォーンオーケストラ「運命」</div>
         </a>
         <a class="work-item" href="work-ota-so.html">
-          <div class="frame"><img src="images/flyer-ota-so.jpg" alt="太田光 & 曾朗基 Flute & Guitar スプリング・コンサート" /></div>
+          <div class="frame"><img src="images/flyer-ota-so.jpg" alt="太田光 &amp; 曾朗基 Flute &amp; Guitar スプリング・コンサート" /></div>
           <div class="work-cat">FLYER</div>
           <div class="work-title">太田光 &amp; 曾朗基 Flute &amp; Guitar スプリング・コンサート</div>
         </a>
@@ -891,65 +1274,6 @@
   </div>
 </section>
 
-<!-- SERVICES -->
-<section class="services" id="services">
-  <div class="sec-head reveal">
-    <div>
-      <p class="label">Services</p>
-    </div>
-    <h2>提供するデザイン</h2>
-  </div>
-  <div class="svc-list reveal">
-    <a href="services.html#concert" class="svc-row">
-      <div class="num">01</div>
-      <div class="title">
-        <h3>コンサートデザイン</h3>
-        <small>Concert Design</small>
-      </div>
-      <div class="desc">フライヤー・プログラム冊子・チケットを一貫して。コンセプトの言語化からお手伝いします。</div>
-      <div class="arrow">→</div>
-    </a>
-    <a href="services.html#web" class="svc-row">
-      <div class="num">02</div>
-      <div class="title">
-        <h3>Webサイト・LP制作</h3>
-        <small>Website · Landing Page</small>
-      </div>
-      <div class="desc">演奏家・音楽事務所向けのホームページ、公演特設LP。継続的に運用しやすい構成でご提案。</div>
-      <div class="arrow">→</div>
-    </a>
-    <a href="services.html#photo" class="svc-row">
-      <div class="num">03</div>
-      <div class="title">
-        <h3>コンサート記録写真</h3>
-        <small>Concert Photography</small>
-      </div>
-      <div class="desc">本番中・リハーサル・楽屋まで、演奏者の表情と空気を残す写真撮影。</div>
-      <div class="arrow">→</div>
-    </a>
-    <a href="services.html#sns" class="svc-row">
-      <div class="num">04</div>
-      <div class="title">
-        <h3>SNS素材・ジャケット類</h3>
-        <small>SNS · CD Jacket · Thumbnail</small>
-      </div>
-      <div class="desc">SNS投稿テンプレ、YouTubeサムネ、CDジャケット、名刺、ロゴ。単発でもお気軽に。</div>
-      <div class="arrow">→</div>
-    </a>
-  </div>
-</section>
-
-<!-- STATEMENT -->
-<section class="statement">
-  <div class="statement-inner reveal">
-    <p class="label">Statement</p>
-    <h2>音楽家の手元から、<br />聴き手の手元まで。</h2>
-    <p>演奏会のフライヤー一枚が、来てくださる方の最初の体験になります。プログラム冊子、チケット、ホームページ。コンサートの周りには、音と同じくらい大切な「ものづくり」がいくつもあります。</p>
-    <p>演奏する側の感覚と、デザインの言語。両方の現場から、音楽家一人ひとりの佇まいに合うかたちを丁寧に組み立てます。派手な装飾よりも、長く手元に置きたくなる静けさを大切にしています。</p>
-    <p class="sig">— Kazuya Kuwata, WAKU DESIGN</p>
-  </div>
-</section>
-
 <!-- ABOUT -->
 <section class="about" id="about">
   <div class="about-inner reveal">
@@ -970,53 +1294,6 @@
         <div class="row"><div class="k">— STUDY</div><div class="v">音楽大学 在学中</div></div>
       </div>
       <p style="margin-top:28px;"><a href="about.html" style="font-size:12px;letter-spacing:0.22em;color:var(--c-sub);border-bottom:1px solid var(--c-line);padding-bottom:3px;transition:color 0.3s;">わたしについて、詳しく →</a></p>
-    </div>
-  </div>
-</section>
-
-<!-- CONCERTS -->
-<section class="concerts" id="concerts">
-  <div class="sec-head reveal">
-    <p class="label">Concert Info</p>
-    <h2>コンサート情報</h2>
-  </div>
-  <div class="concerts-inner reveal">
-    <div class="concerts-list">
-      <a class="concert-row" href="work-miki-relemit.html">
-        <div class="thumb"><img src="images/flyer-miki-relemit.jpg" alt="三木多聞 Relemit"/></div>
-        <div class="date"><span class="d-date">2027.03.05</span><span class="d-time">開演 19:00</span></div>
-        <div class="info">        <span class="info-date-m">2027.03.05（金）· 開演 19:00</span>
-        <h4>三木多聞 サクソフォンリサイタル「Relemit」卒業公演</h4>
-          <span class="venue">兵庫県立芸術文化センター 神戸女学院小ホール</span>
-        </div>
-        <div class="tags"><span>兵庫</span><span>サクソフォン</span></div>
-        <div class="arrow">→</div>
-      </a>
-      <a class="concert-row" href="work-saxophone-orch.html">
-        <div class="thumb"><img src="images/flyer-saxophone-orch.jpg" alt="大阪音大サクソフォーンオーケストラ 運命"/></div>
-        <div class="date"><span class="d-date">2025.12.14</span><span class="d-time">開演 14:00</span></div>
-        <div class="info">
-          <span class="info-date-m">2025.12.14（日）· 開演 14:00</span>
-        <h4>第40回 大阪音楽大学サクソフォーンオーケストラコンサート「運命」</h4>
-          <span class="venue">ザ・カレッジ・オペラハウス</span>
-        </div>
-        <div class="tags"><span>大阪</span><span>オーケストラ</span></div>
-        <div class="arrow">→</div>
-      </a>
-      <a class="concert-row" href="work-ota-so.html">
-        <div class="thumb"><img src="images/flyer-ota-so.jpg" alt="太田光 & 曾朗基 Spring Concert"/></div>
-        <div class="date"><span class="d-date">2025.03.22</span><span class="d-time">開演 17:00</span></div>
-        <div class="info">
-          <span class="info-date-m">2025.03.22（土）· 開演 17:00</span>
-        <h4>太田光 &amp; 曾朗基 Flute &amp; Guitar スプリング・コンサート</h4>
-          <span class="venue">LA PAZ（大阪市北区天神橋）</span>
-        </div>
-        <div class="tags"><span>大阪</span><span>室内楽</span></div>
-        <div class="arrow">→</div>
-      </a>
-    </div>
-    <div style="text-align:right;margin-top:24px;">
-      <a href="concerts.html" style="font-family:'Hoefler Text',serif;font-style:italic;font-size:12px;letter-spacing:0.22em;color:var(--c-sub);transition:color 0.3s;border-bottom:1px solid var(--c-line);padding-bottom:2px;">コンサート情報一覧 →</a>
     </div>
   </div>
 </section>
@@ -1075,7 +1352,7 @@
       </ul>
     </div>
     <div>
-      <h5>— Social & Legal</h5>
+      <h5>— Social &amp; Legal</h5>
       <ul>
         <li><a href="#">Instagram</a></li>
         <li><a href="#">プライバシーポリシー</a></li>
@@ -1088,7 +1365,7 @@
 
 <!-- TWEAKS PANEL -->
 <div class="tweaks-panel" id="tweaksPanel">
-  <div class="title">TWEAKS<button id="tweaksClose">×</button></div>
+  <div class="title">TWEAKS<button id="tweaksClose" type="button">×</button></div>
   <div class="row">
     <label>アクセント / Accent</label>
     <div class="swatches" id="swatches">
@@ -1102,15 +1379,15 @@
   <div class="row">
     <label>本文書体 / Body</label>
     <div class="seg" id="fontSeg">
-      <button class="active" data-font="mincho">明朝</button>
-      <button data-font="gothic">ゴシック</button>
+      <button class="active" type="button" data-font="mincho">明朝</button>
+      <button type="button" data-font="gothic">ゴシック</button>
     </div>
   </div>
   <div class="row">
     <label>背景 / Surface</label>
     <div class="seg" id="bgSeg">
-      <button class="active" data-bg="cream">クリーム</button>
-      <button data-bg="white">純白</button>
+      <button class="active" type="button" data-bg="cream">クリーム</button>
+      <button type="button" data-bg="white">純白</button>
     </div>
   </div>
 </div>
