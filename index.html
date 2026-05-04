@@ -382,90 +382,158 @@
   }
   .service-card-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px 26px;
   }
   .service-card {
-    min-height: 430px;
+    min-height: 170px;
     border: 1px solid var(--c-line);
-    background: var(--c-bg);
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    border-radius: 8px;
+    background: rgba(251,247,238,0.76);
+    padding: 26px 24px 24px 34px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 168px 38px;
+    align-items: center;
+    gap: 18px;
     overflow: hidden;
-    transition: transform 0.28s ease, background 0.28s ease, border-color 0.28s ease;
+    box-shadow: 0 16px 34px rgba(42,26,31,0.05);
+    transition: transform 0.28s ease, background 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
   }
   .service-card:hover {
     transform: translateY(-4px);
     background: var(--c-paper);
-    border-color: var(--c-red);
-  }
-  .service-visual {
-    aspect-ratio: 3 / 4.12;
-    background: var(--c-cream-deep);
-    overflow: hidden;
-    margin: 18px 18px 20px;
-    border: 1px solid var(--c-line);
-  }
-  .service-visual img {
-    width: 100%; height: 100%;
-    object-fit: contain;
-    display: block;
-    filter: saturate(0.86) contrast(0.98);
-    transition: transform 0.45s ease;
-  }
-  .service-card:hover .service-visual img { transform: scale(1.04); }
-  .service-visual.is-preparing {
-    display: grid;
-    place-items: center;
-    background:
-      linear-gradient(135deg, rgba(183,64,46,0.06), rgba(255,255,255,0.65)),
-      var(--c-cream);
-  }
-  .service-visual.is-preparing span {
-    font-family: var(--serif-jp);
-    font-size: 12px;
-    letter-spacing: 0.22em;
-    color: var(--c-sub);
-    opacity: 0.72;
+    border-color: rgba(183,64,46,0.55);
+    box-shadow: 0 20px 42px rgba(42,26,31,0.1);
   }
   .service-card small {
     display: block;
     font-family: var(--serif-en);
     font-style: italic;
-    font-size: 10px;
-    letter-spacing: 0.26em;
+    font-size: 13px;
+    letter-spacing: 0.2em;
     color: var(--c-red);
-    margin-bottom: 10px;
-    padding: 0 20px;
+    margin-top: 9px;
   }
   .service-card h4 {
-    font-size: 18px;
+    font-size: clamp(20px, 2vw, 28px);
     font-weight: 500;
-    letter-spacing: 0.1em;
-    line-height: 1.55;
-    margin-bottom: 10px;
-    padding: 0 20px;
+    letter-spacing: 0.08em;
+    line-height: 1.35;
+    white-space: nowrap;
   }
   .service-card p {
     font-size: 12px;
     line-height: 1.9;
     letter-spacing: 0.04em;
     color: var(--c-sub);
-    padding: 0 20px;
+    margin-top: 14px;
   }
   .service-card .arrow {
-    margin-top: 20px;
-    padding: 0 20px 20px;
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--c-line);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
     font-family: var(--serif-en);
-    font-style: italic;
-    font-size: 12px;
-    letter-spacing: 0.2em;
-    color: var(--c-ink);
+    font-size: 20px;
+    line-height: 1;
+    color: var(--c-sub);
+    transition: background 0.25s, border-color 0.25s, color 0.25s;
   }
+  .service-card:hover .arrow { background: var(--c-red); border-color: var(--c-red); color: var(--c-bg); }
   .service-card.is-preparing .arrow,
   .service-card.is-preparing small {
+    color: var(--c-red);
+  }
+  .service-art {
+    position: relative;
+    height: 112px;
+    min-width: 132px;
+  }
+  .service-art.flyer img {
+    position: absolute;
+    top: 8px;
+    width: 70px;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border: 2px solid var(--c-bg);
+    box-shadow: 0 8px 18px rgba(42,26,31,0.18);
+  }
+  .service-art.flyer img:nth-child(1) { right: 54px; transform: rotate(-11deg); }
+  .service-art.flyer img:nth-child(2) { right: 18px; top: 2px; transform: rotate(8deg); }
+  .service-art.program .sheet {
+    position: absolute;
+    width: 80px;
+    height: 96px;
+    top: 7px;
+    right: 42px;
+    background: #F6E7D6;
+    border: 1px solid #D9C4A9;
+    box-shadow: 0 10px 16px rgba(42,26,31,0.14);
+    transform: rotate(-8deg);
+  }
+  .service-art.program .sheet:nth-child(2) { right: 16px; top: 17px; background: #D8F0DF; transform: rotate(8deg); }
+  .service-art.program .sheet::before {
+    content: '';
+    position: absolute;
+    left: 12px; right: 12px; top: 20px;
+    height: 1px;
+    background: #876F58;
+    box-shadow: 0 18px 0 #876F58, 0 36px 0 #876F58;
+  }
+  .service-art.web .screen {
+    position: absolute;
+    right: 8px;
+    top: 10px;
+    width: 150px;
+    height: 90px;
+    border: 3px solid #C7B18F;
+    border-radius: 8px;
+    background: linear-gradient(180deg,#F8F4EA 0 20%,#C8E8E3 20% 100%);
+    box-shadow: 0 10px 18px rgba(42,26,31,0.14);
+    overflow: hidden;
+  }
+  .service-art.web .screen::before {
+    content: '';
+    position: absolute;
+    inset: 10px 14px auto;
+    height: 18px;
+    background: rgba(183,64,46,0.16);
+    border-radius: 2px;
+    box-shadow: 0 28px 0 rgba(251,247,238,0.7), 0 56px 0 rgba(251,247,238,0.5);
+  }
+  .service-art.photo .lens {
+    position: absolute;
+    right: 18px;
+    top: 16px;
+    width: 118px;
+    height: 78px;
+    border: 2px solid #C7B18F;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(251,247,238,0.95), rgba(235,223,197,0.82));
+    box-shadow: 0 10px 18px rgba(42,26,31,0.12);
+  }
+  .service-art.photo .lens::before {
+    content: '';
+    position: absolute;
+    left: 34px;
+    top: 16px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 9px solid rgba(93,117,111,0.35);
+    background: rgba(183,64,46,0.12);
+  }
+  .service-art .prep {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 3px 8px;
+    background: rgba(251,247,238,0.86);
+    border: 1px solid var(--c-line);
+    font-size: 10px;
+    letter-spacing: 0.16em;
     color: var(--c-sub);
   }
   .service-note {
@@ -479,6 +547,47 @@
     color: var(--c-sub);
   }
   .service-note span { color: var(--c-ink); }
+  .service-other {
+    max-width: 1240px;
+    margin: 28px auto 0;
+    padding-top: 22px;
+    border-top: 1px solid var(--c-line);
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 26px;
+    align-items: start;
+  }
+  .service-other h3 {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    line-height: 1.6;
+  }
+  .service-other-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .service-other-list a {
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 15px;
+    border: 1px solid var(--c-line);
+    background: var(--c-bg);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--c-ink-soft);
+    transition: background 0.25s, border-color 0.25s, color 0.25s;
+  }
+  .service-other-list a:hover { background: var(--c-paper); border-color: rgba(183,64,46,0.45); color: var(--c-ink); }
+  .service-other-list span {
+    font-family: var(--serif-en);
+    font-style: italic;
+    color: var(--c-red);
+    letter-spacing: 0.12em;
+  }
   .service-flow {
     max-width: 1240px;
     margin: 48px auto 0;
@@ -972,6 +1081,9 @@
     .footer-inner { grid-template-columns: 1fr; gap: 32px; }
     .service-intro { grid-template-columns: 1fr; gap: 10px; }
     .service-card-grid { grid-template-columns: 1fr 1fr; }
+    .service-card { grid-template-columns: minmax(0, 1fr) 132px 34px; padding: 22px 18px 20px 24px; }
+    .service-art { height: 96px; min-width: 118px; }
+    .service-other { grid-template-columns: 1fr; gap: 14px; }
     .service-flow { grid-template-columns: 1fr 1fr; }
     .concert-row .tags, .concert-row .arrow { display: none; }
     .concert-row .date { display: none; }
@@ -997,7 +1109,10 @@
     .hero-quick,
     .service-card-grid,
     .service-flow { grid-template-columns: 1fr; }
-    .service-card { min-height: 0; }
+    .service-card { min-height: 0; grid-template-columns: 1fr 34px; gap: 12px; }
+    .service-card h4 { white-space: normal; font-size: 22px; }
+    .service-art { display: none; }
+    .service-other-list a { flex: 1 1 calc(50% - 10px); justify-content: center; }
   }
 
 </style>
@@ -1091,31 +1206,46 @@
     <div class="service-intro">
       <div>
         <span class="num">Four Entrances</span>
-        <h3>4つの入口に絞りました。</h3>
+        <h3>4つの入口</h3>
       </div>
       <p>フライヤー、当日配布物、Web、記録写真。詳しい制作範囲は各サービスページで案内し、トップページでは相談の入口をわかりやすく整理しています。掲載イメージは、準備が整い次第追加します。</p>
     </div>
 
     <div class="service-card-grid">
       <a class="service-card" href="service-concert.html">
-        <div><div class="service-visual"><img src="images/flyer-miki-relemit.jpg" alt="" /></div><small>Flyer</small><h4>フライヤー・ポスター</h4><p>A4を基本に、公演の第一印象をつくるメインビジュアルを制作します。</p></div>
-        <div class="arrow">詳しく見る →</div>
+        <div><h4>フライヤー・ポスター</h4><small>FLYER</small><p>A4を基本に、公演の第一印象をつくるメインビジュアルを制作します。</p></div>
+        <div class="service-art flyer"><img src="images/flyer-miki-relemit.jpg" alt="" /><img src="images/flyer-saxophone-orch.jpg" alt="" /></div>
+        <div class="arrow">›</div>
       </a>
       <a class="service-card is-preparing" href="service-concert.html">
-        <div><div class="service-visual is-preparing"><span>準備中</span></div><small>Program / Ticket</small><h4>プログラム・チケット</h4><p>曲目解説、プロフィール、当日配布物などを公演全体の雰囲気に合わせて整えます。</p></div>
-        <div class="arrow">詳しく見る →</div>
+        <div><h4>プログラム・チケット</h4><small>PROGRAM / TICKET</small><p>曲目解説、プロフィール、当日配布物などを公演全体の雰囲気に合わせて整えます。</p></div>
+        <div class="service-art program"><span class="sheet"></span><span class="sheet"></span><span class="prep">準備中</span></div>
+        <div class="arrow">›</div>
       </a>
       <a class="service-card is-preparing" href="service-web.html">
-        <div><div class="service-visual is-preparing"><span>準備中</span></div><small>Website</small><h4>Webサイト・公演LP</h4><p>情報整理、予約導線、公開後の運用まで見据えて、伝わりやすいページを設計します。</p></div>
-        <div class="arrow">詳しく見る →</div>
+        <div><h4>Webサイト・公演LP</h4><small>WEBSITE</small><p>情報整理、予約導線、公開後の運用まで見据えて、伝わりやすいページを設計します。</p></div>
+        <div class="service-art web"><span class="screen"></span><span class="prep">準備中</span></div>
+        <div class="arrow">›</div>
       </a>
       <a class="service-card is-preparing" href="service-photo.html">
-        <div><div class="service-visual is-preparing"><span>準備中</span></div><small>Photo</small><h4>コンサート記録写真</h4><p>本番、リハーサル、舞台裏の空気を自然に残す記録写真も相談できます。</p></div>
-        <div class="arrow">詳しく見る →</div>
+        <div><h4>コンサート記録写真</h4><small>PHOTO</small><p>本番、リハーサル、舞台裏の空気を自然に残す記録写真も相談できます。</p></div>
+        <div class="service-art photo"><span class="lens"></span><span class="prep">準備中</span></div>
+        <div class="arrow">›</div>
       </a>
     </div>
   </div>
-  <p class="service-note"><span>SNS投稿画像・名刺・ロゴ・CD・動画まわり</span>なども、必要に応じて個別にご相談いただけます。詳しい内容はサービスページで順次ご案内します。</p>
+  <div class="service-other">
+    <h3>その他にも<br />こんなものができます</h3>
+    <div class="service-other-list">
+      <a href="index.html#contact"><span>□</span>名刺</a>
+      <a href="index.html#contact"><span>♪</span>ロゴ</a>
+      <a href="index.html#contact"><span>○</span>CD</a>
+      <a href="index.html#contact"><span>▣</span>SNS投稿画像</a>
+      <a href="index.html#contact"><span>▶</span>動画まわり</a>
+      <a href="index.html#contact"><span>?</span>その他</a>
+    </div>
+  </div>
+  <p class="service-note"><span>追加メニューは準備中です。</span>必要な制作物がまだページにない場合も、フォームまたはInstagram DMから個別にご相談いただけます。</p>
   <div class="service-flow reveal">
     <div class="flow-step"><span>Step 01</span><strong>相談</strong><p>目的、時期、ご予算を簡単に確認します。</p></div>
     <div class="flow-step"><span>Step 02</span><strong>整理</strong><p>必要な制作物と優先順位を一緒に決めます。</p></div>
