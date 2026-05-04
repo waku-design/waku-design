@@ -352,34 +352,7 @@
     border-top: 1px solid var(--c-line);
     border-bottom: 1px solid var(--c-line);
   }
-  .service-groups { max-width: 1240px; margin: 0 auto; display: grid; gap: 28px; }
-  .service-intro {
-    border-top: 1px solid var(--c-line);
-    padding-top: 24px;
-    display: grid;
-    grid-template-columns: 340px 1fr;
-    gap: 44px;
-    align-items: start;
-  }
-  .service-intro .num {
-    display: block;
-    font-family: var(--serif-en); font-style: italic;
-    font-size: 14px; color: var(--c-red); letter-spacing: 0.2em;
-    margin-bottom: 8px;
-  }
-  .service-intro h3 {
-    font-family: var(--serif-jp);
-    font-size: clamp(20px, 2.2vw, 28px);
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    line-height: 1.55;
-  }
-  .service-intro p {
-    font-size: 13px;
-    line-height: 2;
-    letter-spacing: 0.05em;
-    color: var(--c-sub);
-  }
+  .service-groups { max-width: 1240px; margin: 0 auto; display: grid; }
   .service-card-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -564,16 +537,18 @@
     line-height: 1.6;
   }
   .service-other-list {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 10px;
   }
   .service-other-list a {
     min-height: 42px;
-    display: inline-flex;
+    display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
-    padding: 9px 15px;
+    width: 100%;
+    padding: 9px 10px;
     border: 1px solid var(--c-line);
     background: var(--c-bg);
     font-size: 12px;
@@ -582,11 +557,86 @@
     transition: background 0.25s, border-color 0.25s, color 0.25s;
   }
   .service-other-list a:hover { background: var(--c-paper); border-color: rgba(183,64,46,0.45); color: var(--c-ink); }
-  .service-other-list span {
-    font-family: var(--serif-en);
-    font-style: italic;
+  .other-icon {
+    position: relative;
+    width: 23px;
+    height: 23px;
+    flex: 0 0 23px;
     color: var(--c-red);
-    letter-spacing: 0.12em;
+  }
+  .other-card::before,
+  .other-card::after {
+    content: '';
+    position: absolute;
+    border: 1.5px solid currentColor;
+    border-radius: 2px;
+    background: rgba(183,64,46,0.05);
+  }
+  .other-card::before { width: 17px; height: 11px; left: 1px; top: 7px; }
+  .other-card::after { width: 17px; height: 11px; right: 1px; top: 4px; }
+  .other-logo::before {
+    content: 'W';
+    position: absolute;
+    inset: 2px;
+    border: 1.5px solid currentColor;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-family: var(--serif-en);
+    font-size: 10px;
+    font-weight: 700;
+  }
+  .other-cd::before,
+  .other-cd::after {
+    content: '';
+    position: absolute;
+    border: 1.5px solid currentColor;
+    border-radius: 50%;
+  }
+  .other-cd::before { inset: 2px; background: rgba(183,64,46,0.05); }
+  .other-cd::after { width: 5px; height: 5px; left: 9px; top: 9px; background: var(--c-bg); }
+  .other-sns::before {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border: 1.5px solid currentColor;
+    border-radius: 4px;
+    background:
+      linear-gradient(currentColor 0 0) 6px 5px / 8px 1px no-repeat,
+      linear-gradient(currentColor 0 0) 6px 10px / 6px 1px no-repeat,
+      radial-gradient(circle at 5px 5px, currentColor 0 2px, transparent 2.5px);
+  }
+  .other-movie::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 5px;
+    width: 19px;
+    height: 13px;
+    border: 1.5px solid currentColor;
+    border-radius: 4px;
+    background: rgba(183,64,46,0.05);
+  }
+  .other-movie::after {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 9px;
+    border-left: 6px solid currentColor;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+  }
+  .other-more::before,
+  .other-more::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 11px;
+    width: 13px;
+    height: 1.5px;
+    background: currentColor;
+  }
+  .other-more::after { transform: rotate(90deg); }
   }
   .service-flow {
     max-width: 1240px;
@@ -1079,11 +1129,11 @@
     .contact-options { grid-template-columns: 1fr; }
     .contact-form .row { grid-template-columns: 1fr; }
     .footer-inner { grid-template-columns: 1fr; gap: 32px; }
-    .service-intro { grid-template-columns: 1fr; gap: 10px; }
     .service-card-grid { grid-template-columns: 1fr 1fr; }
     .service-card { grid-template-columns: minmax(0, 1fr) 132px 34px; padding: 22px 18px 20px 24px; }
     .service-art { height: 96px; min-width: 118px; }
     .service-other { grid-template-columns: 1fr; gap: 14px; }
+    .service-other-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .service-flow { grid-template-columns: 1fr 1fr; }
     .concert-row .tags, .concert-row .arrow { display: none; }
     .concert-row .date { display: none; }
@@ -1112,7 +1162,7 @@
     .service-card { min-height: 0; grid-template-columns: 1fr 34px; gap: 12px; }
     .service-card h4 { white-space: normal; font-size: 22px; }
     .service-art { display: none; }
-    .service-other-list a { flex: 1 1 calc(50% - 10px); justify-content: center; }
+    .service-other-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
 
 </style>
@@ -1203,14 +1253,6 @@
     <h2>依頼できるもの</h2>
   </div>
   <div class="service-groups reveal">
-    <div class="service-intro">
-      <div>
-        <span class="num">Four Entrances</span>
-        <h3>4つの入口</h3>
-      </div>
-      <p>フライヤー、当日配布物、Web、記録写真。詳しい制作範囲は各サービスページで案内し、トップページでは相談の入口をわかりやすく整理しています。掲載イメージは、準備が整い次第追加します。</p>
-    </div>
-
     <div class="service-card-grid">
       <a class="service-card" href="service-concert.html">
         <div><h4>フライヤー・ポスター</h4><small>FLYER</small><p>A4を基本に、公演の第一印象をつくるメインビジュアルを制作します。</p></div>
@@ -1235,14 +1277,14 @@
     </div>
   </div>
   <div class="service-other">
-    <h3>その他にも<br />こんなものができます</h3>
+    <h3>その他</h3>
     <div class="service-other-list">
-      <a href="index.html#contact"><span>□</span>名刺</a>
-      <a href="index.html#contact"><span>♪</span>ロゴ</a>
-      <a href="index.html#contact"><span>○</span>CD</a>
-      <a href="index.html#contact"><span>▣</span>SNS投稿画像</a>
-      <a href="index.html#contact"><span>▶</span>動画まわり</a>
-      <a href="index.html#contact"><span>?</span>その他</a>
+      <a href="index.html#contact"><span class="other-icon other-card" aria-hidden="true"></span>名刺</a>
+      <a href="index.html#contact"><span class="other-icon other-logo" aria-hidden="true"></span>ロゴ</a>
+      <a href="index.html#contact"><span class="other-icon other-cd" aria-hidden="true"></span>CD</a>
+      <a href="index.html#contact"><span class="other-icon other-sns" aria-hidden="true"></span>SNS投稿画像</a>
+      <a href="index.html#contact"><span class="other-icon other-movie" aria-hidden="true"></span>動画まわり</a>
+      <a href="index.html#contact"><span class="other-icon other-more" aria-hidden="true"></span>その他</a>
     </div>
   </div>
   <p class="service-note"><span>追加メニューは準備中です。</span>必要な制作物がまだページにない場合も、フォームまたはInstagram DMから個別にご相談いただけます。</p>
