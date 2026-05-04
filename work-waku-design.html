@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="WAKU DESIGN公式サイトのWeb制作実績。クラシック音楽家からの制作相談につなげるため、サービス、実績、プロフィール、問い合わせ導線を設計しました。" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="WAKU DESIGN" />
+<meta property="og:title" content="WAKU DESIGN 公式サイト | WAKU DESIGN" />
+<meta property="og:description" content="クラシック音楽家からの制作相談につなげるため、サービス、実績、プロフィール、問い合わせ導線を設計したブランドサイト制作実績です。" />
+<meta property="og:image" content="https://waku-design.vercel.app/images/hero-1.jpg" />
+<meta property="og:url" content="https://waku-design.vercel.app/work-waku-design.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="WAKU DESIGN 公式サイト | WAKU DESIGN" />
+<meta name="twitter:description" content="クラシック音楽家からの制作相談につなげるため、サービス、実績、プロフィール、問い合わせ導線を設計したブランドサイト制作実績です。" />
+<meta name="twitter:image" content="https://waku-design.vercel.app/images/hero-1.jpg" />
+<title>WAKU DESIGN 公式サイト | WAKU DESIGN</title>
+<style>
+  :root {
+    color-scheme: light;
+    --c-red:#B7402E; --c-red-deep:#8E2F22; --c-ink:#2A1A1F;
+    --c-ink-soft:#4A323A; --c-cream:#F7EFE0; --c-cream-deep:#EBDFC5;
+    --c-bg:#FBF7EE; --c-paper:#FFFFFF; --c-line:#E2DAC4; --c-sub:#6B5A4F;
+    --serif-jp:'Hiragino Mincho ProN','Yu Mincho','YuMincho','MS PMincho',serif;
+    --serif-en:'Hoefler Text','Garamond','Times New Roman',serif;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;overflow-x:hidden;}
+  body{font-family:var(--serif-jp);color:var(--c-ink);background:var(--c-bg);line-height:1.95;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  a{color:inherit;text-decoration:none;}
+  header{position:sticky;top:0;padding:18px 44px;background:rgba(251,247,238,0.96);backdrop-filter:saturate(180%) blur(10px);z-index:100;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--c-line);}
+  .logo{display:flex;align-items:baseline;gap:12px;}
+  .logo .text{font-family:var(--serif-jp);font-size:17px;font-weight:600;letter-spacing:0.22em;color:var(--c-ink);line-height:1;}
+  .logo .text small{display:block;font-family:var(--serif-en);font-size:9px;letter-spacing:0.32em;color:var(--c-sub);margin-top:6px;font-style:italic;font-weight:400;}
+  nav ul{list-style:none;display:flex;gap:28px;align-items:center;}
+  nav a{font-size:12px;letter-spacing:0.18em;transition:color 0.3s;}
+  nav a:not(.cta):hover{color:var(--c-red);}
+  nav .cta{border:1px solid var(--c-ink);color:var(--c-ink);padding:10px 22px;transition:all 0.3s;letter-spacing:0.2em;}
+  nav .cta:hover{background:var(--c-ink);color:var(--c-bg);}
+  .breadcrumb{padding:20px 44px;max-width:1240px;margin:0 auto;font-family:var(--serif-en);font-style:italic;font-size:11px;letter-spacing:0.26em;color:var(--c-sub);display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .breadcrumb a{transition:color 0.3s;}
+  .breadcrumb a:hover{color:var(--c-ink);}
+  .breadcrumb .sep{opacity:0.4;}
+  main{max-width:1240px;margin:0 auto;padding:48px 44px 120px;}
+  .work-hero{display:grid;grid-template-columns:0.95fr 1.05fr;gap:64px;align-items:center;margin-bottom:84px;}
+  .work-cat{font-family:var(--serif-en);font-style:italic;font-size:11px;letter-spacing:0.36em;color:var(--c-red);margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+  .work-cat::before{content:'';width:18px;height:1px;background:var(--c-red);}
+  .work-main-title{font-size:clamp(24px,3.4vw,42px);font-weight:500;letter-spacing:0.12em;line-height:1.45;margin-bottom:24px;}
+  .work-lead{font-size:14px;letter-spacing:0.08em;line-height:2.1;color:var(--c-ink-soft);max-width:620px;}
+  .site-preview{background:var(--c-paper);border:1px solid var(--c-line);box-shadow:0 18px 54px rgba(42,26,31,0.12);padding:16px;}
+  .preview-bar{height:28px;border-bottom:1px solid var(--c-line);display:flex;align-items:center;gap:7px;margin:-2px 0 16px;}
+  .preview-dot{width:7px;height:7px;border-radius:50%;background:var(--c-cream-deep);}
+  .preview-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:14px;}
+  .preview-grid img{width:100%;height:100%;object-fit:cover;display:block;background:var(--c-cream);}
+  .preview-main{aspect-ratio:4/5;}
+  .preview-stack{display:grid;grid-template-rows:1fr 1fr;gap:14px;}
+  .preview-stack img{min-height:0;}
+  .info-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--c-line);border-bottom:1px solid var(--c-line);margin-bottom:72px;}
+  .info-cell{padding:20px 18px;border-right:1px solid var(--c-line);}
+  .info-cell:last-child{border-right:none;}
+  .info-label{font-family:var(--serif-en);font-style:italic;font-size:10px;letter-spacing:0.32em;color:var(--c-sub);margin-bottom:6px;}
+  .info-value{font-size:13px;letter-spacing:0.08em;line-height:1.7;}
+  .section-block{margin-bottom:72px;}
+  .section-head{display:grid;grid-template-columns:220px 1fr;gap:40px;border-top:1px solid var(--c-line);padding-top:20px;margin-bottom:28px;}
+  .section-head .label{font-family:var(--serif-en);font-style:italic;font-size:11px;letter-spacing:0.34em;color:var(--c-red);}
+  .section-head h2{font-size:clamp(18px,2.1vw,26px);font-weight:500;letter-spacing:0.14em;line-height:1.55;}
+  .section-text{max-width:760px;margin-left:260px;font-size:13px;letter-spacing:0.08em;line-height:2.1;color:var(--c-ink-soft);}
+  .point-list{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px;}
+  .point{background:var(--c-paper);border:1px solid var(--c-line);padding:22px;}
+  .point-num{font-family:var(--serif-en);font-style:italic;font-size:10px;letter-spacing:0.3em;color:var(--c-red);margin-bottom:10px;}
+  .point h3{font-size:14px;font-weight:500;letter-spacing:0.12em;margin-bottom:10px;}
+  .point p{font-size:12px;letter-spacing:0.08em;line-height:1.95;color:var(--c-sub);}
+  .cta-band{background:var(--c-ink);color:var(--c-bg);padding:48px 44px;text-align:center;margin-bottom:56px;}
+  .cta-band h2{font-size:clamp(18px,2.4vw,26px);font-weight:500;letter-spacing:0.14em;margin-bottom:14px;}
+  .cta-band p{font-size:13px;letter-spacing:0.1em;line-height:2;color:rgba(251,247,238,0.7);margin-bottom:28px;}
+  .cta-band a{display:inline-block;border:1px solid rgba(251,247,238,0.6);padding:12px 34px;font-size:12px;letter-spacing:0.24em;transition:background 0.3s,color 0.3s;}
+  .cta-band a:hover{background:var(--c-bg);color:var(--c-ink);}
+  .work-nav{display:flex;justify-content:space-between;align-items:center;padding:40px 0;border-top:1px solid var(--c-line);}
+  .work-nav a,.work-nav span{font-family:var(--serif-en);font-style:italic;font-size:12px;letter-spacing:0.22em;color:var(--c-sub);transition:color 0.3s;display:flex;align-items:center;gap:8px;min-width:72px;}
+  .work-nav a:hover{color:var(--c-ink);}
+  .work-nav>a:last-child,.work-nav>span:last-child{justify-content:flex-end;}
+  .work-nav .nav-center{border:1px solid var(--c-line);padding:10px 24px;font-size:11px;letter-spacing:0.24em;transition:all 0.3s;min-width:unset;flex-shrink:0;}
+  .work-nav .nav-center:hover{background:var(--c-ink);color:var(--c-bg);border-color:var(--c-ink);}
+  .work-nav .nav-disabled{opacity:0.25;pointer-events:none;}
+  footer{background:var(--c-ink);color:rgba(247,239,224,0.7);padding:64px 44px 32px;}
+  .footer-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;padding-bottom:40px;border-bottom:1px solid rgba(247,239,224,0.12);margin-bottom:24px;}
+  .footer-brand .name{font-family:var(--serif-jp);font-size:17px;font-weight:600;letter-spacing:0.22em;color:rgba(247,239,224,0.9);margin-bottom:10px;}
+  .footer-brand p{font-family:var(--serif-en);font-style:italic;font-size:10px;letter-spacing:0.28em;line-height:1.9;}
+  .footer-col h4{font-family:var(--serif-en);font-style:italic;font-size:10px;letter-spacing:0.36em;color:rgba(247,239,224,0.4);margin-bottom:18px;}
+  .footer-col ul{list-style:none;}
+  .footer-col ul li{margin-bottom:10px;}
+  .footer-col ul a{font-size:12px;letter-spacing:0.12em;transition:color 0.3s;color:rgba(247,239,224,0.7);}
+  .footer-col ul a:hover{color:rgba(247,239,224,0.95);}
+  footer .bottom{max-width:1240px;margin:0 auto;font-family:var(--serif-en);font-style:italic;font-size:10px;letter-spacing:0.28em;color:rgba(247,239,224,0.28);}
+  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px 4px;z-index:201;flex-shrink:0;}
+  .nav-toggle span{display:block;width:22px;height:1.5px;background:var(--c-ink);transition:transform 0.32s ease,opacity 0.25s ease;transform-origin:center;}
+  .nav-toggle.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+  .nav-toggle.open span:nth-child(2){opacity:0;}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+  .nav-overlay{position:fixed;inset:0;background:var(--c-ink);z-index:200;display:flex;flex-direction:column;justify-content:center;align-items:center;opacity:0;pointer-events:none;transition:opacity 0.35s ease;}
+  .nav-overlay.open{opacity:1;pointer-events:all;}
+  .nav-overlay ul{list-style:none;display:flex;flex-direction:column;align-items:center;gap:0;padding:0;margin:0;}
+  .nav-overlay ul li a{font-family:var(--serif-jp);font-size:22px;font-weight:500;letter-spacing:0.22em;color:var(--c-bg);padding:16px 40px;display:block;transition:color 0.3s;}
+  .nav-overlay ul li a:hover,.nav-overlay ul li a:active{color:var(--c-red);}
+  .nav-overlay .ov-cta-li{margin-top:22px;}
+  .nav-overlay .ov-cta-li a{border:1px solid rgba(251,247,238,0.38);font-size:14px;letter-spacing:0.26em;padding:14px 40px;}
+  .nav-overlay .ov-close{position:absolute;top:14px;right:16px;background:none;border:none;color:rgba(251,247,238,0.5);font-size:32px;cursor:pointer;padding:10px;line-height:1;transition:color 0.3s;}
+  .nav-overlay .ov-close:hover{color:var(--c-bg);}
+  .nav-overlay .ov-logo{position:absolute;top:22px;left:20px;font-family:var(--serif-jp);font-size:13px;font-weight:600;letter-spacing:0.22em;color:rgba(251,247,238,0.45);}
+  @media(max-width:900px){
+    header{padding:16px 20px;}nav ul{display:none;}
+    .breadcrumb{padding:16px 20px;}
+    main{padding:32px 20px 80px;}
+    .work-hero{grid-template-columns:1fr;gap:36px;margin-bottom:56px;}
+    .site-preview{padding:12px;}
+    .info-grid{grid-template-columns:1fr 1fr;margin-bottom:56px;}
+    .info-cell:nth-child(2){border-right:none;}
+    .info-cell:nth-child(-n+2){border-bottom:1px solid var(--c-line);}
+    .section-head{grid-template-columns:1fr;gap:10px;}
+    .section-text{margin-left:0;}
+    .point-list{grid-template-columns:1fr;}
+    .cta-band{padding:40px 22px;}
+    .work-nav{gap:14px;}
+    footer{padding:48px 20px 24px;}.footer-inner{grid-template-columns:1fr;gap:32px;}
+    .nav-toggle{display:flex;}
+  }
+  @media(max-width:520px){
+    .preview-grid{grid-template-columns:1fr;}
+    .preview-stack{grid-template-columns:1fr 1fr;grid-template-rows:none;}
+    .info-grid{grid-template-columns:1fr;}
+    .info-cell{border-right:none;border-bottom:1px solid var(--c-line);}
+    .info-cell:last-child{border-bottom:none;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><a href="index.html"><div class="text">WAKU DESIGN<small>Designing for Classical Music</small></div></a></div>
+  <nav><ul>
+    <li><a href="services.html">サービス</a></li>
+    <li><a href="works.html">実績</a></li>
+    <li><a href="about.html">わたしについて</a></li>
+    <li><a href="concerts.html">コンサート情報</a></li>
+    <li><a class="cta" href="index.html#contact">お問合せ</a></li>
+  </ul></nav>
+  <button class="nav-toggle" id="navToggle" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+</header>
+<div class="nav-overlay" id="navOverlay">
+  <span class="ov-logo">WAKU DESIGN</span>
+  <button class="ov-close" id="navClose" aria-label="閉じる">×</button>
+  <ul>
+    <li><a href="services.html">サービス</a></li>
+    <li><a href="works.html">実績</a></li>
+    <li><a href="about.html">わたしについて</a></li>
+    <li><a href="concerts.html">コンサート情報</a></li>
+    <li class="ov-cta-li"><a href="index.html#contact">お問合せ</a></li>
+  </ul>
+</div>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a>
+  <span class="sep">/</span>
+  <a href="works.html">Works</a>
+  <span class="sep">/</span>
+  <a href="works-web.html">Web / LP</a>
+  <span class="sep">/</span>
+  <span>WAKU DESIGN 公式サイト</span>
+</div>
+
+<main>
+  <section class="work-hero">
+    <div>
+      <div class="work-cat">WEB · BRAND SITE</div>
+      <h1 class="work-main-title">WAKU DESIGN<br />公式サイト</h1>
+      <p class="work-lead">クラシック音楽の制作物を必要としている演奏家・主催者に向けて、実績、サービス、制作者の背景、問い合わせまでを静かに接続するブランドサイトを制作しました。</p>
+    </div>
+    <div class="site-preview" aria-label="WAKU DESIGN公式サイトのビジュアルプレビュー">
+      <div class="preview-bar"><span class="preview-dot"></span><span class="preview-dot"></span><span class="preview-dot"></span></div>
+      <div class="preview-grid">
+        <img class="preview-main" src="images/hero-1.jpg" alt="WAKU DESIGN公式サイト メインビジュアル" />
+        <div class="preview-stack">
+          <img src="images/hero-2.jpg" alt="制作実績プレビュー 1" />
+          <img src="images/hero-3.jpg" alt="制作実績プレビュー 2" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="info-grid">
+    <div class="info-cell">
+      <div class="info-label">Client</div>
+      <div class="info-value">WAKU DESIGN</div>
+    </div>
+    <div class="info-cell">
+      <div class="info-label">Scope</div>
+      <div class="info-value">企画 / 構成 / デザイン / 実装</div>
+    </div>
+    <div class="info-cell">
+      <div class="info-label">Media</div>
+      <div class="info-value">Brand Site</div>
+    </div>
+    <div class="info-cell">
+      <div class="info-label">Year</div>
+      <div class="info-value">2026</div>
+    </div>
+  </div>
+
+  <section class="section-block">
+    <div class="section-head">
+      <p class="label">Objective</p>
+      <h2>「何を頼めるか」と「誰に頼むか」が、自然に伝わる構成へ。</h2>
+    </div>
+    <p class="section-text">コンサートフライヤー、Web、記録写真など複数のサービスを扱うため、最初に世界観を見せ、次に実績と料金、最後にプロフィールと相談フォームへ進む流れを設計しました。説明を詰め込みすぎず、演奏会の空気感が残る余白とタイポグラフィで、相談前の不安を減らすことを目指しています。</p>
+  </section>
+
+  <section class="section-block">
+    <div class="section-head">
+      <p class="label">Design Notes</p>
+      <h2>クラシック音楽の静けさと、受注サイトとしての分かりやすさを両立。</h2>
+    </div>
+    <div class="point-list">
+      <div class="point">
+        <div class="point-num">01</div>
+        <h3>実績を先に見せる</h3>
+        <p>依頼前に判断しやすいよう、トップページ上部に制作実績を配置し、詳細ページまで迷わず進める導線にしました。</p>
+      </div>
+      <div class="point">
+        <div class="point-num">02</div>
+        <h3>料金と流れを分ける</h3>
+        <p>サービス別ページを用意し、料金、制作範囲、進行ステップを整理。問い合わせ前の確認負担を軽くしています。</p>
+      </div>
+      <div class="point">
+        <div class="point-num">03</div>
+        <h3>フォームまで短く</h3>
+        <p>トップ、サービス、実績、プロフィールの各ページから問い合わせへ戻れるようにして、相談のタイミングを逃さない設計にしています。</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <h2>演奏会や音楽活動のサイト制作もご相談ください。</h2>
+    <p>公演LP、プロフィールサイト、チケット導線の整理など、目的に合わせて小さく始められます。</p>
+    <a href="index.html#contact">制作のご相談へ →</a>
+  </div>
+
+  <div class="work-nav">
+    <span class="nav-disabled">← Prev</span>
+    <a class="nav-center" href="works-web.html">Web 一覧</a>
+    <span class="nav-disabled">Next →</span>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="name">WAKU DESIGN</div>
+      <p>Designing for Classical Music<br />クラシック音楽のためのデザイン</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="services.html">サービス</a></li>
+        <li><a href="works.html">制作実績</a></li>
+        <li><a href="about.html">わたしについて</a></li>
+        <li><a href="concerts.html">コンサート情報</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="index.html#contact">制作のご相談</a></li>
+        <li><a href="#">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="bottom">© 2026 — WAKU DESIGN — KAZUYA KUWATA</div>
+</footer>
+<script>
+  (function(){
+    var t=document.getElementById('navToggle'),o=document.getElementById('navOverlay'),c=document.getElementById('navClose');
+    if(!t||!o)return;
+    function openNav(){t.classList.add('open');o.classList.add('open');document.body.style.overflow='hidden';}
+    function closeNav(){t.classList.remove('open');o.classList.remove('open');document.body.style.overflow='';}
+    t.addEventListener('click',function(){o.classList.contains('open')?closeNav():openNav();});
+    if(c)c.addEventListener('click',closeNav);
+    o.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeNav);});
+  })();
+</script>
+</body>
+</html>
