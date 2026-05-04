@@ -42,17 +42,23 @@
   .breadcrumb a:hover{color:var(--c-ink);}
   .breadcrumb .sep{opacity:0.4;}
   main{max-width:1240px;margin:0 auto;padding:48px 44px 120px;}
-  .work-hero{display:grid;grid-template-columns:0.95fr 1.05fr;gap:64px;align-items:center;margin-bottom:84px;}
+  .work-hero{display:grid;grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr);gap:64px;align-items:center;margin-bottom:84px;}
   .work-cat{font-family:var(--serif-en);font-style:italic;font-size:11px;letter-spacing:0.36em;color:var(--c-red);margin-bottom:10px;display:flex;align-items:center;gap:10px;}
   .work-cat::before{content:'';width:18px;height:1px;background:var(--c-red);}
   .work-main-title{font-size:clamp(24px,3.4vw,42px);font-weight:500;letter-spacing:0.12em;line-height:1.45;margin-bottom:24px;}
   .work-lead{font-size:14px;letter-spacing:0.08em;line-height:2.1;color:var(--c-ink-soft);max-width:620px;}
-  .site-preview{background:var(--c-paper);border:1px solid var(--c-line);box-shadow:0 18px 54px rgba(42,26,31,0.12);padding:16px;position:relative;}
+  .site-preview{--preview-scale:0.52;min-width:0;background:var(--c-paper);border:1px solid var(--c-line);box-shadow:0 18px 54px rgba(42,26,31,0.12);padding:16px;position:relative;}
   .preview-bar{height:28px;border-bottom:1px solid var(--c-line);display:flex;align-items:center;gap:7px;margin:-2px 0 16px;}
   .preview-dot{width:7px;height:7px;border-radius:50%;background:var(--c-cream-deep);}
-  .preview-window{height:440px;border:1px solid var(--c-line);background:var(--c-bg);overflow:hidden;}
-  .preview-window iframe{width:100%;height:100%;border:0;background:var(--c-bg);display:block;}
-  .preview-scroll-note{position:absolute;right:26px;bottom:24px;padding:5px 10px;background:rgba(42,26,31,0.72);color:var(--c-bg);font-family:var(--serif-en);font-style:italic;font-size:10px;letter-spacing:0.22em;pointer-events:none;}
+  .preview-window{width:100%;min-width:0;height:520px;border:1px solid var(--c-line);background:var(--c-bg);overflow-y:auto;overflow-x:hidden;}
+  .preview-window iframe{width:1180px;height:1500px;border:0;background:var(--c-bg);display:block;transform:scale(var(--preview-scale));transform-origin:0 0;}
+  .preview-window::-webkit-scrollbar{width:8px;}
+  .preview-window::-webkit-scrollbar-track{background:rgba(226,218,196,0.4);}
+  .preview-window::-webkit-scrollbar-thumb{background:rgba(183,64,46,0.38);border-radius:999px;}
+  .preview-scroll-cue{position:absolute;right:26px;bottom:24px;width:34px;height:34px;border:1px solid rgba(251,247,238,0.58);border-radius:50%;background:rgba(42,26,31,0.72);pointer-events:none;}
+  .preview-scroll-cue::before,.preview-scroll-cue::after{content:'';position:absolute;left:50%;top:11px;width:8px;height:8px;border-right:1.5px solid var(--c-bg);border-bottom:1.5px solid var(--c-bg);transform:translateX(-50%) rotate(45deg);animation:scrollCue 1.35s ease-in-out infinite;}
+  .preview-scroll-cue::after{top:17px;animation-delay:0.18s;opacity:0.65;}
+  @keyframes scrollCue{0%,100%{transform:translate(-50%,-2px) rotate(45deg);opacity:0.35;}50%{transform:translate(-50%,3px) rotate(45deg);opacity:1;}}
   .info-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--c-line);border-bottom:1px solid var(--c-line);margin-bottom:72px;}
   .info-cell{padding:20px 18px;border-right:1px solid var(--c-line);}
   .info-cell:last-child{border-right:none;}
@@ -111,6 +117,9 @@
     main{padding:32px 20px 80px;}
     .work-hero{grid-template-columns:1fr;gap:36px;margin-bottom:56px;}
     .site-preview{padding:12px;}
+    .site-preview{--preview-scale:1;}
+    .preview-window{height:420px;}
+    .preview-window iframe{width:100%;height:100%;transform:none;}
     .info-grid{grid-template-columns:1fr 1fr;margin-bottom:56px;}
     .info-cell:nth-child(2){border-right:none;}
     .info-cell:nth-child(-n+2){border-bottom:1px solid var(--c-line);}
@@ -176,7 +185,7 @@
       <div class="preview-window">
         <iframe src="index.html" title="WAKU DESIGN公式サイトのスクロールプレビュー"></iframe>
       </div>
-      <div class="preview-scroll-note">SCROLL</div>
+      <div class="preview-scroll-cue" aria-hidden="true"></div>
     </div>
   </section>
 

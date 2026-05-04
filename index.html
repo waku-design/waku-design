@@ -293,6 +293,8 @@
 
   /* ============= STATEMENT ============= */
   .statement {
+    --mx: 50%;
+    --my: 50%;
     padding: 130px 44px;
     background:
       radial-gradient(circle at 16% 12%, rgba(183,64,46,0.08), transparent 34%),
@@ -312,10 +314,27 @@
     mask-image: radial-gradient(circle at center, rgba(0,0,0,0.52), transparent 76%);
     pointer-events: none;
   }
+  .statement::after {
+    content: '';
+    position: absolute;
+    inset: -22%;
+    background:
+      radial-gradient(circle at var(--mx) var(--my), rgba(183,64,46,0.18), transparent 24%),
+      radial-gradient(circle at calc(var(--mx) + 16%) calc(var(--my) + 12%), rgba(93,117,111,0.12), transparent 30%);
+    opacity: 0.72;
+    filter: blur(18px);
+    transform: translate3d(0,0,0);
+    pointer-events: none;
+    transition: opacity 0.45s ease;
+  }
+  .statement:not(:hover)::after {
+    opacity: 0.48;
+  }
   .statement-inner {
     max-width: 880px; margin: 0 auto;
     text-align: left;
     position: relative;
+    z-index: 1;
   }
   .statement .label {
     font-family: var(--serif-en); font-style: italic;
@@ -419,6 +438,9 @@
   .service-card.is-preparing small {
     color: var(--c-red);
   }
+  .service-card.is-preparing:hover .arrow {
+    color: var(--c-bg);
+  }
   .service-art {
     position: relative;
     height: 112px;
@@ -426,15 +448,14 @@
   }
   .service-art.flyer img {
     position: absolute;
-    top: 8px;
-    width: 70px;
+    top: 4px;
+    width: 84px;
     aspect-ratio: 3 / 4;
     object-fit: cover;
-    border: 2px solid var(--c-bg);
-    box-shadow: 0 8px 18px rgba(42,26,31,0.18);
+    box-shadow: 0 10px 20px rgba(42,26,31,0.18);
   }
   .service-art.flyer img:nth-child(1) { right: 54px; transform: rotate(-11deg); }
-  .service-art.flyer img:nth-child(2) { right: 18px; top: 2px; transform: rotate(8deg); }
+  .service-art.flyer img:nth-child(2) { right: 8px; top: 0; transform: rotate(8deg); }
   .service-art.program .sheet {
     position: absolute;
     width: 80px;
@@ -528,7 +549,7 @@
     display: grid;
     grid-template-columns: 260px minmax(0, 1fr);
     gap: 26px;
-    align-items: start;
+    align-items: center;
   }
   .service-other h3 {
     font-size: 18px;
@@ -575,16 +596,27 @@
   .other-card::before { width: 17px; height: 11px; left: 1px; top: 7px; }
   .other-card::after { width: 17px; height: 11px; right: 1px; top: 4px; }
   .other-logo::before {
-    content: 'W';
+    content: '';
     position: absolute;
-    inset: 2px;
+    left: 3px;
+    top: 4px;
+    width: 14px;
+    height: 14px;
+    border: 1.5px solid currentColor;
+    border-radius: 3px;
+    transform: rotate(45deg);
+    background: rgba(183,64,46,0.05);
+  }
+  .other-logo::after {
+    content: '';
+    position: absolute;
+    right: 2px;
+    bottom: 4px;
+    width: 11px;
+    height: 11px;
     border: 1.5px solid currentColor;
     border-radius: 50%;
-    display: grid;
-    place-items: center;
-    font-family: var(--serif-en);
-    font-size: 10px;
-    font-weight: 700;
+    background: var(--c-bg);
   }
   .other-cd::before,
   .other-cd::after {
@@ -637,7 +669,6 @@
     background: currentColor;
   }
   .other-more::after { transform: rotate(90deg); }
-  }
   .service-flow {
     max-width: 1240px;
     margin: 48px auto 0;
@@ -720,12 +751,16 @@
   .work-item:hover { transform: translateY(-6px); }
   .work-item .frame {
     aspect-ratio: 3/4;
-    background: var(--c-cream-deep);
+    background: var(--c-paper);
+    border: 1px solid var(--c-line);
+    box-shadow: 0 16px 34px rgba(42,26,31,0.07);
+    padding: 12px;
     position: relative; overflow: hidden;
     margin-bottom: 14px;
   }
   .work-item .frame img {
     width: 100%; height: 100%; object-fit: contain; display: block;
+    filter: drop-shadow(0 12px 16px rgba(42,26,31,0.18));
     transition: transform 0.5s ease;
   }
   .work-item:hover .frame img { transform: scale(1.04); }
@@ -734,7 +769,7 @@
   }
   .work-item.coming .frame { background: var(--c-cream); }
   .work-item.web-feature { grid-column: span 2; max-width: 560px; }
-  .work-item.web-feature .frame { aspect-ratio: 16 / 10; background: var(--c-ink); padding: 18px; }
+  .work-item.web-feature .frame { aspect-ratio: 16 / 10; background: var(--c-ink); padding: 18px; border: none; }
   .site-thumb {
     height: 100%;
     display: grid;
@@ -753,7 +788,62 @@
     background: var(--c-bg);
   }
   .site-thumb-bar span { width: 6px; height: 6px; border-radius: 50%; background: var(--c-cream-deep); }
-  .site-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .site-thumb-screen {
+    position: relative;
+    min-height: 0;
+    background:
+      linear-gradient(90deg, rgba(42,26,31,0.72), rgba(42,26,31,0.36) 46%, rgba(42,26,31,0.2)),
+      url('images/hero-ai-1.jpg') center / cover;
+    overflow: hidden;
+  }
+  .site-thumb-screen::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 26px;
+    background: rgba(42,26,31,0.84);
+    border-top: 1px solid rgba(251,247,238,0.16);
+  }
+  .site-thumb-nav {
+    position: absolute;
+    left: 18px; right: 18px; top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgba(251,247,238,0.82);
+    font-family: var(--serif-en);
+    font-size: 7px;
+    letter-spacing: 0.22em;
+  }
+  .site-thumb-nav span:last-child {
+    width: 44%;
+    height: 1px;
+    background: rgba(251,247,238,0.55);
+  }
+  .site-thumb-copy {
+    position: absolute;
+    left: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: min(64%, 300px);
+    color: var(--c-bg);
+  }
+  .site-thumb-copy small {
+    display: block;
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 7px;
+    letter-spacing: 0.26em;
+    margin-bottom: 8px;
+    opacity: 0.74;
+  }
+  .site-thumb-copy strong {
+    display: block;
+    font-size: clamp(16px, 2vw, 24px);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    line-height: 1.45;
+  }
   .work-item .work-cat {
     font-family: var(--serif-en); font-style: italic;
     font-size: 10px; letter-spacing: 0.28em; color: var(--c-red);
@@ -1354,7 +1444,13 @@
           <div class="frame">
             <div class="site-thumb" aria-hidden="true">
               <div class="site-thumb-bar"><span></span><span></span><span></span></div>
-              <img src="images/hero-ai-1.jpg" alt="" />
+              <div class="site-thumb-screen">
+                <div class="site-thumb-nav"><span>WAKU DESIGN</span><span></span></div>
+                <div class="site-thumb-copy">
+                  <small>Designing for Classical Music</small>
+                  <strong>音楽の魅力が、<br />きちんと届く形へ。</strong>
+                </div>
+              </div>
             </div>
           </div>
           <div class="work-cat">WEB · BRAND SITE</div>
@@ -1551,10 +1647,28 @@
       }
     });
   }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+	  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+	  const statement = document.querySelector('.statement');
+	  if (statement) {
+	    let rafId = 0;
+	    let mx = 50;
+	    let my = 50;
+	    statement.addEventListener('pointermove', (event) => {
+	      const rect = statement.getBoundingClientRect();
+	      mx = ((event.clientX - rect.left) / rect.width) * 100;
+	      my = ((event.clientY - rect.top) / rect.height) * 100;
+	      if (rafId) return;
+	      rafId = requestAnimationFrame(() => {
+	        statement.style.setProperty('--mx', mx.toFixed(2) + '%');
+	        statement.style.setProperty('--my', my.toFixed(2) + '%');
+	        rafId = 0;
+	      });
+	    });
+	  }
 
 
-  const panel = document.getElementById('tweaksPanel');
+	  const panel = document.getElementById('tweaksPanel');
   const root = document.documentElement;
   function shade(hex, amt) {
     const h = hex.replace('#','');
