@@ -95,19 +95,6 @@
   .contact-cta p{font-size:13px;color:rgba(251,247,238,0.7);letter-spacing:0.06em;margin-bottom:32px;}
   .contact-cta a{display:inline-block;padding:14px 40px;border:1px solid rgba(251,247,238,0.6);color:var(--c-bg);font-size:12px;letter-spacing:0.24em;transition:all 0.3s;}
   .contact-cta a:hover{background:var(--c-bg);color:var(--c-ink);border-color:var(--c-bg);}
-  @media(max-width:880px){
-    header{padding:14px 20px;}nav ul{display:none;}
-    main{padding:48px 20px 60px;}
-    .page-hero{padding:48px 20px 40px;}
-    .service-body{grid-template-columns:1fr;gap:32px;}
-    .process-steps{grid-template-columns:1fr 1fr;}
-    footer{padding:48px 20px 24px;}.footer-inner{grid-template-columns:1fr;gap:32px;}
-    .contact-cta{padding:60px 20px;}
-  
-    .nav-toggle { display: flex; }
-    .price-img-wrap img { border: none; }
-  }
-
   /* ═══ HAMBURGER MENU ═══ */
   .nav-toggle {
     display: none;
@@ -160,6 +147,21 @@
     font-family: var(--serif-jp); font-size: 13px; font-weight: 600;
     letter-spacing: 0.22em; color: rgba(251,247,238,0.45);
   }
+
+  @media(max-width:880px){
+    header{padding:14px 20px;}nav ul{display:none;}
+    .service-head{grid-template-columns:1fr;gap:20px;}
+    main{padding:48px 20px 60px;}
+    .page-hero{padding:48px 20px 40px;}
+    .service-body{grid-template-columns:1fr;gap:32px;}
+    .process-steps{grid-template-columns:1fr 1fr;}
+    footer{padding:48px 20px 24px;}.footer-inner{grid-template-columns:1fr;gap:32px;}
+    .contact-cta{padding:60px 20px;}
+  
+    .nav-toggle { display: flex; }
+    .price-img-wrap img { border: none; }
+  }
+
 </style>
 </head>
 <body>
