@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>コンサート情報 | WAKU DESIGN</title>
+<style>
+:root{color-scheme:light;--c-red:#B7402E;--c-red-deep:#8E2F22;--c-ink:#2A1A1F;--c-ink-soft:#4A323A;--c-cream:#F7EFE0;--c-cream-deep:#EBDFC5;--c-bg:#FBF7EE;--c-paper:#FFFFFF;--c-line:#E2DAC4;--c-sub:#6B5A4F;--serif-jp:'Hiragino Mincho ProN','Yu Mincho','YuMincho','MS PMincho',serif;--serif-en:'Hoefler Text','Garamond','Times New Roman',serif;}
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--serif-jp);color:var(--c-ink);background:var(--c-bg);line-height:1.95;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  a{color:inherit;text-decoration:none;}
+  header{position:sticky;top:0;padding:18px 44px;background:rgba(251,247,238,0.96);backdrop-filter:saturate(180%) blur(10px);z-index:100;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--c-line);}
+  .logo .text{font-family:var(--serif-jp);font-size:17px;font-weight:600;letter-spacing:0.22em;color:var(--c-ink);line-height:1;}
+  .logo .text small{display:block;font-family:var(--serif-en);font-size:9px;letter-spacing:0.32em;color:var(--c-sub);margin-top:6px;font-style:italic;font-weight:400;}
+  nav ul{list-style:none;display:flex;gap:28px;align-items:center;}
+  nav a{font-size:12px;letter-spacing:0.18em;transition:color 0.3s;}
+  nav a:not(.cta):hover{color:var(--c-red);}
+  nav .cta{border:1px solid var(--c-ink);color:var(--c-ink);padding:10px 22px;transition:all 0.3s;letter-spacing:0.2em;}
+  nav .cta:hover{background:var(--c-ink);color:var(--c-bg);}
+  .page-hero{padding:80px 44px 64px;border-bottom:1px solid var(--c-line);}
+  .page-hero-inner{max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;}
+  .page-hero .eyebrow{font-family:var(--serif-en);font-style:italic;font-size:11px;letter-spacing:0.36em;color:var(--c-red);margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+  .page-hero .eyebrow::before{content:'';width:24px;height:1px;background:var(--c-red);}
+  .page-hero h1{font-family:var(--serif-jp);font-size:clamp(28px,3.6vw,44px);font-weight:500;letter-spacing:0.12em;color:var(--c-ink);line-height:1.3;}
+  .page-hero .back-link{font-family:var(--serif-en);font-style:italic;font-size:12px;letter-spacing:0.22em;color:var(--c-sub);transition:color 0.3s;}
+  .page-hero .back-link:hover{color:var(--c-ink);}
+  main{max-width:1240px;margin:0 auto;padding:80px 44px 120px;}
+  .sec-label{font-family:var(--serif-en);font-style:italic;font-size:11px;letter-spacing:0.36em;color:var(--c-red);display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+  .sec-label::before{content:'';width:20px;height:1px;background:var(--c-red);}
+  .more-link{display:inline-block;padding:12px 32px;border:1px solid var(--c-ink);font-size:12px;letter-spacing:0.24em;transition:all 0.3s;}
+  .more-link:hover{background:var(--c-ink);color:var(--c-bg);}
+  footer{background:var(--c-bg);color:var(--c-ink);padding:64px 44px 28px;border-top:1px solid var(--c-line);}
+  .footer-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:56px;align-items:start;}
+  footer .name{font-family:var(--serif-jp);font-size:17px;letter-spacing:0.22em;font-weight:600;}
+  footer .name small{display:block;font-family:var(--serif-en);font-style:italic;font-size:10px;letter-spacing:0.32em;color:var(--c-sub);margin-top:8px;font-weight:400;}
+  footer .tag{font-size:12px;line-height:2;color:var(--c-sub);margin-top:18px;max-width:320px;}
+  footer h5{font-family:var(--serif-en);font-style:italic;font-size:11px;letter-spacing:0.34em;margin-bottom:20px;color:var(--c-red);}
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  footer ul a{font-size:12px;letter-spacing:0.1em;color:var(--c-ink);transition:color 0.3s;}
+  footer ul a:hover{color:var(--c-red);}
+  footer .bottom{border-top:1px solid var(--c-line);margin-top:48px;padding-top:22px;text-align:center;color:var(--c-sub);font-size:10px;letter-spacing:0.32em;font-family:var(--serif-en);font-style:italic;}
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.9s ease,transform 0.9s ease;}
+  .reveal.visible{opacity:1;transform:none;}
+
+  .concerts-list{border-top:1px solid var(--c-line);}
+  .concert-row{display:grid;grid-template-columns:88px 110px 1fr 160px 48px;gap:28px;align-items:center;padding:20px 0;border-bottom:1px solid var(--c-line);transition:padding 0.4s,background 0.4s;}
+  .concert-row:hover{padding-left:14px;background:var(--c-paper);}
+  .concert-row .thumb{aspect-ratio:3/4;background:var(--c-cream-deep);overflow:hidden;}
+  .concert-row .thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s;}
+  .concert-row:hover .thumb img{transform:scale(1.05);}
+  .concert-row .date{font-family:var(--serif-en);font-style:italic;font-size:13px;letter-spacing:0.14em;color:var(--c-red);}
+  .concert-row .info h4{font-size:15px;font-weight:500;letter-spacing:0.08em;line-height:1.6;margin-bottom:4px;}
+  .concert-row .info .venue{font-family:var(--serif-en);font-style:italic;font-size:10px;letter-spacing:0.22em;color:var(--c-sub);}
+  .concert-row .tags{display:flex;gap:8px;flex-wrap:wrap;font-family:var(--serif-en);font-style:italic;font-size:10px;letter-spacing:0.22em;color:var(--c-sub);}
+  .concert-row .tags span{border:1px solid var(--c-line);padding:3px 10px;}
+  .concert-row .arrow{font-family:var(--serif-en);color:var(--c-ink);opacity:0.3;font-size:16px;transition:opacity 0.3s,transform 0.3s;text-align:right;}
+  .concert-row:hover .arrow{opacity:1;transform:translateX(4px);color:var(--c-red);}
+  .concerts-note{margin-top:32px;font-family:var(--serif-en);font-style:italic;font-size:11px;letter-spacing:0.24em;color:var(--c-sub);opacity:0.7;}
+  @media(max-width:880px){
+    header{padding:14px 20px;}nav ul{display:none;}
+    main{padding:48px 20px 80px;}
+    .page-hero{padding:48px 20px 40px;}
+    .concert-row{grid-template-columns:64px 1fr;gap:14px;}
+    .concert-row .date{display:none;}
+    .concert-row .tags,.concert-row .arrow{display:none;}
+    footer{padding:48px 20px 24px;}.footer-inner{grid-template-columns:1fr;gap:32px;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><a href="index.html"><div class="text">WAKU DESIGN<small>Designing for Classical Music</small></div></a></div>
+  <nav><ul>
+    <li><a href="services.html">サービス</a></li>
+    <li><a href="works.html">実績</a></li>
+    <li><a href="about.html">わたしについて</a></li>
+    <li><a href="concerts.html">コンサート情報</a></li>
+    <li><a class="cta" href="index.html#contact">お問合せ</a></li>
+  </ul></nav>
+</header>
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div>
+      <p class="eyebrow">Concert Info</p>
+      <h1>コンサート情報</h1>
+    </div>
+    <a class="back-link" href="index.html">← トップに戻る</a>
+  </div>
+</section>
+<main>
+  <p style="font-size:13px;color:var(--c-sub);letter-spacing:0.06em;margin-bottom:40px;line-height:2;">WAKU DESIGNがデザインを手がけた演奏会の一覧です。各公演の詳細・プログラムはタイトルよりご覧いただけます。</p>
+  <div class="concerts-list reveal">
+
+    <a class="concert-row" href="work-miki-relemit.html">
+      <div class="thumb"><img src="images/flyer-miki-relemit.jpg" alt="三木多聞 Relemit"/></div>
+      <div class="date">2027.03.05</div>
+      <div class="info">
+        <h4>三木多聞 サクソフォンリサイタル「Relemit」卒業公演</h4>
+        <span class="venue">兵庫県立芸術文化センター 神戸女学院小ホール</span>
+      </div>
+      <div class="tags"><span>兵庫</span><span>サクソフォン</span></div>
+      <div class="arrow">→</div>
+    </a>
+
+    <a class="concert-row" href="work-saxophone-orch.html">
+      <div class="thumb"><img src="images/flyer-saxophone-orch.jpg" alt="大阪音大サクソフォーンオーケストラ 運命"/></div>
+      <div class="date">2025.12.14</div>
+      <div class="info">
+        <h4>第40回 大阪音楽大学サクソフォーンオーケストラコンサート「運命」</h4>
+        <span class="venue">ザ・カレッジ・オペラハウス</span>
+      </div>
+      <div class="tags"><span>大阪</span><span>オーケストラ</span></div>
+      <div class="arrow">→</div>
+    </a>
+
+    <a class="concert-row" href="work-ota-so.html">
+      <div class="thumb"><img src="images/flyer-ota-so.jpg" alt="太田光 & 曾朗基 Spring Concert"/></div>
+      <div class="date">2025.03.22</div>
+      <div class="info">
+        <h4>太田光 &amp; 曾朗基 Flute &amp; Guitar スプリング・コンサート</h4>
+        <span class="venue">LA PAZ（大阪市北区天神橋）</span>
+      </div>
+      <div class="tags"><span>大阪</span><span>室内楽</span></div>
+      <div class="arrow">→</div>
+    </a>
+
+    <a class="concert-row" href="work-takagi-wind.html">
+      <div class="thumb"><img src="images/flyer-takagi-wind.jpg" alt="髙木毅 Memorial Wind Band"/></div>
+      <div class="date">2025.02.23</div>
+      <div class="info">
+        <h4>髙木毅 Memorial Wind Band Special Concert</h4>
+        <span class="venue">三田市総合文化センター 鄕の音ホール・美ホール</span>
+      </div>
+      <div class="tags"><span>兵庫</span><span>吹奏楽</span></div>
+      <div class="arrow">→</div>
+    </a>
+
+    <a class="concert-row" href="work-miki-recital.html">
+      <div class="thumb"><img src="images/flyer-miki-recital.jpg" alt="三木多聞 初ソロリサイタル"/></div>
+      <div class="date">2024.05.18</div>
+      <div class="info">
+        <h4>三木多聞 サクソフォンリサイタル（初ソロリサイタル）</h4>
+        <span class="venue">大阪音楽大学 ミレニアムホール</span>
+      </div>
+      <div class="tags"><span>大阪</span><span>サクソフォン</span></div>
+      <div class="arrow">→</div>
+    </a>
+
+  </div>
+  <p class="concerts-note">※ デザイン制作実績として掲載しています。今後の公演はフライヤー掲載時に順次追加します。</p>
+</main>
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="name">WAKU DESIGN<small>Designing for Classical Music</small></div>
+      <p class="tag">クラシック音楽家のためのデザインクリエイティブ。フライヤー・Web・写真まで一貫してお手伝いします。</p>
+    </div>
+    <div>
+      <h5>— Site Map</h5>
+      <ul>
+        <li><a href="services.html">サービス</a></li>
+        <li><a href="works.html">制作実績</a></li>
+        <li><a href="about.html">わたしについて</a></li>
+        <li><a href="concerts.html">コンサート情報</a></li>
+        <li><a href="index.html#contact">お問い合わせ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>— Social & Legal</h5>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">プライバシーポリシー</a></li>
+        <li><a href="#">特定商取引法に基づく表記</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="bottom">© 2026 — WAKU DESIGN — KAZUYA KUWATA</div>
+</footer>
+<script>
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
