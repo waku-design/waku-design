@@ -21,7 +21,7 @@
 html{scroll-behavior:smooth;}
 body{font-family:var(--serif-jp);color:var(--c-ink);background:var(--c-bg);line-height:1.95;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
 a{color:inherit;text-decoration:none;}
-header{position:sticky;top:0;padding:18px 44px;background:rgba(251,247,238,0.96);backdrop-filter:saturate(180%) blur(10px);z-index:100;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--c-line);}
+header{position:sticky;top:0;padding:18px 44px;background:rgba(251,247,238,0.96);backdrop-filter:saturate(180%) blur(10px);z-index:100;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--c-line);overflow:visible;}
 .logo .text{font-family:var(--serif-jp);font-size:17px;font-weight:600;letter-spacing:0.22em;color:var(--c-ink);line-height:1;}
 .logo .text small{display:block;font-family:var(--serif-en);font-size:9px;letter-spacing:0.32em;color:var(--c-sub);margin-top:6px;font-style:italic;font-weight:400;}
 nav ul{list-style:none;display:flex;gap:28px;align-items:center;}
@@ -35,7 +35,7 @@ nav .cta:hover{background:var(--c-ink);color:var(--c-bg);}
 .nav-service{position:relative;}
 .nav-service>a{display:inline-flex;align-items:center;gap:6px;}
 .nav-service>a::before{content:'';width:4px;height:4px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg) translateY(-2px);order:2;opacity:0.55;}
-.nav-submenu{position:absolute;top:calc(100% + 18px);left:-18px;min-width:250px;display:grid;gap:0;padding:10px;list-style:none;background:rgba(255,255,255,0.98);border:1px solid var(--c-line);box-shadow:0 18px 42px rgba(42,26,31,0.12);opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity 0.22s ease,transform 0.22s ease,visibility 0.22s ease;}
+.nav-submenu{position:absolute;top:calc(100% + 18px);left:-18px;min-width:250px;display:grid;gap:0;padding:10px;list-style:none;background:rgba(255,255,255,0.98);border:1px solid var(--c-line);box-shadow:0 18px 42px rgba(42,26,31,0.12);opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity 0.22s ease,transform 0.22s ease,visibility 0.22s ease;z-index:120;}
 .nav-service:hover .nav-submenu,.nav-service:focus-within .nav-submenu{opacity:1;visibility:visible;transform:translateY(0);}
 .nav-submenu a{display:block;padding:10px 12px;font-size:12px;letter-spacing:0.08em;line-height:1.45;color:var(--c-ink);}
 .nav-submenu a::after{display:none;}
@@ -65,27 +65,53 @@ nav .cta:hover{background:var(--c-ink);color:var(--c-bg);}
 .hero-note{border-top:1px solid var(--c-line);padding-top:22px;color:var(--c-sub);font-size:13px;line-height:2;}
 .hero-note strong{display:block;font-size:14px;letter-spacing:0.12em;color:var(--c-ink);font-weight:500;margin-bottom:8px;}
 .hero-note a{display:inline-block;margin-top:16px;font-family:var(--serif-en);font-style:italic;font-size:12px;letter-spacing:0.22em;color:var(--c-red);border-bottom:1px solid rgba(183,64,46,0.35);}
-main{max-width:1240px;margin:0 auto;padding:86px 44px 118px;}
+main{max-width:1240px;margin:0 auto;padding:36px 44px 118px;}
 .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.9s ease,transform 0.9s ease;}
 .reveal.visible{opacity:1;transform:none;}
 .section-head{display:grid;grid-template-columns:300px minmax(0,1fr);gap:46px;align-items:start;margin-bottom:34px;}
 .section-head h2{font-size:clamp(22px,2.8vw,34px);font-weight:500;letter-spacing:0.12em;line-height:1.5;}
 .section-head p:last-child{font-size:13px;line-height:2;color:var(--c-sub);max-width:660px;}
-.service-map,.price-guide,.prep-section,.shared-process,.faq-section{padding-bottom:86px;margin-bottom:86px;border-bottom:1px solid var(--c-line);}
-.service-groups{display:grid;gap:44px;}
-.service-group{border-top:2px solid var(--c-line);padding-top:28px;}
-.service-group-head{display:grid;grid-template-columns:280px minmax(0,1fr);gap:36px;margin-bottom:24px;align-items:start;}
-.service-group-head .num{font-family:var(--serif-en);font-style:italic;font-size:13px;letter-spacing:0.22em;color:var(--c-red);margin-bottom:12px;}
-.service-group-head h3{font-size:clamp(21px,2.4vw,30px);font-weight:500;letter-spacing:0.12em;line-height:1.5;}
-.service-group-head p{font-size:13px;line-height:2;color:var(--c-sub);max-width:620px;}
-.service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
-.service-card{min-height:218px;border:1px solid var(--c-line);background:var(--c-paper);padding:22px 20px 20px;display:flex;flex-direction:column;justify-content:space-between;transition:transform 0.28s ease,background 0.28s ease,border-color 0.28s ease;}
-.service-card:hover{transform:translateY(-4px);background:var(--c-bg);border-color:var(--c-red);}
-.service-card small{display:block;font-family:var(--serif-en);font-style:italic;font-size:10px;letter-spacing:0.26em;color:var(--c-red);margin-bottom:10px;}
-.service-card h4{font-size:18px;font-weight:500;letter-spacing:0.1em;line-height:1.55;margin-bottom:10px;}
-.service-card p{font-size:12px;line-height:1.85;letter-spacing:0.04em;color:var(--c-sub);}
-.service-card .price{display:inline-block;margin-top:16px;font-size:12px;letter-spacing:0.08em;color:var(--c-sage);}
-.service-card .arrow{margin-top:20px;font-family:var(--serif-en);font-style:italic;font-size:12px;letter-spacing:0.2em;color:var(--c-ink);}
+.service-map{position:relative;margin:18px calc(50% - 50vw) 86px;padding:86px max(24px,calc((100vw - 1240px)/2 + 44px)) 92px;border-top:1px solid var(--c-line);border-bottom:1px solid var(--c-line);background:linear-gradient(135deg,#FBF7EE 0%,#F4E9D6 48%,#FFFFFF 100%);color:var(--c-ink);overflow:hidden;}
+.service-map::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 12% 10%,rgba(183,64,46,0.08),transparent 30%),radial-gradient(circle at 86% 72%,rgba(93,117,111,0.08),transparent 34%);pointer-events:none;}
+.service-map::after{content:'';position:absolute;left:0;right:0;top:0;height:1px;background:rgba(183,64,46,0.28);pointer-events:none;}
+.price-guide,.prep-section,.shared-process,.faq-section{padding-bottom:86px;margin-bottom:86px;border-bottom:1px solid var(--c-line);}
+.menu-inner{position:relative;z-index:1;max-width:1110px;margin:0 auto;}
+.menu-top-link{position:absolute;right:0;top:-46px;font-family:var(--serif-en);font-style:italic;font-size:12px;letter-spacing:0.22em;color:var(--c-sub);border-bottom:1px solid var(--c-line);padding-bottom:2px;}
+.menu-title{display:flex;align-items:center;justify-content:flex-start;gap:12px;margin-bottom:16px;font-family:var(--serif-en);font-style:italic;font-size:11px;line-height:1;letter-spacing:0.36em;font-weight:400;color:var(--c-red);}
+.menu-title::before{content:'';width:24px;height:1px;background:var(--c-red);}
+.menu-title::after{display:none;}
+.menu-section-title{display:flex;align-items:center;justify-content:flex-start;gap:18px;margin:0 0 28px;font-size:clamp(22px,2.5vw,32px);letter-spacing:0.12em;font-weight:500;line-height:1.5;}
+.menu-section-title::before,.menu-section-title::after{display:none;}
+.menu-main-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 26px;}
+.menu-card{min-height:166px;display:grid;grid-template-columns:minmax(0,1fr) 168px 42px;align-items:center;gap:18px;padding:26px 24px 24px 34px;background:rgba(255,255,255,0.82);color:var(--c-ink);border:1px solid var(--c-line);border-radius:8px;box-shadow:0 16px 34px rgba(42,26,31,0.06);transition:transform 0.25s ease,border-color 0.25s ease,background 0.25s ease,box-shadow 0.25s ease;}
+.menu-card:hover{transform:translateY(-4px);border-color:rgba(183,64,46,0.55);background:var(--c-paper);box-shadow:0 20px 42px rgba(42,26,31,0.1);}
+.menu-card h3{font-size:clamp(20px,2vw,28px);letter-spacing:0.08em;line-height:1.35;font-weight:500;white-space:nowrap;}
+.menu-card small{display:block;margin-top:9px;font-family:var(--serif-en);font-style:italic;font-size:13px;letter-spacing:0.2em;color:var(--c-red);font-weight:400;}
+.menu-arrow{width:38px;height:38px;border:1px solid var(--c-line);border-radius:50%;display:grid;place-items:center;font-family:var(--serif-en);font-size:20px;line-height:1;color:var(--c-sub);transition:background 0.25s,color 0.25s,border-color 0.25s;}
+.menu-card:hover .menu-arrow{background:var(--c-red);border-color:var(--c-red);color:var(--c-bg);}
+.menu-art{position:relative;height:112px;min-width:132px;}
+.art-flyer img{position:absolute;top:8px;width:70px;aspect-ratio:3/4;object-fit:cover;border:2px solid var(--c-bg);box-shadow:0 8px 18px rgba(42,26,31,0.18);}
+.art-flyer img:nth-child(1){right:54px;transform:rotate(-11deg);}
+.art-flyer img:nth-child(2){right:18px;top:2px;transform:rotate(8deg);}
+.art-program .sheet{position:absolute;width:80px;height:96px;top:7px;right:42px;background:#F6E7D6;border:1px solid #D9C4A9;box-shadow:0 10px 16px rgba(42,26,31,0.14);transform:rotate(-8deg);}
+.art-program .sheet:nth-child(2){right:16px;top:17px;background:#D8F0DF;transform:rotate(8deg);}
+.art-program .sheet::before{content:'';position:absolute;left:12px;right:12px;top:20px;height:1px;background:#876F58;box-shadow:0 18px 0 #876F58,0 36px 0 #876F58;}
+.art-ticket .ticket{position:absolute;right:14px;top:30px;width:132px;height:54px;background:#F6C900;border:1px solid #D7B200;box-shadow:0 10px 18px rgba(42,26,31,0.16);transform:rotate(-8deg);}
+.art-ticket .ticket:nth-child(2){right:64px;top:20px;background:#2A1A1F;transform:rotate(7deg);}
+.art-ticket .ticket::before{content:'';position:absolute;top:0;bottom:0;left:34px;border-left:1px dashed rgba(42,26,31,0.45);}
+.art-ticket .ticket:nth-child(2)::before{border-color:rgba(251,247,238,0.45);}
+.art-web .screen{position:absolute;right:8px;top:10px;width:150px;height:90px;border:3px solid #C7B18F;border-radius:8px;background:linear-gradient(180deg,#F8F4EA 0 20%,#C8E8E3 20% 100%);box-shadow:0 10px 18px rgba(42,26,31,0.14);overflow:hidden;}
+.art-web .screen::before{content:'';position:absolute;inset:10px 14px auto;height:18px;background:rgba(183,64,46,0.16);border-radius:2px;box-shadow:0 28px 0 rgba(251,247,238,0.7),0 56px 0 rgba(251,247,238,0.5);}
+.menu-extra-title{display:flex;align-items:center;justify-content:flex-start;gap:14px;margin:72px 0 28px;font-size:clamp(19px,2.1vw,27px);letter-spacing:0.12em;font-weight:500;}
+.menu-extra-title::before{content:'';width:24px;height:1px;background:var(--c-red);}
+.menu-extra-title::after{display:none;}
+.menu-extra-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px;}
+.extra-card{min-height:142px;padding:22px 12px 18px;display:grid;place-items:center;text-align:center;background:rgba(255,255,255,0.76);color:var(--c-ink);border:1px solid var(--c-line);border-radius:8px;box-shadow:0 12px 26px rgba(42,26,31,0.05);transition:transform 0.25s ease,background 0.25s ease,border-color 0.25s ease;}
+.extra-card:hover{transform:translateY(-4px);background:var(--c-paper);border-color:rgba(183,64,46,0.45);}
+.extra-icon{height:40px;display:grid;place-items:center;margin-bottom:12px;color:var(--c-sub);font-family:var(--serif-en);font-size:27px;font-weight:400;line-height:1;}
+.extra-card strong{display:block;font-size:18px;letter-spacing:0.08em;line-height:1.25;font-weight:500;}
+.extra-card small{display:block;margin-top:5px;font-family:var(--serif-en);font-style:italic;font-size:12px;letter-spacing:0.14em;color:var(--c-sub);font-weight:400;}
+.extra-card.is-preparing .extra-icon{color:rgba(107,90,79,0.68);}
 .price-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--c-line);border-left:1px solid var(--c-line);background:var(--c-paper);}
 .price-item{min-height:176px;padding:22px 22px 20px;border-right:1px solid var(--c-line);border-bottom:1px solid var(--c-line);}
 .price-item .cat{font-family:var(--serif-en);font-style:italic;font-size:10px;letter-spacing:0.24em;color:var(--c-red);margin-bottom:9px;}
@@ -132,16 +158,31 @@ footer .bottom{border-top:1px solid var(--c-line);margin-top:48px;padding-top:22
   .page-hero{padding:54px 20px 48px;}
   .page-hero-inner{grid-template-columns:1fr;gap:30px;}
   main{padding:64px 20px 82px;}
-  .section-head,.service-group-head{grid-template-columns:1fr;gap:14px;}
-  .service-grid,.price-grid,.process-steps-main{grid-template-columns:1fr 1fr;}
+  .section-head{grid-template-columns:1fr;gap:14px;}
+  .service-map{margin-left:-20px;margin-right:-20px;padding:76px 20px 72px;}
+  .menu-top-link{position:static;display:block;text-align:right;margin-bottom:18px;}
+  .menu-title{font-size:11px;}
+  .menu-title::before{width:24px;}
+  .menu-main-grid{grid-template-columns:1fr;}
+  .menu-card{grid-template-columns:minmax(0,1fr) 132px 38px;min-height:144px;padding:22px 18px 20px 24px;}
+  .menu-art{height:96px;min-width:118px;}
+  .menu-extra-grid{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .price-grid,.process-steps-main{grid-template-columns:1fr 1fr;}
   .prep-grid,.footer-inner{grid-template-columns:1fr;}
   footer{padding:44px 20px 24px;}
   .contact-cta{padding:56px 20px;}
 }
 @media(max-width:560px){
   .page-hero h1{font-size:31px;}
-  .service-grid,.price-grid,.process-steps-main{grid-template-columns:1fr;}
-  .service-card{min-height:168px;}
+  .menu-title{font-size:11px;gap:12px;}
+  .menu-title::before{width:22px;}
+  .menu-card{grid-template-columns:1fr 34px;gap:12px;}
+  .menu-art{display:none;}
+  .menu-card h3{font-size:22px;}
+  .menu-card h3{white-space:normal;}
+  .menu-card small{font-size:14px;}
+  .menu-extra-grid,.price-grid,.process-steps-main{grid-template-columns:1fr 1fr;}
+  .extra-card{min-height:118px;}
 }
 </style>
 </head>
@@ -152,7 +193,7 @@ footer .bottom{border-top:1px solid var(--c-line);margin-top:48px;padding-top:22
     <li class="nav-service">
       <a href="services.html">サービス</a>
       <ul class="nav-submenu" aria-label="サービス詳細">
-        <li><a href="service-concert.html">フライヤー・プログラム</a></li>
+        <li><a href="service-concert.html">コンサートデザイン</a></li>
         <li><a href="service-web.html">Webサイト・公演LP</a></li>
         <li><a href="service-photo.html">コンサート記録写真</a></li>
         <li><a href="services.html#activity">SNS・名刺・その他</a></li>
@@ -170,7 +211,7 @@ footer .bottom{border-top:1px solid var(--c-line);margin-top:48px;padding-top:22
   <button class="ov-close" id="navClose" aria-label="閉じる">×</button>
   <ul>
     <li><a href="services.html">サービス</a></li>
-    <li class="ov-sub"><a href="service-concert.html">フライヤー・プログラム</a></li>
+    <li class="ov-sub"><a href="service-concert.html">コンサートデザイン</a></li>
     <li class="ov-sub"><a href="service-web.html">Webサイト・公演LP</a></li>
     <li class="ov-sub"><a href="service-photo.html">コンサート記録写真</a></li>
     <li><a href="works.html">実績</a></li>
@@ -195,75 +236,51 @@ footer .bottom{border-top:1px solid var(--c-line);margin-top:48px;padding-top:22
 </section>
 <main>
 
-  <section class="service-map reveal">
-    <div class="section-head">
-      <div>
-        <p class="section-label">Service Menu</p>
-        <h2>依頼できるもの</h2>
+  <section class="service-map" id="concert">
+    <div class="menu-inner">
+      <a class="menu-top-link" href="#price-guide">料金を見る →</a>
+      <div class="menu-title">Service Menu</div>
+      <h2 class="menu-section-title">コンサートをつくる</h2>
+
+      <div class="menu-main-grid">
+        <a class="menu-card" href="service-concert.html#flyer">
+          <div><h3>フライヤー・ポスター</h3><small>FLYER</small></div>
+          <div class="menu-art art-flyer">
+            <img src="images/flyer-miki-relemit.jpg" alt="" />
+            <img src="images/flyer-saxophone-orch.jpg" alt="" />
+          </div>
+          <span class="menu-arrow">›</span>
+        </a>
+        <a class="menu-card" href="service-concert.html#program">
+          <div><h3>プログラム</h3><small>PROGRAM</small></div>
+          <div class="menu-art art-program"><span class="sheet"></span><span class="sheet"></span></div>
+          <span class="menu-arrow">›</span>
+        </a>
+        <a class="menu-card" href="service-concert.html#ticket">
+          <div><h3>チケット</h3><small>TICKET</small></div>
+          <div class="menu-art art-ticket"><span class="ticket"></span><span class="ticket"></span></div>
+          <span class="menu-arrow">›</span>
+        </a>
+        <a class="menu-card" href="service-web.html">
+          <div><h3>WEBサイト</h3><small>WEB SITE</small></div>
+          <div class="menu-art art-web"><span class="screen"></span></div>
+          <span class="menu-arrow">›</span>
+        </a>
       </div>
-      <p>音楽専科のように、最初の入口で迷わない構成を意識しています。演奏会に必要な制作物と、活動を広げるための制作物を分けて、目的から選べるようにしました。</p>
-    </div>
 
-    <div class="service-groups">
-      <section class="service-group" id="concert">
-        <div class="service-group-head">
-          <div>
-            <p class="num">01 / Concert</p>
-            <h3>演奏会をつくる</h3>
-          </div>
-          <p>公演の第一印象になる告知物から、当日の配布物、予約導線まで。演奏会に必要な制作物をまとめて整えます。</p>
-        </div>
-        <div class="service-grid">
-          <a class="service-card" href="service-concert.html">
-            <div><small>Flyer</small><h4>フライヤー・ポスター</h4><p>写真や曲目の雰囲気を生かし、公演の魅力が伝わるメインビジュアルを制作します。</p><span class="price">A4片面 ¥10,000〜</span></div>
-            <div class="arrow">詳しく見る →</div>
-          </a>
-          <a class="service-card" href="service-concert.html">
-            <div><small>Program</small><h4>プログラム冊子</h4><p>曲目解説、プロフィール、あいさつ文を読みやすく整えます。</p><span class="price">8P ¥22,000〜</span></div>
-            <div class="arrow">詳しく見る →</div>
-          </a>
-          <a class="service-card" href="service-concert.html">
-            <div><small>Ticket</small><h4>チケット</h4><p>フライヤーと統一感のあるデザインで、当日までの体験を揃えます。</p><span class="price">1種類 ¥8,000〜</span></div>
-            <div class="arrow">詳しく見る →</div>
-          </a>
-          <a class="service-card" href="service-web.html">
-            <div><small>Website</small><h4>公演LP・Webサイト</h4><p>公演情報、予約リンク、出演者プロフィールをスマホで見やすくまとめます。</p><span class="price">LP ¥30,000〜</span></div>
-            <div class="arrow">詳しく見る →</div>
-          </a>
-        </div>
-      </section>
-
-      <section class="service-group" id="activity">
-        <div class="service-group-head">
-          <div>
-            <p class="num">02 / Activity</p>
-            <h3>音楽活動を広げる</h3>
-          </div>
-          <p>演奏会の前後に必要になる見せ方も、活動の雰囲気に合わせて制作します。単発でも、継続的な相談でも大丈夫です。</p>
-        </div>
-        <div class="service-grid">
-          <a class="service-card" href="service-photo.html">
-            <div><small>Photo</small><h4>コンサート記録写真</h4><p>本番、リハーサル、舞台裏の空気を自然に残します。</p><span class="price">2時間 ¥20,000〜</span></div>
-            <div class="arrow">詳しく見る →</div>
-          </a>
-          <a class="service-card" href="index.html#contact">
-            <div><small>SNS</small><h4>SNS投稿画像</h4><p>告知、リマインド、終演報告まで、使いやすい画像を制作します。</p><span class="price">お見積もり</span></div>
-            <div class="arrow">相談する →</div>
-          </a>
-          <a class="service-card" href="index.html#contact">
-            <div><small>Identity</small><h4>名刺・ロゴ</h4><p>プロフィールや演奏活動の印象を揃える小さなツールも整えます。</p><span class="price">お見積もり</span></div>
-            <div class="arrow">相談する →</div>
-          </a>
-          <a class="service-card" href="index.html#contact">
-            <div><small>Other</small><h4>CD・動画まわり</h4><p>ジャケット、YouTubeサムネイル、配信告知など単発制作も承ります。</p><span class="price">お見積もり</span></div>
-            <div class="arrow">相談する →</div>
-          </a>
-        </div>
-      </section>
+      <h2 class="menu-extra-title" id="activity">その他にもこんなものができます</h2>
+      <div class="menu-extra-grid">
+        <a class="extra-card is-preparing" href="index.html#contact"><span class="extra-icon">□</span><strong>名刺</strong><small>Name Card</small></a>
+        <a class="extra-card is-preparing" href="index.html#contact"><span class="extra-icon">♪</span><strong>ロゴ</strong><small>Logo</small></a>
+        <a class="extra-card is-preparing" href="index.html#contact"><span class="extra-icon">○</span><strong>CD</strong><small>CD</small></a>
+        <a class="extra-card is-preparing" href="index.html#contact"><span class="extra-icon">▣</span><strong>SNS</strong><small>Social</small></a>
+        <a class="extra-card is-preparing" href="index.html#contact"><span class="extra-icon">▶</span><strong>動画</strong><small>Movie</small></a>
+        <a class="extra-card is-preparing" href="index.html#contact"><span class="extra-icon">?</span><strong>その他</strong><small>Others</small></a>
+      </div>
     </div>
   </section>
 
-  <section class="price-guide reveal">
+  <section class="price-guide reveal" id="price-guide">
     <div class="section-head">
       <div>
         <p class="section-label">Price Guide</p>

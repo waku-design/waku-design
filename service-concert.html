@@ -21,7 +21,7 @@ a{color:inherit;text-decoration:none;}
 img{max-width:100%;display:block;}
 
 /* ── Header ── */
-header{position:sticky;top:0;padding:18px 44px;background:rgba(251,247,238,0.96);backdrop-filter:saturate(180%) blur(10px);z-index:100;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--c-line);}
+header{position:sticky;top:0;padding:18px 44px;background:rgba(251,247,238,0.96);backdrop-filter:saturate(180%) blur(10px);z-index:100;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--c-line);overflow:visible;}
 .logo .text{font-family:var(--serif-jp);font-size:17px;font-weight:600;letter-spacing:0.22em;color:var(--c-ink);line-height:1;}
 .logo .text small{display:block;font-family:var(--serif-en);font-size:9px;letter-spacing:0.32em;color:var(--c-sub);margin-top:6px;font-style:italic;font-weight:400;}
 nav ul{list-style:none;display:flex;gap:28px;align-items:center;}
@@ -31,6 +31,14 @@ nav a:not(.cta)::after{content:'';position:absolute;bottom:-3px;left:0;width:0;h
 nav a:not(.cta):hover::after{width:100%;}
 nav .cta{border:1px solid var(--c-ink);color:var(--c-ink);padding:10px 22px;transition:all 0.3s;letter-spacing:0.2em;}
 nav .cta:hover{background:var(--c-ink);color:var(--c-bg);}
+.nav-service{position:relative;}
+.nav-service>a{display:inline-flex;align-items:center;gap:6px;}
+.nav-service>a::before{content:'';width:4px;height:4px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg) translateY(-2px);order:2;opacity:0.55;}
+.nav-submenu{position:absolute;top:calc(100% + 18px);left:-18px;min-width:250px;display:grid;gap:0;padding:10px;list-style:none;background:rgba(255,255,255,0.98);border:1px solid var(--c-line);box-shadow:0 18px 42px rgba(42,26,31,0.12);opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity 0.22s ease,transform 0.22s ease,visibility 0.22s ease;z-index:120;}
+.nav-service:hover .nav-submenu,.nav-service:focus-within .nav-submenu{opacity:1;visibility:visible;transform:translateY(0);}
+.nav-submenu a{display:block;padding:10px 12px;font-size:12px;letter-spacing:0.08em;line-height:1.45;color:var(--c-ink);}
+.nav-submenu a::after{display:none;}
+.nav-submenu a:hover{background:var(--c-bg);color:var(--c-red);}
 .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px;flex-direction:column;gap:6px;}
 .nav-toggle span{display:block;width:24px;height:1.5px;background:var(--c-ink);transition:transform 0.3s,opacity 0.3s;}
 .nav-toggle.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
@@ -66,6 +74,22 @@ main{max-width:900px;margin:0 auto;padding:64px 44px 100px;}
 .sec-subtitle{font-size:13px;font-weight:500;letter-spacing:0.12em;margin-bottom:14px;color:var(--c-ink);}
 
 /* ── Price table ── */
+.offer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:0 0 34px;}
+.offer-card{min-height:216px;background:var(--c-paper);border:1px solid var(--c-line);border-radius:8px;overflow:hidden;display:grid;grid-template-rows:118px auto;transition:transform 0.25s ease,border-color 0.25s ease,box-shadow 0.25s ease;}
+.offer-card:hover{transform:translateY(-4px);border-color:var(--c-red);box-shadow:0 14px 30px rgba(42,26,31,0.1);}
+.offer-visual{position:relative;background:linear-gradient(135deg,var(--c-bg),var(--c-cream));border-bottom:1px solid var(--c-line);overflow:hidden;}
+.offer-visual.flyer img{position:absolute;top:14px;width:64px;aspect-ratio:3/4;object-fit:cover;border:2px solid var(--c-paper);box-shadow:0 8px 18px rgba(42,26,31,0.16);}
+.offer-visual.flyer img:nth-child(1){left:34%;transform:rotate(-9deg);}
+.offer-visual.flyer img:nth-child(2){left:50%;top:8px;transform:rotate(8deg);}
+.offer-visual.program::before,.offer-visual.program::after{content:'';position:absolute;top:22px;width:78px;height:76px;background:#F5E6D2;border:1px solid #D9C4A9;box-shadow:0 8px 16px rgba(42,26,31,0.12);}
+.offer-visual.program::before{left:35%;transform:rotate(-7deg);}
+.offer-visual.program::after{left:48%;background:#D8F0DF;transform:rotate(8deg);}
+.offer-visual.ticket::before,.offer-visual.ticket::after{content:'';position:absolute;top:40px;width:122px;height:45px;box-shadow:0 8px 16px rgba(42,26,31,0.13);}
+.offer-visual.ticket::before{left:24%;background:#2A1A1F;transform:rotate(6deg);}
+.offer-visual.ticket::after{left:35%;background:#F6C900;transform:rotate(-6deg);}
+.offer-card .offer-text{padding:18px 18px 20px;}
+.offer-card strong{display:block;font-size:16px;letter-spacing:0.1em;line-height:1.45;font-weight:500;}
+.offer-card small{display:block;margin-top:8px;font-family:var(--serif-en);font-style:italic;font-size:12px;letter-spacing:0.16em;color:var(--c-red);}
 .price-block{margin-bottom:36px;border:1px solid var(--c-line);}
 .price-block-head{padding:16px 24px;background:var(--c-bg);border-bottom:1px solid var(--c-line);display:flex;justify-content:space-between;align-items:center;}
 .price-block-head h3{font-size:15px;letter-spacing:0.12em;font-weight:500;}
@@ -136,6 +160,7 @@ footer .bottom{border-top:1px solid var(--c-line);margin-top:48px;padding-top:22
   .nav-toggle{display:flex;}
   .page-hero{padding:48px 20px 40px;}
   main{padding:44px 20px 72px;}
+  .offer-grid{grid-template-columns:1fr;}
   .process-grid{grid-template-columns:1fr 1fr;}
   .includes-list{grid-template-columns:1fr;}
   .footer-inner{grid-template-columns:1fr;gap:36px;}
@@ -153,7 +178,15 @@ footer .bottom{border-top:1px solid var(--c-line);margin-top:48px;padding-top:22
 <header>
   <div class="logo"><a href="index.html"><div class="text">WAKU DESIGN<small>Designing for Classical Music</small></div></a></div>
   <nav><ul>
-    <li><a href="services.html">サービス</a></li>
+    <li class="nav-service">
+      <a href="services.html">サービス</a>
+      <ul class="nav-submenu" aria-label="サービス詳細">
+        <li><a href="service-concert.html">コンサートデザイン</a></li>
+        <li><a href="service-web.html">Webサイト・公演LP</a></li>
+        <li><a href="service-photo.html">コンサート記録写真</a></li>
+        <li><a href="services.html#activity">SNS・名刺・その他</a></li>
+      </ul>
+    </li>
     <li><a href="works.html">実績</a></li>
     <li><a href="about.html">わたしについて</a></li>
     <li><a href="concerts.html">コンサート情報</a></li>
@@ -166,6 +199,9 @@ footer .bottom{border-top:1px solid var(--c-line);margin-top:48px;padding-top:22
   <button class="ov-close" id="navClose" aria-label="閉じる">×</button>
   <ul>
     <li><a href="services.html">サービス</a></li>
+    <li><a href="service-concert.html">コンサートデザイン</a></li>
+    <li><a href="service-web.html">Webサイト・LP</a></li>
+    <li><a href="service-photo.html">記録写真</a></li>
     <li><a href="works.html">実績</a></li>
     <li><a href="about.html">わたしについて</a></li>
     <li><a href="concerts.html">コンサート情報</a></li>
@@ -197,7 +233,22 @@ footer .bottom{border-top:1px solid var(--c-line);margin-top:48px;padding-top:22
   <div class="sec">
     <h2 class="sec-title">料金プラン</h2>
 
-    <h3 class="sec-subtitle">フライヤー・ポスター</h3>
+    <div class="offer-grid">
+      <a class="offer-card" href="#flyer">
+        <div class="offer-visual flyer"><img src="images/flyer-miki-relemit.jpg" alt="" /><img src="images/flyer-saxophone-orch.jpg" alt="" /></div>
+        <div class="offer-text"><strong>フライヤー・ポスター</strong><small>A4片面 ¥10,000〜</small></div>
+      </a>
+      <a class="offer-card" href="#program">
+        <div class="offer-visual program"></div>
+        <div class="offer-text"><strong>プログラム冊子</strong><small>8P ¥22,000〜</small></div>
+      </a>
+      <a class="offer-card" href="#ticket">
+        <div class="offer-visual ticket"></div>
+        <div class="offer-text"><strong>チケット</strong><small>1種類 ¥8,000〜</small></div>
+      </a>
+    </div>
+
+    <h3 class="sec-subtitle" id="flyer">フライヤー・ポスター</h3>
     <div class="price-block">
       <div class="price-block-head"><h3>Flyer &amp; Poster</h3><span class="from">データ納品（PDF + JPG）</span></div>
       <div class="price-row"><span class="label">A4片面（表のみ）</span><span class="amount">¥10,000<small>税込</small></span></div>
@@ -206,7 +257,7 @@ footer .bottom{border-top:1px solid var(--c-line);margin-top:48px;padding-top:22
       <div class="price-row"><span class="label">A3ポスターへリサイズ（フライヤーとセット）</span><span class="amount">+¥3,000<small>税込</small></span></div>
     </div>
 
-    <h3 class="sec-subtitle">プログラム冊子</h3>
+    <h3 class="sec-subtitle" id="program">プログラム冊子</h3>
     <div class="price-block">
       <div class="price-block-head"><h3>Program Booklet</h3><span class="from">データ納品（PDF）</span></div>
       <div class="price-row"><span class="label">8ページ（表紙＋中4ページ）</span><span class="amount">¥22,000<small>税込</small></span></div>
@@ -214,7 +265,7 @@ footer .bottom{border-top:1px solid var(--c-line);margin-top:48px;padding-top:22
       <div class="price-row"><span class="label">16ページ（表紙＋中12ページ）</span><span class="amount">¥38,000<small>税込</small></span></div>
     </div>
 
-    <h3 class="sec-subtitle">チケット</h3>
+    <h3 class="sec-subtitle" id="ticket">チケット</h3>
     <div class="price-block">
       <div class="price-block-head"><h3>Ticket</h3><span class="from">データ納品（PDF + JPG）</span></div>
       <div class="price-row"><span class="label">A7サイズ・1種類</span><span class="amount">¥8,000<small>税込</small></span></div>

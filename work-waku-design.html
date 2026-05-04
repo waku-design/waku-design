@@ -47,14 +47,12 @@
   .work-cat::before{content:'';width:18px;height:1px;background:var(--c-red);}
   .work-main-title{font-size:clamp(24px,3.4vw,42px);font-weight:500;letter-spacing:0.12em;line-height:1.45;margin-bottom:24px;}
   .work-lead{font-size:14px;letter-spacing:0.08em;line-height:2.1;color:var(--c-ink-soft);max-width:620px;}
-  .site-preview{background:var(--c-paper);border:1px solid var(--c-line);box-shadow:0 18px 54px rgba(42,26,31,0.12);padding:16px;}
+  .site-preview{background:var(--c-paper);border:1px solid var(--c-line);box-shadow:0 18px 54px rgba(42,26,31,0.12);padding:16px;position:relative;}
   .preview-bar{height:28px;border-bottom:1px solid var(--c-line);display:flex;align-items:center;gap:7px;margin:-2px 0 16px;}
   .preview-dot{width:7px;height:7px;border-radius:50%;background:var(--c-cream-deep);}
-  .preview-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:14px;}
-  .preview-grid img{width:100%;height:100%;object-fit:cover;display:block;background:var(--c-cream);}
-  .preview-main{aspect-ratio:4/5;}
-  .preview-stack{display:grid;grid-template-rows:1fr 1fr;gap:14px;}
-  .preview-stack img{min-height:0;}
+  .preview-window{height:440px;border:1px solid var(--c-line);background:var(--c-bg);overflow:hidden;}
+  .preview-window iframe{width:100%;height:100%;border:0;background:var(--c-bg);display:block;}
+  .preview-scroll-note{position:absolute;right:26px;bottom:24px;padding:5px 10px;background:rgba(42,26,31,0.72);color:var(--c-bg);font-family:var(--serif-en);font-style:italic;font-size:10px;letter-spacing:0.22em;pointer-events:none;}
   .info-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--c-line);border-bottom:1px solid var(--c-line);margin-bottom:72px;}
   .info-cell{padding:20px 18px;border-right:1px solid var(--c-line);}
   .info-cell:last-child{border-right:none;}
@@ -125,8 +123,7 @@
     .nav-toggle{display:flex;}
   }
   @media(max-width:520px){
-    .preview-grid{grid-template-columns:1fr;}
-    .preview-stack{grid-template-columns:1fr 1fr;grid-template-rows:none;}
+    .preview-window{height:360px;}
     .info-grid{grid-template-columns:1fr;}
     .info-cell{border-right:none;border-bottom:1px solid var(--c-line);}
     .info-cell:last-child{border-bottom:none;}
@@ -176,13 +173,10 @@
     </div>
     <div class="site-preview" aria-label="WAKU DESIGN公式サイトのビジュアルプレビュー">
       <div class="preview-bar"><span class="preview-dot"></span><span class="preview-dot"></span><span class="preview-dot"></span></div>
-      <div class="preview-grid">
-        <img class="preview-main" src="images/hero-1.jpg" alt="WAKU DESIGN公式サイト メインビジュアル" />
-        <div class="preview-stack">
-          <img src="images/hero-2.jpg" alt="制作実績プレビュー 1" />
-          <img src="images/hero-3.jpg" alt="制作実績プレビュー 2" />
-        </div>
+      <div class="preview-window">
+        <iframe src="index.html" title="WAKU DESIGN公式サイトのスクロールプレビュー"></iframe>
       </div>
+      <div class="preview-scroll-note">SCROLL</div>
     </div>
   </section>
 

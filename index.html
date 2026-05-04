@@ -52,6 +52,7 @@
     z-index: 100;
     display: flex; justify-content: space-between; align-items: center;
     border-bottom: 1px solid var(--c-line);
+    overflow: visible;
   }
   .logo { display: flex; align-items: baseline; gap: 12px; }
   .logo .text {
@@ -112,6 +113,7 @@
     visibility: hidden;
     transform: translateY(-6px);
     transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
+    z-index: 120;
   }
   .nav-service:hover .nav-submenu,
   .nav-service:focus-within .nav-submenu {
@@ -169,9 +171,8 @@
     z-index: 1;
   }
   @keyframes hero-fade {
-    0%, 100% { opacity: 0; }
-    5%, 22%  { opacity: 1; }
-    27%      { opacity: 0; }
+    0%, 22%  { opacity: 1; }
+    27%, 100% { opacity: 0; }
   }
   .hero-copy {
     position: relative;
@@ -180,6 +181,7 @@
     width: 100%;
     margin: 0 auto;
   }
+  .hero-copy.reveal { opacity: 1; transform: none; }
   .hero-copy .eyebrow {
     font-size: 13px;
     letter-spacing: 0.2em;
@@ -230,22 +232,22 @@
     color: var(--c-bg);
   }
   .hero-quick {
-    max-width: 1240px;
-    margin: 0 auto;
+    width: 100%;
+    margin: 0;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     border-top: 1px solid rgba(251,247,238,0.18);
-    border-left: 1px solid rgba(251,247,238,0.18);
-    background: rgba(42,26,31,0.96);
+    background:
+      linear-gradient(90deg, rgba(42,26,31,0.98), rgba(74,50,58,0.96), rgba(42,26,31,0.98));
   }
   .hero-quick a {
-    min-height: 94px;
-    padding: 20px 22px;
-    border-right: 1px solid rgba(251,247,238,0.18);
+    min-height: 88px;
+    padding: 19px clamp(18px, 3.2vw, 48px);
+    border-right: 1px solid rgba(251,247,238,0.12);
     color: var(--c-bg);
     transition: background 0.25s, color 0.25s;
   }
-  .hero-quick a:hover { background: var(--c-bg); color: var(--c-ink); }
+  .hero-quick a:hover { background: rgba(251,247,238,0.94); color: var(--c-ink); }
   .hero-quick span {
     display: block;
     font-family: var(--serif-en);
@@ -292,11 +294,28 @@
   /* ============= STATEMENT ============= */
   .statement {
     padding: 130px 44px;
-    background: var(--c-bg);
+    background:
+      radial-gradient(circle at 16% 12%, rgba(183,64,46,0.08), transparent 34%),
+      radial-gradient(circle at 84% 72%, rgba(93,117,111,0.09), transparent 32%),
+      linear-gradient(135deg, #FBF7EE 0%, #F3E8D4 48%, #FBF7EE 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .statement::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(226,218,196,0.34) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(226,218,196,0.22) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(circle at center, rgba(0,0,0,0.52), transparent 76%);
+    pointer-events: none;
   }
   .statement-inner {
     max-width: 880px; margin: 0 auto;
     text-align: left;
+    position: relative;
   }
   .statement .label {
     font-family: var(--serif-en); font-style: italic;
@@ -547,7 +566,7 @@
     margin-bottom: 14px;
   }
   .work-item .frame img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: 100%; object-fit: contain; display: block;
     transition: transform 0.5s ease;
   }
   .work-item:hover .frame img { transform: scale(1.04); }
@@ -556,7 +575,26 @@
   }
   .work-item.coming .frame { background: var(--c-cream); }
   .work-item.web-feature { grid-column: span 2; max-width: 560px; }
-  .work-item.web-feature .frame { aspect-ratio: 16 / 10; }
+  .work-item.web-feature .frame { aspect-ratio: 16 / 10; background: var(--c-ink); padding: 18px; }
+  .site-thumb {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 22px 1fr;
+    border: 1px solid rgba(251,247,238,0.22);
+    background: var(--c-paper);
+    box-shadow: 0 16px 32px rgba(42,26,31,0.18);
+    overflow: hidden;
+  }
+  .site-thumb-bar {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0 10px;
+    border-bottom: 1px solid var(--c-line);
+    background: var(--c-bg);
+  }
+  .site-thumb-bar span { width: 6px; height: 6px; border-radius: 50%; background: var(--c-cream-deep); }
+  .site-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
   .work-item .work-cat {
     font-family: var(--serif-en); font-style: italic;
     font-size: 10px; letter-spacing: 0.28em; color: var(--c-red);
@@ -755,9 +793,9 @@
     background: rgba(251,247,238,0.04);
     border: 1px solid rgba(251,247,238,0.14);
     padding: 30px 28px;
-    transition: background 0.3s, border-color 0.3s;
+    transition: background 0.3s;
   }
-  .contact-card:hover { background: rgba(251,247,238,0.07); border-color: var(--c-red);}
+  .contact-card:hover { background: rgba(251,247,238,0.07);}
   .contact-card .lab {
     font-family: var(--serif-en); font-style: italic;
     font-size: 10px; letter-spacing: 0.34em; color: var(--c-red);
@@ -976,10 +1014,10 @@
       <li class="nav-service">
         <a href="services.html">サービス</a>
         <ul class="nav-submenu">
-          <li><a href="service-concert.html">フライヤー・プログラム・チケット</a></li>
+          <li><a href="service-concert.html">コンサートデザイン</a></li>
           <li><a href="service-web.html">Webサイト・公演LP</a></li>
           <li><a href="service-photo.html">コンサート記録写真</a></li>
-          <li><a href="services.html#sns">SNS素材・名刺・ロゴ</a></li>
+          <li><a href="services.html#activity">SNS素材・名刺・ロゴ</a></li>
         </ul>
       </li>
       <li><a href="works.html">実績</a></li>
@@ -995,7 +1033,7 @@
   <button class="ov-close" id="navClose" type="button" aria-label="閉じる">×</button>
   <ul>
     <li><a href="services.html">サービス</a></li>
-    <li><a href="service-concert.html">フライヤー・プログラム</a></li>
+    <li><a href="service-concert.html">コンサートデザイン</a></li>
     <li><a href="service-web.html">Webサイト・LP</a></li>
     <li><a href="service-photo.html">記録写真</a></li>
     <li><a href="works.html">実績</a></li>
@@ -1141,7 +1179,12 @@
       </div>
       <div class="works-grid">
         <a class="work-item web-feature" href="work-waku-design.html">
-          <div class="frame"><img src="images/hero-1.jpg" alt="WAKU DESIGN 公式サイト" /></div>
+          <div class="frame">
+            <div class="site-thumb" aria-hidden="true">
+              <div class="site-thumb-bar"><span></span><span></span><span></span></div>
+              <img src="images/hero-ai-1.jpg" alt="" />
+            </div>
+          </div>
           <div class="work-cat">WEB · BRAND SITE</div>
           <div class="work-title">WAKU DESIGN 公式サイト</div>
         </a>

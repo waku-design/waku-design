@@ -84,6 +84,10 @@
   .work-item .frame{aspect-ratio:16/10;background:var(--c-cream-deep);position:relative;overflow:hidden;margin-bottom:14px;}
   .work-item .frame img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;}
   .work-item:hover .frame img{transform:scale(1.04);}
+  .site-thumb{height:100%;display:grid;grid-template-rows:24px 1fr;border:1px solid var(--c-line);background:var(--c-paper);box-shadow:0 16px 32px rgba(42,26,31,0.12);overflow:hidden;}
+  .site-thumb-bar{display:flex;align-items:center;gap:5px;padding:0 10px;border-bottom:1px solid var(--c-line);background:var(--c-bg);}
+  .site-thumb-bar span{width:6px;height:6px;border-radius:50%;background:var(--c-cream-deep);}
+  .site-thumb img{width:100%;height:100%;object-fit:cover;object-position:top;}
   .work-item .work-cat{font-family:var(--serif-en);font-style:italic;font-size:10px;letter-spacing:0.28em;color:var(--c-red);margin-bottom:4px;}
   .work-item .work-title{font-size:15px;letter-spacing:0.08em;color:var(--c-ink);line-height:1.6;}
   .work-item .work-desc{font-size:12px;letter-spacing:0.08em;line-height:1.9;color:var(--c-sub);margin-top:8px;}
@@ -146,7 +150,12 @@
     </div>
     <div class="works-grid">
       <a class="work-item" href="work-waku-design.html">
-        <div class="frame"><img src="images/hero-1.jpg" alt="WAKU DESIGN 公式サイト" /></div>
+        <div class="frame">
+          <div class="site-thumb" aria-hidden="true">
+            <div class="site-thumb-bar"><span></span><span></span><span></span></div>
+            <img src="images/hero-ai-1.jpg" alt="" />
+          </div>
+        </div>
         <div class="work-cat">WEB · BRAND SITE</div>
         <div class="work-title">WAKU DESIGN 公式サイト</div>
         <p class="work-desc">クラシック音楽に特化した制作相談を受けるためのブランドサイト。サービス、実績、プロフィール、問い合わせ導線を一つの流れに整理しました。</p>
