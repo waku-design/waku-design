@@ -376,6 +376,13 @@
   }
   .work-item .work-title { font-size: 13px; letter-spacing: 0.06em; color: var(--c-ink); line-height: 1.6;}
   .work-item.hide { display: none; }
+  .works-cat-link {
+    font-family: var(--serif-en); font-style: italic;
+    font-size: 11px; letter-spacing: 0.22em; color: var(--c-sub);
+    border-bottom: 1px solid var(--c-line); padding-bottom: 1px;
+    transition: color 0.3s, border-color 0.3s; white-space: nowrap;
+  }
+  .works-cat-link:hover { color: var(--c-ink); border-color: var(--c-ink); }
   .works-more {
     text-align: center; margin-top: 56px;
   }
@@ -730,6 +737,7 @@
     .svc-row { grid-template-columns: 40px 1fr; gap: 16px; }
     .svc-row .desc, .svc-row .arrow { display: none; }
     .concert-row .tags, .concert-row .arrow { display: none; }
+    .concert-row .date { display: none; }
     .sec-head { grid-template-columns: 1fr; gap: 14px;}
     .sec-head .meta { grid-column: 1; text-align: left;}
   
@@ -746,7 +754,6 @@
     .concerts { padding-top: 72px; padding-bottom: 72px; }
     .contact { padding-top: 80px; padding-bottom: 80px; }
     .concert-row { grid-template-columns: 52px 1fr; gap: 14px; }
-    .concert-row .date, .concert-row .thumb { display: block; }
     .works-grid { gap: 16px; }
     .about-fact .row { grid-template-columns: 90px 1fr; }
   }
@@ -888,7 +895,7 @@
     <div class="works-category">
       <div class="works-cat-head">
         <h3>コンサート<small>Concert Design</small></h3>
-        <span class="cat-count">04 works</span>
+        <a class="works-cat-link" href="works-concert.html">一覧を見る →</a>
       </div>
       <div class="works-grid">
         <a class="work-item" href="work-miki-relemit.html">
@@ -918,7 +925,7 @@
     <div class="works-category">
       <div class="works-cat-head">
         <h3>記録写真<small>Concert Photography</small></h3>
-        <span class="cat-count">— coming soon</span>
+        <a class="works-cat-link" href="works-photo.html">一覧を見る →</a>
       </div>
       <div class="works-cat-coming">準備中 · To be updated</div>
     </div>
@@ -927,7 +934,7 @@
     <div class="works-category">
       <div class="works-cat-head">
         <h3>Web / LP<small>Website · Landing Page</small></h3>
-        <span class="cat-count">— coming soon</span>
+        <a class="works-cat-link" href="works-web.html">一覧を見る →</a>
       </div>
       <div class="works-cat-coming">準備中 · To be updated</div>
     </div>
@@ -936,12 +943,11 @@
     <div class="works-category">
       <div class="works-cat-head">
         <h3>SNS素材<small>SNS · Jacket · Thumbnail</small></h3>
-        <span class="cat-count">— coming soon</span>
+        <a class="works-cat-link" href="works-sns.html">一覧を見る →</a>
       </div>
       <div class="works-cat-coming">準備中 · To be updated</div>
     </div>
 
-    <div class="works-more"><a href="works.html">実績一覧を見る →</a></div>
   </div>
 </section>
 
