@@ -3,6 +3,17 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="リサイタル・吹奏楽・オーケストラなど、クラシック音楽の演奏会フライヤー・Webサイトの制作実績をご覧いただけます。" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="WAKU DESIGN" />
+<meta property="og:title" content="制作実績 | WAKU DESIGN" />
+<meta property="og:description" content="リサイタル・吹奏楽・オーケストラなど、クラシック音楽の演奏会フライヤー・Webサイトの制作実績をご覧いただけます。" />
+<meta property="og:image" content="https://waku-design.vercel.app/images/flyer-miki-relemit.jpg" />
+<meta property="og:url" content="https://waku-design.vercel.app/works.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="制作実績 | WAKU DESIGN" />
+<meta name="twitter:description" content="リサイタル・吹奏楽・オーケストラなど、クラシック音楽の演奏会フライヤー・Webサイトの制作実績をご覧いただけます。" />
+<meta name="twitter:image" content="https://waku-design.vercel.app/images/flyer-miki-relemit.jpg" />
 <title>制作実績一覧 | WAKU DESIGN</title>
 <style>
   :root {
@@ -199,9 +210,13 @@
   .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity: 1; transform: none; }
 
+
+  @media (max-width: 480px) {
+    .works-grid { grid-template-columns: 1fr; }
+  }
   @media (max-width: 900px) {
     header { padding: 16px 20px; }
-    nav ul { gap: 16px; }
+    nav ul { display: none; }
     .page-hero { padding: 48px 20px 40px; }
     main { padding: 48px 20px 80px; }
     .works-grid { grid-template-columns: repeat(2, 1fr); }
@@ -248,7 +263,7 @@
   <div class="cat-section reveal">
     <div class="cat-head">
       <h2>コンサート情報<small>Concert Design</small></h2>
-      <span class="count">04 works</span>
+      <span class="count">05 works</span>
     </div>
     <div class="works-grid">
       <a class="work-item" href="work-miki-relemit.html">
