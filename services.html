@@ -27,7 +27,7 @@
   .logo .text small{display:block;font-family:var(--serif-en);font-size:9px;letter-spacing:0.32em;color:var(--c-sub);margin-top:6px;font-style:italic;font-weight:400;}
   nav ul{list-style:none;display:flex;gap:28px;align-items:center;}
   nav a{font-size:12px;letter-spacing:0.18em;transition:color 0.3s;}
-  nav a:not(.cta):hover{color:var(--c-red);}
+  /* nav hover handled by ::after */
   nav .cta{border:1px solid var(--c-ink);color:var(--c-ink);padding:10px 22px;transition:all 0.3s;letter-spacing:0.2em;}
   nav .cta:hover{background:var(--c-ink);color:var(--c-bg);}
   .page-hero{padding:80px 44px 64px;border-bottom:1px solid var(--c-line);}
@@ -159,9 +159,82 @@
     .contact-cta{padding:60px 20px;}
   
     .nav-toggle { display: flex; }
+    .svc-quick-nav-inner { padding: 0 12px; gap: 0; overflow-x: auto; flex-wrap: nowrap; }
+    .svc-quick-nav a { padding: 12px 14px; font-size: 10px; white-space: nowrap; }
+    .process-steps-main { grid-template-columns: 1fr 1fr; }
+    .service-section:nth-child(even) { margin-left: -20px; margin-right: -20px; padding-left: 20px; padding-right: 20px; }
+
     .price-img-wrap img { border: none; }
   }
 
+
+  /* サービスクイックナビ */
+  .svc-quick-nav {
+    border-bottom: 1px solid var(--c-line);
+    background: var(--c-paper);
+    position: sticky; top: 57px; z-index: 90;
+  }
+  .svc-quick-nav-inner {
+    max-width: 1240px; margin: 0 auto;
+    padding: 0 44px;
+    display: flex; gap: 0;
+  }
+  .svc-quick-nav a {
+    font-family: var(--serif-en); font-style: italic;
+    font-size: 11px; letter-spacing: 0.22em; color: var(--c-sub);
+    padding: 14px 24px; display: block;
+    border-right: 1px solid var(--c-line);
+    transition: color 0.25s, background 0.25s;
+    position: relative;
+  }
+  .svc-quick-nav a:first-child { border-left: 1px solid var(--c-line); }
+  .svc-quick-nav a::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 0; height: 2px; background: var(--c-red);
+    transition: width 0.3s ease;
+  }
+  .svc-quick-nav a:hover { color: var(--c-ink); }
+  .svc-quick-nav a:hover::after { width: 100%; }
+
+  /* セクション偶数に背景変化 */
+  .service-section:nth-child(even) {
+    background: var(--c-paper);
+    margin-left: -44px; margin-right: -44px;
+    padding-left: 44px; padding-right: 44px;
+    border-top: none; border-bottom: none;
+    box-shadow: 0 1px 0 var(--c-line), 0 -1px 0 var(--c-line);
+  }
+
+  /* 共通「制作の流れ」 */
+  .shared-process {
+    padding: 72px 0 60px;
+    border-top: 1px solid var(--c-line);
+    margin-top: 16px;
+  }
+  .process-head-main {
+    font-family: var(--serif-en); font-style: italic;
+    font-size: 11px; letter-spacing: 0.34em; color: var(--c-sub);
+    margin-bottom: 36px;
+  }
+  .process-steps-main {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 28px;
+  }
+  .process-steps-main .step { display: flex; gap: 14px; }
+  .process-steps-main .step-num {
+    font-family: var(--serif-en); font-style: italic;
+    font-size: 18px; color: var(--c-red); white-space: nowrap; padding-top: 2px;
+  }
+  .process-steps-main .step h4 { font-size: 13px; font-weight: 500; letter-spacing: 0.1em; margin-bottom: 6px; }
+  .process-steps-main .step p { font-size: 12px; line-height: 1.9; color: var(--c-sub); }
+
+  /* nav ホバー下線アニメーション（index.htmlに合わせる） */
+  nav a:not(.cta) { position: relative; }
+  nav a:not(.cta)::after {
+    content: ''; position: absolute; bottom: -3px; left: 0;
+    width: 0; height: 1.5px; background: var(--c-red);
+    transition: width 0.3s ease;
+  }
+  nav a:not(.cta):hover::after { width: 100%; }
 </style>
 </head>
 <body>
@@ -196,6 +269,14 @@
     <a class="back-link" href="index.html">← トップに戻る</a>
   </div>
 </section>
+<nav class="svc-quick-nav">
+  <div class="svc-quick-nav-inner">
+    <a href="#concert">01 コンサートデザイン</a>
+    <a href="#web">02 Web / LP</a>
+    <a href="#photo">03 記録写真</a>
+    <a href="#sns">04 SNS・その他</a>
+  </div>
+</nav>
 <main>
 
   <div class="service-section reveal" id="concert">
@@ -230,15 +311,8 @@
         <div class="price-cta"><a href="index.html#contact">相談・お見積もりはこちら →</a></div>
       </div>
     </div>
-    <div class="price-img-wrap">
-      <img src="images/price-flyer.jpg" alt="フライヤーデザイン 料金プラン — WAKU DESIGN" />
-      <div class="price-cta"><a href="index.html#contact">お問合せ・ご相談はこちら →</a></div>
-    </div>
-    
-      <div class="process-section">
-        <div class="process-head">制作の流れ</div>
-        <div class="process-steps">
-          <div class="step"><span class="step-num">01</span><div><h4>ご相談</h4><p>ご相談フォームよりご連絡ください。デザイナーよりご返信いたします。</p></div></div>
+  </div>
+
           <div class="step"><span class="step-num">02</span><div><h4>お見積もり</h4><p>ご要望・ご予算に合わせたプランでお見積もりをご提案します。</p></div></div>
           <div class="step"><span class="step-num">03</span><div><h4>素材・原稿の準備</h4><p>テキスト情報・写真・ロゴデータをメールでお送りください。</p></div></div>
           <div class="step"><span class="step-num">04</span><div><h4>デザインのご提案</h4><p>演奏会のテーマやご要望に沿ってデザインを制作し、ご提案します。</p></div></div>
@@ -279,11 +353,8 @@
         <div class="price-cta"><a href="index.html#contact">相談・お見積もりはこちら →</a></div>
       </div>
     </div>
-    
-      <div class="process-section">
-        <div class="process-head">制作の流れ</div>
-        <div class="process-steps">
-          <div class="step"><span class="step-num">01</span><div><h4>ご相談</h4><p>ご相談フォームよりご連絡ください。デザイナーよりご返信いたします。</p></div></div>
+  </div>
+
           <div class="step"><span class="step-num">02</span><div><h4>お見積もり</h4><p>ご要望・ご予算に合わせたプランでお見積もりをご提案します。</p></div></div>
           <div class="step"><span class="step-num">03</span><div><h4>素材・原稿の準備</h4><p>テキスト情報・写真・ロゴデータをメールでお送りください。</p></div></div>
           <div class="step"><span class="step-num">04</span><div><h4>デザインのご提案</h4><p>演奏会のテーマやご要望に沿ってデザインを制作し、ご提案します。</p></div></div>
@@ -323,11 +394,8 @@
         <div class="price-cta"><a href="index.html#contact">相談・お見積もりはこちら →</a></div>
       </div>
     </div>
-    
-      <div class="process-section">
-        <div class="process-head">制作の流れ</div>
-        <div class="process-steps">
-          <div class="step"><span class="step-num">01</span><div><h4>ご相談</h4><p>ご相談フォームよりご連絡ください。デザイナーよりご返信いたします。</p></div></div>
+  </div>
+
           <div class="step"><span class="step-num">02</span><div><h4>お見積もり</h4><p>ご要望・ご予算に合わせたプランでお見積もりをご提案します。</p></div></div>
           <div class="step"><span class="step-num">03</span><div><h4>素材・原稿の準備</h4><p>テキスト情報・写真・ロゴデータをメールでお送りください。</p></div></div>
           <div class="step"><span class="step-num">04</span><div><h4>デザインのご提案</h4><p>演奏会のテーマやご要望に沿ってデザインを制作し、ご提案します。</p></div></div>
@@ -369,11 +437,8 @@
         <div class="price-cta"><a href="index.html#contact">相談・お見積もりはこちら →</a></div>
       </div>
     </div>
-    
-      <div class="process-section">
-        <div class="process-head">制作の流れ</div>
-        <div class="process-steps">
-          <div class="step"><span class="step-num">01</span><div><h4>ご相談</h4><p>ご相談フォームよりご連絡ください。デザイナーよりご返信いたします。</p></div></div>
+  </div>
+
           <div class="step"><span class="step-num">02</span><div><h4>お見積もり</h4><p>ご要望・ご予算に合わせたプランでお見積もりをご提案します。</p></div></div>
           <div class="step"><span class="step-num">03</span><div><h4>素材・原稿の準備</h4><p>テキスト情報・写真・ロゴデータをメールでお送りください。</p></div></div>
           <div class="step"><span class="step-num">04</span><div><h4>デザインのご提案</h4><p>演奏会のテーマやご要望に沿ってデザインを制作し、ご提案します。</p></div></div>
@@ -381,6 +446,19 @@
           <div class="step"><span class="step-num">06</span><div><h4>納品・お支払い</h4><p>ご希望の形式で納品します。納品確認後にお支払いをお願いします。</p></div></div>
         </div>
       </div>
+  </div>
+
+  <!-- 制作の流れ（共通） -->
+  <div class="shared-process reveal">
+    <div class="process-head-main">制作の流れ</div>
+    <div class="process-steps-main">
+      <div class="step"><span class="step-num">01</span><div><h4>ご相談</h4><p>フォームまたはInstagram DMよりご連絡ください。</p></div></div>
+      <div class="step"><span class="step-num">02</span><div><h4>お見積もり</h4><p>ご要望・ご予算に合わせたプランをご提案します。</p></div></div>
+      <div class="step"><span class="step-num">03</span><div><h4>素材のご準備</h4><p>テキスト・写真・ロゴデータをお送りください。</p></div></div>
+      <div class="step"><span class="step-num">04</span><div><h4>デザイン提案</h4><p>テーマやご要望に沿ってデザインを制作します。</p></div></div>
+      <div class="step"><span class="step-num">05</span><div><h4>修正・確定</h4><p>ご意見をもとに修正し、デザインを最終決定します。</p></div></div>
+      <div class="step"><span class="step-num">06</span><div><h4>納品・お支払い</h4><p>ご希望の形式で納品。確認後にお支払いをお願いします。</p></div></div>
+    </div>
   </div>
 
   <div class="faq-section reveal">
