@@ -7,8 +7,13 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="WAKU DESIGN" />
 <meta property="og:title" content="Web / LP | WAKU DESIGN" />
+<meta property="og:description" content="クラシック音楽のWebサイト・LP制作実績一覧。企画、構成、デザイン、問い合わせ導線までまとめてご覧いただけます。" />
+<meta property="og:image" content="https://waku-design.vercel.app/images/hero-1.jpg" />
 <meta property="og:url" content="https://waku-design.vercel.app/works-web.html" />
 <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Web / LP | WAKU DESIGN" />
+<meta name="twitter:description" content="クラシック音楽のWebサイト・LP制作実績一覧。企画、構成、デザイン、問い合わせ導線までまとめてご覧いただけます。" />
+<meta name="twitter:image" content="https://waku-design.vercel.app/images/hero-1.jpg" />
 <title>Web / LP | WAKU DESIGN</title>
 <style>
   :root {
@@ -68,9 +73,20 @@
   .nav-overlay .ov-close{position:absolute;top:14px;right:16px;background:none;border:none;color:rgba(251,247,238,0.5);font-size:32px;cursor:pointer;padding:10px;line-height:1;transition:color 0.3s;}
   .nav-overlay .ov-close:hover{color:var(--c-bg);}
   .nav-overlay .ov-logo{position:absolute;top:22px;left:20px;font-family:var(--serif-jp);font-size:13px;font-weight:600;letter-spacing:0.22em;color:rgba(251,247,238,0.45);}
-  .coming-block{padding:80px 0 40px;text-align:center;}
-  .coming-block .coming-label{font-family:var(--serif-en);font-style:italic;font-size:11px;letter-spacing:0.36em;color:var(--c-sub);opacity:0.6;}
-  .coming-block .coming-text{font-family:var(--serif-jp);font-size:15px;letter-spacing:0.18em;color:var(--c-sub);margin-top:20px;}
+  .cat-section{margin-bottom:80px;}
+  .cat-head{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--c-line);padding-top:20px;margin-bottom:32px;}
+  .cat-head h2{font-family:var(--serif-jp);font-size:15px;font-weight:500;letter-spacing:0.2em;color:var(--c-ink);}
+  .cat-head h2 small{font-family:var(--serif-en);font-style:italic;font-size:11px;color:var(--c-sub);letter-spacing:0.26em;margin-left:14px;}
+  .cat-head .count{font-family:var(--serif-en);font-style:italic;font-size:11px;letter-spacing:0.28em;color:var(--c-sub);}
+  .works-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 24px;}
+  .work-item{cursor:pointer;transition:transform 0.4s;}
+  .work-item:hover{transform:translateY(-6px);}
+  .work-item .frame{aspect-ratio:16/10;background:var(--c-cream-deep);position:relative;overflow:hidden;margin-bottom:14px;}
+  .work-item .frame img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;}
+  .work-item:hover .frame img{transform:scale(1.04);}
+  .work-item .work-cat{font-family:var(--serif-en);font-style:italic;font-size:10px;letter-spacing:0.28em;color:var(--c-red);margin-bottom:4px;}
+  .work-item .work-title{font-size:15px;letter-spacing:0.08em;color:var(--c-ink);line-height:1.6;}
+  .work-item .work-desc{font-size:12px;letter-spacing:0.08em;line-height:1.9;color:var(--c-sub);margin-top:8px;}
   .back-to-hub{display:inline-block;margin-top:48px;font-family:var(--serif-en);font-style:italic;font-size:12px;letter-spacing:0.22em;color:var(--c-sub);transition:color 0.3s;border-bottom:1px solid var(--c-line);padding-bottom:2px;}
   .back-to-hub:hover{color:var(--c-ink);}
   @media(max-width:900px){
@@ -78,6 +94,12 @@
     .page-hero{padding:48px 20px 40px;}main{padding:48px 20px 80px;}
     footer{padding:48px 20px 24px;} .footer-inner{grid-template-columns:1fr;gap:32px;}
     .nav-toggle{display:flex;}
+    .page-hero-inner{display:block;}
+    .page-hero .back-link{display:inline-block;margin-top:28px;}
+    .cat-head{display:block;}
+    .cat-head .count{display:block;margin-top:8px;}
+    .cat-head h2 small{display:block;margin-left:0;margin-top:4px;}
+    .works-grid{grid-template-columns:1fr;}
   }
 </style>
 </head>
@@ -117,9 +139,19 @@
 </section>
 
 <main>
-  <div class="coming-block reveal">
-    <p class="coming-label">— Coming Soon</p>
-    <p class="coming-text">準備中です。しばらくお待ちください。</p>
+  <div class="cat-section reveal">
+    <div class="cat-head">
+      <h2>Webサイト・LP制作<small>Website · Landing Page</small></h2>
+      <span class="count">01 work</span>
+    </div>
+    <div class="works-grid">
+      <a class="work-item" href="work-waku-design.html">
+        <div class="frame"><img src="images/hero-1.jpg" alt="WAKU DESIGN 公式サイト" /></div>
+        <div class="work-cat">WEB · BRAND SITE</div>
+        <div class="work-title">WAKU DESIGN 公式サイト</div>
+        <p class="work-desc">クラシック音楽に特化した制作相談を受けるためのブランドサイト。サービス、実績、プロフィール、問い合わせ導線を一つの流れに整理しました。</p>
+      </a>
+    </div>
   </div>
   <a class="back-to-hub" href="works.html">← 実績一覧に戻る</a>
 </main>
