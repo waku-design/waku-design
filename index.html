@@ -122,13 +122,8 @@
     background: var(--c-cream-deep);
     position: relative; overflow: hidden;
   }
-  .hero-photo::after {
-    content: 'PORTRAIT — KAZUYA KUWATA';
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--c-sub); opacity: 0.45;
-    font-family: var(--serif-en); font-style: italic;
-    font-size: 11px; letter-spacing: 0.36em;
+  .hero-photo img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
   }
   .hero-photo .caption {
     position: absolute; bottom: 14px; left: 16px;
@@ -294,13 +289,13 @@
     position: relative; overflow: hidden;
     margin-bottom: 14px;
   }
-  .work-item .frame::after {
-    content: attr(data-label);
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--c-sub); opacity: 0.4;
-    font-family: var(--serif-en); font-style: italic;
-    font-size: 10px; letter-spacing: 0.3em;
+  .work-item .frame img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 0.5s ease;
+  }
+  .work-item:hover .frame img { transform: scale(1.04); }
+  .concert-row .thumb img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
   }
   .work-item.coming .frame { background: var(--c-cream); }
   .work-item .work-cat {
@@ -338,13 +333,8 @@
     background: var(--c-cream-deep);
     position: relative; overflow: hidden;
   }
-  .about-photo::after {
-    content: 'PORTRAIT';
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--c-sub); opacity: 0.4;
-    font-family: var(--serif-en); font-style: italic;
-    font-size: 11px; letter-spacing: 0.36em;
+  .about-photo img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
   }
   .about-photo .cap {
     position: absolute; bottom: 12px; right: 14px;
@@ -653,6 +643,7 @@
       </div>
     </div>
     <div class="hero-photo">
+      <img src="images/portrait.jpg" alt="Kazuya Kuwata" />
       <span class="caption">Kazuya Kuwata · 2026</span>
     </div>
   </div>
@@ -738,14 +729,34 @@
       <button data-filter="sns">SNS素材</button>
     </div>
     <div class="works-grid" id="worksGrid">
-      <div class="work-item" data-cat="concert"><div class="frame" data-label="FLYER"></div><div class="work-cat">FLYER</div><div class="work-title">演奏会フライヤー</div></div>
-      <div class="work-item" data-cat="concert"><div class="frame" data-label="PROGRAM"></div><div class="work-cat">PROGRAM</div><div class="work-title">プログラム冊子</div></div>
-      <div class="work-item" data-cat="concert"><div class="frame" data-label="FLYER"></div><div class="work-cat">FLYER</div><div class="work-title">リサイタルフライヤー</div></div>
-      <div class="work-item" data-cat="concert"><div class="frame" data-label="TICKET"></div><div class="work-cat">TICKET</div><div class="work-title">演奏会チケット</div></div>
-      <div class="work-item" data-cat="photo"><div class="frame" data-label="PHOTO"></div><div class="work-cat">PHOTO</div><div class="work-title">オーケストラ記録</div></div>
-      <div class="work-item" data-cat="photo"><div class="frame" data-label="PHOTO"></div><div class="work-cat">PHOTO</div><div class="work-title">室内楽ライブ</div></div>
-      <div class="work-item" data-cat="photo"><div class="frame" data-label="PHOTO"></div><div class="work-cat">PHOTO</div><div class="work-title">リサイタル記録</div></div>
-      <div class="work-item coming" data-cat="web"><div class="frame" data-label="COMING SOON"></div><div class="work-cat">WEB</div><div class="work-title">演奏家ポートフォリオ</div></div>
+      <div class="work-item" data-cat="concert">
+        <div class="frame"><img src="images/flyer-miki-relemit.jpg" alt="三木多聞 サクソフォンリサイタル Relemit" /></div>
+        <div class="work-cat">FLYER</div>
+        <div class="work-title">三木多聞 サクソフォンリサイタル「Relemit」</div>
+      </div>
+      <div class="work-item" data-cat="concert">
+        <div class="frame"><img src="images/flyer-saxophone-orch.jpg" alt="大阪音楽大学サクソフォーンオーケストラ 運命" /></div>
+        <div class="work-cat">FLYER</div>
+        <div class="work-title">大阪音楽大学サクソフォーンオーケストラ「運命」</div>
+      </div>
+      <div class="work-item" data-cat="concert">
+        <div class="frame"><img src="images/flyer-ota-so.jpg" alt="太田光 & 曾朗基 Flute & Guitar スプリング・コンサート" /></div>
+        <div class="work-cat">FLYER</div>
+        <div class="work-title">太田光 &amp; 曾朗基 Flute &amp; Guitar スプリング・コンサート</div>
+      </div>
+      <div class="work-item" data-cat="concert">
+        <div class="frame"><img src="images/flyer-takagi-wind.jpg" alt="髙木毅 Memorial Wind Band Special Concert" /></div>
+        <div class="work-cat">FLYER</div>
+        <div class="work-title">髙木毅 Memorial Wind Band Special Concert</div>
+      </div>
+      <div class="work-item" data-cat="concert">
+        <div class="frame"><img src="images/flyer-miki-recital.jpg" alt="三木多聞 サクソフォンリサイタル" /></div>
+        <div class="work-cat">FLYER</div>
+        <div class="work-title">三木多聞 サクソフォンリサイタル</div>
+      </div>
+      <div class="work-item" data-cat="photo"><div class="frame" data-label="PHOTO"></div><div class="work-cat">PHOTO</div><div class="work-title">コンサート記録写真</div></div>
+      <div class="work-item" data-cat="photo"><div class="frame" data-label="PHOTO"></div><div class="work-cat">PHOTO</div><div class="work-title">リハーサル・楽屋撮影</div></div>
+      <div class="work-item coming" data-cat="web"><div class="frame" data-label="COMING SOON"></div><div class="work-cat">WEB</div><div class="work-title">演奏家ポートフォリオサイト</div></div>
     </div>
     <div class="works-more"><a href="#">実績一覧を見る →</a></div>
   </div>
@@ -754,7 +765,10 @@
 <!-- ABOUT -->
 <section class="about" id="about">
   <div class="about-inner reveal">
-    <div class="about-photo"><span class="cap">PORTRAIT · 2026</span></div>
+    <div class="about-photo">
+      <img src="images/portrait.jpg" alt="桑田 一哉" />
+      <span class="cap">PORTRAIT · 2026</span>
+    </div>
     <div class="about-text">
       <p class="label">About the Designer</p>
       <h2>桑田 一哉<span class="en">Kazuya Kuwata</span></h2>
