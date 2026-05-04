@@ -69,19 +69,6 @@
   .concert-row .arrow{font-family:var(--serif-en);color:var(--c-ink);opacity:0.3;font-size:16px;transition:opacity 0.3s,transform 0.3s;text-align:right;}
   .concert-row:hover .arrow{opacity:1;transform:translateX(4px);color:var(--c-red);}
   .concerts-note{margin-top:32px;font-family:var(--serif-en);font-style:italic;font-size:11px;letter-spacing:0.24em;color:var(--c-sub);opacity:0.7;}
-  @media(max-width:880px){
-    header{padding:14px 20px;}nav ul{display:none;}
-    main{padding:48px 20px 80px;}
-    .page-hero{padding:48px 20px 40px;}
-    .concert-row{grid-template-columns:64px 1fr;gap:14px;}
-    .concert-row .date{display:none;}
-    .concert-row .tags,.concert-row .arrow{display:none;}
-    footer{padding:48px 20px 24px;}.footer-inner{grid-template-columns:1fr;gap:32px;}
-  
-    .nav-toggle { display: flex; }
-    .concert-row { grid-template-columns: 56px 1fr; gap: 14px; }
-  }
-
   /* ═══ HAMBURGER MENU ═══ */
   .nav-toggle {
     display: none;
@@ -134,6 +121,19 @@
     font-family: var(--serif-jp); font-size: 13px; font-weight: 600;
     letter-spacing: 0.22em; color: rgba(251,247,238,0.45);
   }
+
+  @media(max-width:880px){
+    header{padding:14px 20px;}nav ul{display:none;}
+    main{padding:48px 20px 80px;}
+    .page-hero{padding:48px 20px 40px;}
+    .concert-row .date{display:none;}
+    .concert-row .tags,.concert-row .arrow{display:none;}
+    footer{padding:48px 20px 24px;}.footer-inner{grid-template-columns:1fr;gap:32px;}
+  
+    .nav-toggle { display: flex; }
+    .concert-row { grid-template-columns: 56px 1fr; gap: 14px; }
+  }
+
 </style>
 </head>
 <body>
