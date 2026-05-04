@@ -33,6 +33,7 @@
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
+  html { overflow-x: hidden; }
   body {
     font-family: var(--serif-jp);
     color: var(--c-ink);
@@ -152,16 +153,20 @@
     display: flex; justify-content: space-between; align-items: center;
     padding: 40px 0; border-top: 1px solid var(--c-line);
   }
-  .work-nav a {
+  .work-nav a, .work-nav span {
     font-family: var(--serif-en); font-style: italic;
     font-size: 12px; letter-spacing: 0.22em; color: var(--c-sub);
     transition: color 0.3s;
     display: flex; align-items: center; gap: 8px;
+    min-width: 72px;
   }
   .work-nav a:hover { color: var(--c-ink); }
+  .work-nav > a:last-child,
+  .work-nav > span:last-child { justify-content: flex-end; }
   .work-nav .nav-center {
     border: 1px solid var(--c-line); padding: 10px 24px;
     font-size: 11px; letter-spacing: 0.24em; transition: all 0.3s;
+    min-width: unset; flex-shrink: 0;
   }
   .work-nav .nav-center:hover { background: var(--c-ink); color: var(--c-bg); border-color: var(--c-ink); }
   .work-nav .nav-disabled { opacity: 0.25; pointer-events: none; }
@@ -336,9 +341,9 @@
   </div>
 
   <div class="work-nav">
-    <a href="work-miki-relemit.html">← 三木多聞 Relemit</a>
+    <a href="work-miki-relemit.html">← Prev</a>
     <a class="nav-center" href="works.html">Works 一覧</a>
-    <a href="work-ota-so.html">太田光 &amp; 曾朗基 Spring Concert →</a>
+    <a href="work-ota-so.html">Next →</a>
   </div>
 </main>
 
