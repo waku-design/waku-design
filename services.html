@@ -16,147 +16,148 @@
 <meta name="twitter:image" content="https://waku-design.vercel.app/images/price-flyer.jpg" />
 <title>サービス | WAKU DESIGN</title>
 <style>
-:root{color-scheme:light;--c-red:#B7402E;--c-red-deep:#8E2F22;--c-ink:#2A1A1F;--c-ink-soft:#4A323A;--c-cream:#F7EFE0;--c-cream-deep:#EBDFC5;--c-bg:#FBF7EE;--c-paper:#FFFFFF;--c-line:#E2DAC4;--c-sub:#6B5A4F;--serif-jp:'Hiragino Mincho ProN','Yu Mincho','YuMincho','MS PMincho',serif;--serif-en:'Hoefler Text','Garamond','Times New Roman',serif;}
-
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
-  body{font-family:var(--serif-jp);color:var(--c-ink);background:var(--c-bg);line-height:1.95;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
-  a{color:inherit;text-decoration:none;}
-  header{position:sticky;top:0;padding:18px 44px;background:rgba(251,247,238,0.96);backdrop-filter:saturate(180%) blur(10px);z-index:100;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--c-line);}
-  .logo .text{font-family:var(--serif-jp);font-size:17px;font-weight:600;letter-spacing:0.22em;color:var(--c-ink);line-height:1;}
-  .logo .text small{display:block;font-family:var(--serif-en);font-size:9px;letter-spacing:0.32em;color:var(--c-sub);margin-top:6px;font-style:italic;font-weight:400;}
-  nav ul{list-style:none;display:flex;gap:28px;align-items:center;}
-  nav a{font-size:12px;letter-spacing:0.18em;transition:color 0.3s;}
-  nav a:not(.cta):hover{color:var(--c-red);}
-  nav .cta{border:1px solid var(--c-ink);color:var(--c-ink);padding:10px 22px;transition:all 0.3s;letter-spacing:0.2em;}
-  nav .cta:hover{background:var(--c-ink);color:var(--c-bg);}
-  .page-hero{padding:80px 44px 64px;border-bottom:1px solid var(--c-line);}
-  .page-hero-inner{max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;}
-  .page-hero .eyebrow{font-family:var(--serif-en);font-style:italic;font-size:11px;letter-spacing:0.36em;color:var(--c-red);margin-bottom:16px;display:flex;align-items:center;gap:12px;}
-  .page-hero .eyebrow::before{content:'';width:24px;height:1px;background:var(--c-red);}
-  .page-hero h1{font-family:var(--serif-jp);font-size:clamp(28px,3.6vw,44px);font-weight:500;letter-spacing:0.12em;color:var(--c-ink);line-height:1.3;}
-  .page-hero .back-link{font-family:var(--serif-en);font-style:italic;font-size:12px;letter-spacing:0.22em;color:var(--c-sub);transition:color 0.3s;}
-  .page-hero .back-link:hover{color:var(--c-ink);}
-  main{max-width:1240px;margin:0 auto;padding:80px 44px 120px;}
-  .sec-label{font-family:var(--serif-en);font-style:italic;font-size:11px;letter-spacing:0.36em;color:var(--c-red);display:flex;align-items:center;gap:12px;margin-bottom:12px;}
-  .sec-label::before{content:'';width:20px;height:1px;background:var(--c-red);}
-  .more-link{display:inline-block;padding:12px 32px;border:1px solid var(--c-ink);font-size:12px;letter-spacing:0.24em;transition:all 0.3s;}
-  .more-link:hover{background:var(--c-ink);color:var(--c-bg);}
-  footer{background:var(--c-bg);color:var(--c-ink);padding:64px 44px 28px;border-top:1px solid var(--c-line);}
-  .footer-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:56px;align-items:start;}
-  footer .name{font-family:var(--serif-jp);font-size:17px;letter-spacing:0.22em;font-weight:600;}
-  footer .name small{display:block;font-family:var(--serif-en);font-style:italic;font-size:10px;letter-spacing:0.32em;color:var(--c-sub);margin-top:8px;font-weight:400;}
-  footer .tag{font-size:12px;line-height:2;color:var(--c-sub);margin-top:18px;max-width:320px;}
-  footer h5{font-family:var(--serif-en);font-style:italic;font-size:11px;letter-spacing:0.34em;margin-bottom:20px;color:var(--c-red);}
-  footer ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
-  footer ul a{font-size:12px;letter-spacing:0.1em;color:var(--c-ink);transition:color 0.3s;}
-  footer ul a:hover{color:var(--c-red);}
-  footer .bottom{border-top:1px solid var(--c-line);margin-top:48px;padding-top:22px;text-align:center;color:var(--c-sub);font-size:10px;letter-spacing:0.32em;font-family:var(--serif-en);font-style:italic;}
-  .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.9s ease,transform 0.9s ease;}
-  .reveal.visible{opacity:1;transform:none;}
-
-  /* ── サービスセクション: タイポグラフィ階層で区切る ── */
-  .service-section {
-    padding: 96px 0;
-    border-bottom: 1px solid var(--c-line);
-  }
-  .service-section:last-of-type { border-bottom: none; }
-
-  /* 番号を「章番号」として大きく */
-  .service-num {
-    font-family: var(--serif-en); font-style: italic;
-    font-size: 64px; color: var(--c-red); line-height: 1;
-    opacity: 0.22; /* 薄くして背景的に */
-    letter-spacing: -0.02em;
-  }
-  .service-head {
-    display: grid; grid-template-columns: 96px 1fr;
-    gap: 32px; align-items: start; margin-bottom: 56px;
-    border-top: 2px solid var(--c-line);
-    padding-top: 32px;
-  }
-  /* タイトルはより大きく */
-  .service-title h2 {
-    font-size: clamp(22px, 2.8vw, 34px);
-    letter-spacing: 0.1em; line-height: 1.3;
-    margin-bottom: 8px;
-  }
-
-  /* nav ホバー下線アニメーション */
-  nav a:not(.cta) { position: relative; }
-  nav a:not(.cta)::after {
-    content: ''; position: absolute; bottom: -3px; left: 0;
-    width: 0; height: 1.5px; background: var(--c-red);
-    transition: width 0.3s ease;
-  }
-  nav a:not(.cta):hover::after { width: 100%; }
-
-  /* ── サービスメニュー ── */
-  .svc-menu { margin-bottom: 0; }
-  .svc-menu-row {
-    display: grid;
-    grid-template-columns: 56px 1fr 160px;
-    gap: 40px; align-items: start;
-    padding: 44px 0;
-    border-bottom: 1px solid var(--c-line);
-    transition: background 0.3s, padding-left 0.3s;
-  }
-  .svc-menu-row:first-child { border-top: 1px solid var(--c-line); }
-  .svc-menu-row:hover { background: var(--c-bg); padding-left: 12px; }
-  .svc-menu-num {
-    font-family: var(--serif-en); font-style: italic;
-    font-size: 24px; color: var(--c-red);
-    opacity: 0.45; line-height: 1; padding-top: 4px;
-  }
-  .svc-menu-info h2 {
-    font-family: var(--serif-jp);
-    font-size: clamp(18px, 2.2vw, 26px); font-weight: 500;
-    letter-spacing: 0.1em; margin-bottom: 6px;
-  }
-  .svc-sub {
-    font-family: var(--serif-en); font-style: italic;
-    font-size: 10px; letter-spacing: 0.3em; color: var(--c-sub);
-    display: block; margin-bottom: 12px;
-  }
-  .svc-desc {
-    font-size: 13px; line-height: 1.9;
-    color: var(--c-ink-soft); max-width: 480px;
-  }
-  .svc-menu-price {
-    display: flex; flex-direction: column;
-    align-items: flex-end; gap: 14px;
-    padding-top: 4px;
-  }
-  .svc-menu-price .price {
-    font-size: 17px; font-weight: 500;
-    letter-spacing: 0.06em; color: var(--c-ink);
-  }
-  .svc-cta {
-    display: inline-block;
-    padding: 9px 20px;
-    border: 1px solid var(--c-ink);
-    font-size: 11px; letter-spacing: 0.22em;
-    color: var(--c-ink); white-space: nowrap;
-    transition: background 0.25s, color 0.25s;
-  }
-  .svc-cta:hover { background: var(--c-ink); color: var(--c-bg); }
-
-  /* 共通プロセス + ステップ */
-  .shared-process { padding: 80px 0 64px; border-top: 1px solid var(--c-line); margin-top: 8px; }
-  .process-head-main { font-family: var(--serif-en); font-style: italic; font-size: 11px; letter-spacing: 0.34em; color: var(--c-sub); margin-bottom: 36px; }
-  .process-steps-main { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
-  .process-steps-main .step { display: flex; gap: 14px; }
-  .process-steps-main .step-num { font-family: var(--serif-en); font-style: italic; font-size: 18px; color: var(--c-red); white-space: nowrap; padding-top: 2px; }
-  .process-steps-main .step h4 { font-size: 13px; font-weight: 500; letter-spacing: 0.1em; margin-bottom: 6px; }
-  .process-steps-main .step p { font-size: 12px; line-height: 1.9; color: var(--c-sub); }
-
+:root{color-scheme:light;--c-red:#B7402E;--c-red-deep:#8E2F22;--c-ink:#2A1A1F;--c-ink-soft:#4A323A;--c-cream:#F7EFE0;--c-cream-deep:#EBDFC5;--c-bg:#FBF7EE;--c-paper:#FFFFFF;--c-line:#E2DAC4;--c-sub:#6B5A4F;--c-sage:#5D756F;--serif-jp:'Hiragino Mincho ProN','Yu Mincho','YuMincho','MS PMincho',serif;--serif-en:'Hoefler Text','Garamond','Times New Roman',serif;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--serif-jp);color:var(--c-ink);background:var(--c-bg);line-height:1.95;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+header{position:sticky;top:0;padding:18px 44px;background:rgba(251,247,238,0.96);backdrop-filter:saturate(180%) blur(10px);z-index:100;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--c-line);}
+.logo .text{font-family:var(--serif-jp);font-size:17px;font-weight:600;letter-spacing:0.22em;color:var(--c-ink);line-height:1;}
+.logo .text small{display:block;font-family:var(--serif-en);font-size:9px;letter-spacing:0.32em;color:var(--c-sub);margin-top:6px;font-style:italic;font-weight:400;}
+nav ul{list-style:none;display:flex;gap:28px;align-items:center;}
+nav a{font-size:12px;letter-spacing:0.18em;transition:color 0.3s;}
+nav a:not(.cta){position:relative;}
+nav a:not(.cta)::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--c-red);transition:width 0.3s ease;}
+nav a:not(.cta):hover{color:var(--c-red);}
+nav a:not(.cta):hover::after{width:100%;}
+nav .cta{border:1px solid var(--c-ink);color:var(--c-ink);padding:10px 22px;transition:all 0.3s;letter-spacing:0.2em;}
+nav .cta:hover{background:var(--c-ink);color:var(--c-bg);}
+.nav-service{position:relative;}
+.nav-service>a{display:inline-flex;align-items:center;gap:6px;}
+.nav-service>a::before{content:'';width:4px;height:4px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg) translateY(-2px);order:2;opacity:0.55;}
+.nav-submenu{position:absolute;top:calc(100% + 18px);left:-18px;min-width:250px;display:grid;gap:0;padding:10px;list-style:none;background:rgba(255,255,255,0.98);border:1px solid var(--c-line);box-shadow:0 18px 42px rgba(42,26,31,0.12);opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity 0.22s ease,transform 0.22s ease,visibility 0.22s ease;}
+.nav-service:hover .nav-submenu,.nav-service:focus-within .nav-submenu{opacity:1;visibility:visible;transform:translateY(0);}
+.nav-submenu a{display:block;padding:10px 12px;font-size:12px;letter-spacing:0.08em;line-height:1.45;color:var(--c-ink);}
+.nav-submenu a::after{display:none;}
+.nav-submenu a:hover{background:var(--c-bg);color:var(--c-red);}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px;flex-direction:column;gap:6px;}
+.nav-toggle span{display:block;width:24px;height:1.5px;background:var(--c-ink);transition:transform 0.3s,opacity 0.3s;}
+.nav-toggle.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
+.nav-toggle.open span:nth-child(2){opacity:0;}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
+.nav-overlay{position:fixed;inset:0;background:var(--c-ink);z-index:200;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:36px;opacity:0;pointer-events:none;transition:opacity 0.35s ease;}
+.nav-overlay.open{opacity:1;pointer-events:auto;}
+.nav-overlay .ov-logo{position:absolute;top:22px;left:20px;font-family:var(--serif-jp);font-size:13px;font-weight:600;letter-spacing:0.22em;color:rgba(251,247,238,0.45);}
+.nav-overlay .ov-close{position:absolute;top:14px;right:16px;background:none;border:none;color:rgba(251,247,238,0.55);font-size:32px;cursor:pointer;padding:10px;line-height:1;transition:color 0.3s;}
+.nav-overlay .ov-close:hover{color:var(--c-bg);}
+.nav-overlay ul{list-style:none;display:flex;flex-direction:column;align-items:center;gap:0;padding:0;margin:0;}
+.nav-overlay ul a{font-family:var(--serif-jp);font-size:22px;font-weight:500;letter-spacing:0.22em;color:var(--c-bg);padding:13px 40px;display:block;transition:color 0.3s;text-align:center;}
+.nav-overlay .ov-sub a{font-size:14px;letter-spacing:0.12em;color:rgba(251,247,238,0.66);padding:7px 40px;}
+.nav-overlay ul a:hover,.nav-overlay ul a:active{color:var(--c-red);}
+.nav-overlay .ov-cta-li{margin-top:20px;}
+.nav-overlay .ov-cta-li a{border:1px solid rgba(251,247,238,0.38);font-size:14px;letter-spacing:0.26em;padding:14px 40px;}
+.page-hero{padding:82px 44px 68px;border-bottom:1px solid var(--c-line);background:linear-gradient(180deg,var(--c-paper),var(--c-bg));}
+.page-hero-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:60px;align-items:end;}
+.page-hero .eyebrow,.section-label{font-family:var(--serif-en);font-style:italic;font-size:11px;letter-spacing:0.36em;color:var(--c-red);margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+.page-hero .eyebrow::before,.section-label::before{content:'';width:24px;height:1px;background:var(--c-red);}
+.page-hero h1{font-family:var(--serif-jp);font-size:clamp(30px,4vw,48px);font-weight:500;letter-spacing:0.12em;color:var(--c-ink);line-height:1.35;margin-bottom:22px;}
+.hero-lead{font-size:14px;line-height:2.15;letter-spacing:0.05em;color:var(--c-ink-soft);max-width:680px;}
+.hero-note{border-top:1px solid var(--c-line);padding-top:22px;color:var(--c-sub);font-size:13px;line-height:2;}
+.hero-note strong{display:block;font-size:14px;letter-spacing:0.12em;color:var(--c-ink);font-weight:500;margin-bottom:8px;}
+.hero-note a{display:inline-block;margin-top:16px;font-family:var(--serif-en);font-style:italic;font-size:12px;letter-spacing:0.22em;color:var(--c-red);border-bottom:1px solid rgba(183,64,46,0.35);}
+main{max-width:1240px;margin:0 auto;padding:86px 44px 118px;}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.9s ease,transform 0.9s ease;}
+.reveal.visible{opacity:1;transform:none;}
+.section-head{display:grid;grid-template-columns:300px minmax(0,1fr);gap:46px;align-items:start;margin-bottom:34px;}
+.section-head h2{font-size:clamp(22px,2.8vw,34px);font-weight:500;letter-spacing:0.12em;line-height:1.5;}
+.section-head p:last-child{font-size:13px;line-height:2;color:var(--c-sub);max-width:660px;}
+.service-map,.price-guide,.prep-section,.shared-process,.faq-section{padding-bottom:86px;margin-bottom:86px;border-bottom:1px solid var(--c-line);}
+.service-groups{display:grid;gap:44px;}
+.service-group{border-top:2px solid var(--c-line);padding-top:28px;}
+.service-group-head{display:grid;grid-template-columns:280px minmax(0,1fr);gap:36px;margin-bottom:24px;align-items:start;}
+.service-group-head .num{font-family:var(--serif-en);font-style:italic;font-size:13px;letter-spacing:0.22em;color:var(--c-red);margin-bottom:12px;}
+.service-group-head h3{font-size:clamp(21px,2.4vw,30px);font-weight:500;letter-spacing:0.12em;line-height:1.5;}
+.service-group-head p{font-size:13px;line-height:2;color:var(--c-sub);max-width:620px;}
+.service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.service-card{min-height:218px;border:1px solid var(--c-line);background:var(--c-paper);padding:22px 20px 20px;display:flex;flex-direction:column;justify-content:space-between;transition:transform 0.28s ease,background 0.28s ease,border-color 0.28s ease;}
+.service-card:hover{transform:translateY(-4px);background:var(--c-bg);border-color:var(--c-red);}
+.service-card small{display:block;font-family:var(--serif-en);font-style:italic;font-size:10px;letter-spacing:0.26em;color:var(--c-red);margin-bottom:10px;}
+.service-card h4{font-size:18px;font-weight:500;letter-spacing:0.1em;line-height:1.55;margin-bottom:10px;}
+.service-card p{font-size:12px;line-height:1.85;letter-spacing:0.04em;color:var(--c-sub);}
+.service-card .price{display:inline-block;margin-top:16px;font-size:12px;letter-spacing:0.08em;color:var(--c-sage);}
+.service-card .arrow{margin-top:20px;font-family:var(--serif-en);font-style:italic;font-size:12px;letter-spacing:0.2em;color:var(--c-ink);}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--c-line);border-left:1px solid var(--c-line);background:var(--c-paper);}
+.price-item{min-height:176px;padding:22px 22px 20px;border-right:1px solid var(--c-line);border-bottom:1px solid var(--c-line);}
+.price-item .cat{font-family:var(--serif-en);font-style:italic;font-size:10px;letter-spacing:0.24em;color:var(--c-red);margin-bottom:9px;}
+.price-item h3{font-size:16px;font-weight:500;letter-spacing:0.1em;line-height:1.55;margin-bottom:10px;}
+.price-item .amount{font-size:20px;letter-spacing:0.05em;color:var(--c-ink);margin-bottom:8px;}
+.price-item p{font-size:12px;line-height:1.85;color:var(--c-sub);}
+.prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+.prep-card{border-top:1px solid var(--c-line);padding-top:22px;}
+.prep-card h3{font-size:17px;font-weight:500;letter-spacing:0.1em;margin-bottom:14px;}
+.prep-card ul{list-style:none;display:grid;gap:10px;}
+.prep-card li{font-size:13px;line-height:1.8;color:var(--c-ink-soft);display:flex;gap:10px;}
+.prep-card li::before{content:'・';color:var(--c-red);flex:0 0 auto;}
+.process-steps-main{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--c-line);border-left:1px solid var(--c-line);}
+.process-steps-main .step{min-height:130px;padding:20px 20px 18px;border-right:1px solid var(--c-line);border-bottom:1px solid var(--c-line);background:var(--c-paper);}
+.process-steps-main .step-num{display:block;font-family:var(--serif-en);font-style:italic;font-size:10px;letter-spacing:0.28em;color:var(--c-red);margin-bottom:9px;}
+.process-steps-main .step h4{font-size:14px;font-weight:500;letter-spacing:0.1em;margin-bottom:7px;}
+.process-steps-main .step p{font-size:12px;line-height:1.8;color:var(--c-sub);}
+.faq-list{border-top:1px solid var(--c-line);}
+details{border-bottom:1px solid var(--c-line);}
+summary{padding:18px 0;cursor:pointer;font-size:14px;font-weight:500;letter-spacing:0.08em;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;}
+summary::-webkit-details-marker{display:none;}
+summary::after{content:'+';font-family:var(--serif-en);font-size:18px;font-weight:300;color:var(--c-red);flex-shrink:0;transition:transform 0.3s;}
+details[open] summary::after{transform:rotate(45deg);}
+.faq-a{padding:0 0 20px;font-size:13px;line-height:2;color:var(--c-ink-soft);}
+.contact-cta{background:var(--c-ink);color:var(--c-bg);padding:72px 44px;text-align:center;}
+.contact-cta h3{font-size:clamp(18px,2.4vw,26px);letter-spacing:0.18em;font-weight:400;margin-bottom:14px;}
+.contact-cta p{font-size:13px;letter-spacing:0.14em;opacity:0.72;margin-bottom:34px;}
+.contact-cta a{display:inline-block;padding:14px 40px;border:1px solid var(--c-bg);font-size:12px;letter-spacing:0.26em;color:var(--c-bg);transition:background 0.3s,color 0.3s;}
+.contact-cta a:hover{background:var(--c-bg);color:var(--c-ink);}
+footer{background:var(--c-bg);color:var(--c-ink);padding:64px 44px 28px;border-top:1px solid var(--c-line);}
+.footer-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:56px;align-items:start;}
+footer .name{font-family:var(--serif-jp);font-size:17px;letter-spacing:0.22em;font-weight:600;}
+footer .name small{display:block;font-family:var(--serif-en);font-style:italic;font-size:10px;letter-spacing:0.32em;color:var(--c-sub);margin-top:8px;font-weight:400;}
+footer .tag{font-size:12px;line-height:2;color:var(--c-sub);margin-top:18px;max-width:320px;}
+footer h5{font-family:var(--serif-en);font-style:italic;font-size:11px;letter-spacing:0.34em;margin-bottom:20px;color:var(--c-red);}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+footer ul a{font-size:12px;letter-spacing:0.1em;color:var(--c-ink);transition:color 0.3s;}
+footer ul a:hover{color:var(--c-red);}
+footer .bottom{border-top:1px solid var(--c-line);margin-top:48px;padding-top:22px;text-align:center;color:var(--c-sub);font-size:10px;letter-spacing:0.32em;font-family:var(--serif-en);font-style:italic;}
+@media(max-width:880px){
+  header{padding:14px 20px;}
+  nav ul{display:none;}
+  .nav-toggle{display:flex;}
+  .page-hero{padding:54px 20px 48px;}
+  .page-hero-inner{grid-template-columns:1fr;gap:30px;}
+  main{padding:64px 20px 82px;}
+  .section-head,.service-group-head{grid-template-columns:1fr;gap:14px;}
+  .service-grid,.price-grid,.process-steps-main{grid-template-columns:1fr 1fr;}
+  .prep-grid,.footer-inner{grid-template-columns:1fr;}
+  footer{padding:44px 20px 24px;}
+  .contact-cta{padding:56px 20px;}
+}
+@media(max-width:560px){
+  .page-hero h1{font-size:31px;}
+  .service-grid,.price-grid,.process-steps-main{grid-template-columns:1fr;}
+  .service-card{min-height:168px;}
+}
 </style>
 </head>
 <body>
 <header>
   <div class="logo"><a href="index.html"><div class="text">WAKU DESIGN<small>Designing for Classical Music</small></div></a></div>
   <nav><ul>
-    <li><a href="services.html">サービス</a></li>
+    <li class="nav-service">
+      <a href="services.html">サービス</a>
+      <ul class="nav-submenu" aria-label="サービス詳細">
+        <li><a href="service-concert.html">フライヤー・プログラム</a></li>
+        <li><a href="service-web.html">Webサイト・公演LP</a></li>
+        <li><a href="service-photo.html">コンサート記録写真</a></li>
+        <li><a href="services.html#activity">SNS・名刺・その他</a></li>
+      </ul>
+    </li>
     <li><a href="works.html">実績</a></li>
     <li><a href="about.html">わたしについて</a></li>
     <li><a href="concerts.html">コンサート情報</a></li>
@@ -169,6 +170,9 @@
   <button class="ov-close" id="navClose" aria-label="閉じる">×</button>
   <ul>
     <li><a href="services.html">サービス</a></li>
+    <li class="ov-sub"><a href="service-concert.html">フライヤー・プログラム</a></li>
+    <li class="ov-sub"><a href="service-web.html">Webサイト・公演LP</a></li>
+    <li class="ov-sub"><a href="service-photo.html">コンサート記録写真</a></li>
     <li><a href="works.html">実績</a></li>
     <li><a href="about.html">わたしについて</a></li>
     <li><a href="concerts.html">コンサート情報</a></li>
@@ -180,106 +184,180 @@
     <div>
       <p class="eyebrow">Services</p>
       <h1>サービス・料金</h1>
+      <p class="hero-lead">演奏会の告知物からWebサイト、記録写真、SNS素材まで。必要なものを一つずつ選べるように、用途別に整理しました。初めての方でも、まずは「何を頼みたいか」から見つけられます。</p>
     </div>
-    <a class="back-link" href="index.html">← トップに戻る</a>
+    <div class="hero-note">
+      <strong>迷ったら、演奏会の日付だけで大丈夫です。</strong>
+      <p>時期・会場・やりたい雰囲気を聞きながら、優先順位と制作物を一緒に決めます。</p>
+      <a href="index.html#contact">制作を相談する →</a>
+    </div>
   </div>
 </section>
 <main>
 
-  <!-- サービスメニュー -->
-  <div class="svc-menu reveal">
-
-    <div class="svc-menu-row" id="concert">
-      <div class="svc-menu-num">01</div>
-      <div class="svc-menu-info">
-        <h2>コンサートデザイン</h2>
-        <span class="svc-sub">Concert Design — Flyer / Program / Ticket</span>
-        <p class="svc-desc">フライヤー・プログラム冊子・チケットを一貫してデザイン。コンセプトの言語化からお手伝いします。</p>
+  <section class="service-map reveal">
+    <div class="section-head">
+      <div>
+        <p class="section-label">Service Menu</p>
+        <h2>依頼できるもの</h2>
       </div>
-      <div class="svc-menu-price">
-        <div class="price">¥10,000〜</div>
-        <a class="svc-cta" href="service-concert.html">詳しく見る →</a>
-      </div>
+      <p>音楽専科のように、最初の入口で迷わない構成を意識しています。演奏会に必要な制作物と、活動を広げるための制作物を分けて、目的から選べるようにしました。</p>
     </div>
 
-    <div class="svc-menu-row" id="web">
-      <div class="svc-menu-num">02</div>
-      <div class="svc-menu-info">
-        <h2>Webサイト・LP制作</h2>
-        <span class="svc-sub">Website · Landing Page</span>
-        <p class="svc-desc">演奏家・音楽事務所のホームページ、公演特設LP。スマホ対応・管理しやすい構成でご提案。</p>
+    <div class="service-groups">
+      <section class="service-group" id="concert">
+        <div class="service-group-head">
+          <div>
+            <p class="num">01 / Concert</p>
+            <h3>演奏会をつくる</h3>
+          </div>
+          <p>公演の第一印象になる告知物から、当日の配布物、予約導線まで。演奏会に必要な制作物をまとめて整えます。</p>
+        </div>
+        <div class="service-grid">
+          <a class="service-card" href="service-concert.html">
+            <div><small>Flyer</small><h4>フライヤー・ポスター</h4><p>写真や曲目の雰囲気を生かし、公演の魅力が伝わるメインビジュアルを制作します。</p><span class="price">A4片面 ¥10,000〜</span></div>
+            <div class="arrow">詳しく見る →</div>
+          </a>
+          <a class="service-card" href="service-concert.html">
+            <div><small>Program</small><h4>プログラム冊子</h4><p>曲目解説、プロフィール、あいさつ文を読みやすく整えます。</p><span class="price">8P ¥22,000〜</span></div>
+            <div class="arrow">詳しく見る →</div>
+          </a>
+          <a class="service-card" href="service-concert.html">
+            <div><small>Ticket</small><h4>チケット</h4><p>フライヤーと統一感のあるデザインで、当日までの体験を揃えます。</p><span class="price">1種類 ¥8,000〜</span></div>
+            <div class="arrow">詳しく見る →</div>
+          </a>
+          <a class="service-card" href="service-web.html">
+            <div><small>Website</small><h4>公演LP・Webサイト</h4><p>公演情報、予約リンク、出演者プロフィールをスマホで見やすくまとめます。</p><span class="price">LP ¥30,000〜</span></div>
+            <div class="arrow">詳しく見る →</div>
+          </a>
+        </div>
+      </section>
+
+      <section class="service-group" id="activity">
+        <div class="service-group-head">
+          <div>
+            <p class="num">02 / Activity</p>
+            <h3>音楽活動を広げる</h3>
+          </div>
+          <p>演奏会の前後に必要になる見せ方も、活動の雰囲気に合わせて制作します。単発でも、継続的な相談でも大丈夫です。</p>
+        </div>
+        <div class="service-grid">
+          <a class="service-card" href="service-photo.html">
+            <div><small>Photo</small><h4>コンサート記録写真</h4><p>本番、リハーサル、舞台裏の空気を自然に残します。</p><span class="price">2時間 ¥20,000〜</span></div>
+            <div class="arrow">詳しく見る →</div>
+          </a>
+          <a class="service-card" href="index.html#contact">
+            <div><small>SNS</small><h4>SNS投稿画像</h4><p>告知、リマインド、終演報告まで、使いやすい画像を制作します。</p><span class="price">お見積もり</span></div>
+            <div class="arrow">相談する →</div>
+          </a>
+          <a class="service-card" href="index.html#contact">
+            <div><small>Identity</small><h4>名刺・ロゴ</h4><p>プロフィールや演奏活動の印象を揃える小さなツールも整えます。</p><span class="price">お見積もり</span></div>
+            <div class="arrow">相談する →</div>
+          </a>
+          <a class="service-card" href="index.html#contact">
+            <div><small>Other</small><h4>CD・動画まわり</h4><p>ジャケット、YouTubeサムネイル、配信告知など単発制作も承ります。</p><span class="price">お見積もり</span></div>
+            <div class="arrow">相談する →</div>
+          </a>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <section class="price-guide reveal">
+    <div class="section-head">
+      <div>
+        <p class="section-label">Price Guide</p>
+        <h2>料金の目安</h2>
       </div>
-      <div class="svc-menu-price">
-        <div class="price">お見積もり</div>
-        <a class="svc-cta" href="service-web.html">詳しく見る →</a>
+      <p>金額を先に見たい方のために、よくある依頼だけを抜き出しています。複数まとめて依頼する場合は、内容に合わせて調整します。</p>
+    </div>
+    <div class="price-grid">
+      <div class="price-item"><p class="cat">Flyer</p><h3>A4片面フライヤー</h3><p class="amount">¥10,000〜</p><p>PDF・JPGデータ納品。印刷用データまで整えます。</p></div>
+      <div class="price-item"><p class="cat">Program</p><h3>プログラム冊子</h3><p class="amount">¥22,000〜</p><p>8ページから。曲目解説やプロフィールを読みやすく編集します。</p></div>
+      <div class="price-item"><p class="cat">Website</p><h3>公演LP</h3><p class="amount">¥30,000〜</p><p>公演情報、予約導線、出演者情報を1ページに整理します。</p></div>
+      <div class="price-item"><p class="cat">Photo</p><h3>コンサート記録写真</h3><p class="amount">¥20,000〜</p><p>本番のみの短時間撮影から、リハーサル込みまで対応します。</p></div>
+      <div class="price-item"><p class="cat">Website</p><h3>基本ホームページ</h3><p class="amount">¥80,000〜</p><p>プロフィール、実績、お問合せなどを含む基本構成です。</p></div>
+      <div class="price-item"><p class="cat">Set</p><h3>まとめて制作</h3><p class="amount">個別見積</p><p>フライヤー、プログラム、Web、写真を同じ方向性で揃えます。</p></div>
+    </div>
+  </section>
+
+  <section class="prep-section reveal">
+    <div class="section-head">
+      <div>
+        <p class="section-label">Before Order</p>
+        <h2>相談前にあると助かるもの</h2>
+      </div>
+      <p>全部そろっていなくても大丈夫です。足りないものを一緒に確認できるように、最初に見る項目をまとめています。</p>
+    </div>
+    <div class="prep-grid">
+      <div class="prep-card">
+        <h3>演奏会まわり</h3>
+        <ul>
+          <li>公演日、会場、開演時間</li>
+          <li>出演者名、曲目、チケット情報</li>
+          <li>使いたい写真や過去のフライヤー</li>
+          <li>予約フォームやチケット販売ページ</li>
+        </ul>
+      </div>
+      <div class="prep-card">
+        <h3>活動・プロフィールまわり</h3>
+        <ul>
+          <li>プロフィール文、活動歴、実績</li>
+          <li>Instagram、YouTube、公式リンク</li>
+          <li>好きな雰囲気、避けたい雰囲気</li>
+          <li>公開したい時期とご予算の目安</li>
+        </ul>
       </div>
     </div>
+  </section>
 
-    <div class="svc-menu-row" id="photo">
-      <div class="svc-menu-num">03</div>
-      <div class="svc-menu-info">
-        <h2>コンサート記録写真</h2>
-        <span class="svc-sub">Concert Photography</span>
-        <p class="svc-desc">本番中・リハーサル・楽屋まで、演奏者の表情と空気感を残す記録撮影。</p>
+  <section class="shared-process reveal">
+    <div class="section-head">
+      <div>
+        <p class="section-label">Flow</p>
+        <h2>制作の流れ</h2>
       </div>
-      <div class="svc-menu-price">
-        <div class="price">お見積もり</div>
-        <a class="svc-cta" href="service-photo.html">詳しく見る →</a>
-      </div>
+      <p>最初に全部を決めきる必要はありません。相談しながら、必要な制作物と進め方を整理します。</p>
     </div>
-
-    <div class="svc-menu-row" id="sns">
-      <div class="svc-menu-num">04</div>
-      <div class="svc-menu-info">
-        <h2>SNS素材・その他</h2>
-        <span class="svc-sub">SNS · CD Jacket · Thumbnail · Others</span>
-        <p class="svc-desc">SNS投稿テンプレート、YouTubeサムネ、CDジャケット、名刺、ロゴ。単発でもお気軽に。</p>
-      </div>
-      <div class="svc-menu-price">
-        <div class="price">お見積もり</div>
-        <a class="svc-cta" href="index.html#contact">ご相談 →</a>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- 制作の流れ（共通） -->
-  <div class="shared-process reveal">
-    <div class="process-head-main">制作の流れ</div>
     <div class="process-steps-main">
-      <div class="step"><span class="step-num">01</span><div><h4>ご相談</h4><p>フォームまたはInstagram DMよりご連絡ください。</p></div></div>
-      <div class="step"><span class="step-num">02</span><div><h4>お見積もり</h4><p>ご要望・ご予算に合わせたプランをご提案します。</p></div></div>
-      <div class="step"><span class="step-num">03</span><div><h4>素材のご準備</h4><p>テキスト・写真・ロゴデータをお送りください。</p></div></div>
-      <div class="step"><span class="step-num">04</span><div><h4>デザイン提案</h4><p>テーマやご要望に沿ってデザインを制作します。</p></div></div>
-      <div class="step"><span class="step-num">05</span><div><h4>修正・確定</h4><p>ご意見をもとに修正し、デザインを最終決定します。</p></div></div>
-      <div class="step"><span class="step-num">06</span><div><h4>納品・お支払い</h4><p>ご希望の形式で納品。確認後にお支払いをお願いします。</p></div></div>
+      <div class="step"><span class="step-num">Step 01</span><h4>相談</h4><p>目的、時期、ご予算を簡単に確認します。</p></div>
+      <div class="step"><span class="step-num">Step 02</span><h4>整理</h4><p>必要な制作物と優先順位を一緒に決めます。</p></div>
+      <div class="step"><span class="step-num">Step 03</span><h4>制作</h4><p>方向性を共有しながらデザインを進めます。</p></div>
+      <div class="step"><span class="step-num">Step 04</span><h4>納品</h4><p>印刷・公開・告知に使える形でお渡しします。</p></div>
     </div>
-  </div>
+  </section>
 
-  <!-- よくある質問 -->
-  <div class="faq-section reveal">
-    <h2 style="font-size:clamp(18px,2vw,24px);font-weight:500;letter-spacing:0.14em;margin-bottom:36px;">よくある質問</h2>
-    <div class="faq-item">
-      <div class="faq-q">初めて依頼するのですが、大丈夫ですか？</div>
-      <p class="faq-a">もちろんです。デザインを依頼したことがない方でも丁寧にご対応します。まずはお気軽にご相談ください。</p>
+  <section class="faq-section reveal">
+    <div class="section-head">
+      <div>
+        <p class="section-label">FAQ</p>
+        <h2>よくある質問</h2>
+      </div>
+      <p>依頼前に不安になりやすいことを、短くまとめています。</p>
     </div>
-    <div class="faq-item">
-      <div class="faq-q">日程が迫っていますが対応できますか？</div>
-      <p class="faq-a">状況によりますが、お急ぎの場合もまずはご相談ください。できる限り対応いたします。</p>
+    <div class="faq-list">
+      <details>
+        <summary>初めて依頼するのですが、大丈夫ですか？</summary>
+        <p class="faq-a">もちろんです。制作物の種類や進め方から一緒に整理します。日程、会場、やりたい雰囲気だけでもご相談いただけます。</p>
+      </details>
+      <details>
+        <summary>日程が迫っていますが対応できますか？</summary>
+        <p class="faq-a">状況によりますが、お急ぎの場合もまずはご相談ください。優先順位を決めて、間に合う形をご提案します。</p>
+      </details>
+      <details>
+        <summary>素材や写真がまだ手元にない場合は？</summary>
+        <p class="faq-a">撮影のご提案や、写真を使わないデザイン案などをご提案できます。必要な素材もこちらで整理します。</p>
+      </details>
+      <details>
+        <summary>複数の制作物をまとめてお願いできますか？</summary>
+        <p class="faq-a">可能です。フライヤー、プログラム、Web、SNS画像などを同じ方向性で揃えると、告知全体の印象が整います。</p>
+      </details>
+      <details>
+        <summary>支払い方法を教えてください。</summary>
+        <p class="faq-a">銀行振込またはクレジットカード払いに対応しています。基本的には納品確認後に請求書をお送りします。</p>
+      </details>
     </div>
-    <div class="faq-item">
-      <div class="faq-q">素材（写真など）が手元にない場合は？</div>
-      <p class="faq-a">撮影のご提案や、フリー素材の活用など対応策をご提案します。</p>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">修正は何回までできますか？</div>
-      <p class="faq-a">基本的に無制限です。納得いただけるまで丁寧に対応します。</p>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">支払い方法を教えてください。</div>
-      <p class="faq-a">銀行振込またはクレジットカード払いに対応。納品完了後に請求書をお送りします。</p>
-    </div>
-  </div>
+  </section>
 
 </main>
 
