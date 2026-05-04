@@ -76,9 +76,15 @@
   }
 
   /* IMAGE COL */
+  .work-image-col { display: flex; flex-direction: column; gap: 20px; }
   .work-image-col img {
     width: 100%; display: block;
     box-shadow: 0 12px 48px rgba(42,26,31,0.14);
+  }
+  .flyer-label {
+    font-family: var(--serif-en); font-style: italic;
+    font-size: 10px; letter-spacing: 0.32em; color: var(--c-sub);
+    margin-bottom: 6px;
   }
 
   /* INFO COL */
@@ -215,7 +221,14 @@
   <div class="work-detail-layout">
 
     <div class="work-image-col">
-      <img src="images/flyer-ota-so.jpg" alt="太田光 &amp; 曾朗基 Flute &amp; Guitar スプリング・コンサート" />
+      <div>
+        <div class="flyer-label">Front</div>
+        <img src="images/flyer-ota-so.jpg" alt="太田光 &amp; 曾朗基 Flute &amp; Guitar スプリング・コンサート 表面" />
+      </div>
+      <div>
+        <div class="flyer-label">Back</div>
+        <img src="images/flyer-ota-so-back.jpg" alt="太田光 &amp; 曾朗基 Flute &amp; Guitar スプリング・コンサート 裏面" />
+      </div>
     </div>
 
     <div class="work-info-col">
