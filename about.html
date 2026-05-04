@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>わたしについて | WAKU DESIGN</title>
+<style>
+:root{color-scheme:light;--c-red:#B7402E;--c-red-deep:#8E2F22;--c-ink:#2A1A1F;--c-ink-soft:#4A323A;--c-cream:#F7EFE0;--c-cream-deep:#EBDFC5;--c-bg:#FBF7EE;--c-paper:#FFFFFF;--c-line:#E2DAC4;--c-sub:#6B5A4F;--serif-jp:'Hiragino Mincho ProN','Yu Mincho','YuMincho','MS PMincho',serif;--serif-en:'Hoefler Text','Garamond','Times New Roman',serif;}
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--serif-jp);color:var(--c-ink);background:var(--c-bg);line-height:1.95;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  a{color:inherit;text-decoration:none;}
+  header{position:sticky;top:0;padding:18px 44px;background:rgba(251,247,238,0.96);backdrop-filter:saturate(180%) blur(10px);z-index:100;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--c-line);}
+  .logo .text{font-family:var(--serif-jp);font-size:17px;font-weight:600;letter-spacing:0.22em;color:var(--c-ink);line-height:1;}
+  .logo .text small{display:block;font-family:var(--serif-en);font-size:9px;letter-spacing:0.32em;color:var(--c-sub);margin-top:6px;font-style:italic;font-weight:400;}
+  nav ul{list-style:none;display:flex;gap:28px;align-items:center;}
+  nav a{font-size:12px;letter-spacing:0.18em;transition:color 0.3s;}
+  nav a:not(.cta):hover{color:var(--c-red);}
+  nav .cta{border:1px solid var(--c-ink);color:var(--c-ink);padding:10px 22px;transition:all 0.3s;letter-spacing:0.2em;}
+  nav .cta:hover{background:var(--c-ink);color:var(--c-bg);}
+  .page-hero{padding:80px 44px 64px;border-bottom:1px solid var(--c-line);}
+  .page-hero-inner{max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;}
+  .page-hero .eyebrow{font-family:var(--serif-en);font-style:italic;font-size:11px;letter-spacing:0.36em;color:var(--c-red);margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+  .page-hero .eyebrow::before{content:'';width:24px;height:1px;background:var(--c-red);}
+  .page-hero h1{font-family:var(--serif-jp);font-size:clamp(28px,3.6vw,44px);font-weight:500;letter-spacing:0.12em;color:var(--c-ink);line-height:1.3;}
+  .page-hero .back-link{font-family:var(--serif-en);font-style:italic;font-size:12px;letter-spacing:0.22em;color:var(--c-sub);transition:color 0.3s;}
+  .page-hero .back-link:hover{color:var(--c-ink);}
+  main{max-width:1240px;margin:0 auto;padding:80px 44px 120px;}
+  .sec-label{font-family:var(--serif-en);font-style:italic;font-size:11px;letter-spacing:0.36em;color:var(--c-red);display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+  .sec-label::before{content:'';width:20px;height:1px;background:var(--c-red);}
+  .more-link{display:inline-block;padding:12px 32px;border:1px solid var(--c-ink);font-size:12px;letter-spacing:0.24em;transition:all 0.3s;}
+  .more-link:hover{background:var(--c-ink);color:var(--c-bg);}
+  footer{background:var(--c-bg);color:var(--c-ink);padding:64px 44px 28px;border-top:1px solid var(--c-line);}
+  .footer-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:56px;align-items:start;}
+  footer .name{font-family:var(--serif-jp);font-size:17px;letter-spacing:0.22em;font-weight:600;}
+  footer .name small{display:block;font-family:var(--serif-en);font-style:italic;font-size:10px;letter-spacing:0.32em;color:var(--c-sub);margin-top:8px;font-weight:400;}
+  footer .tag{font-size:12px;line-height:2;color:var(--c-sub);margin-top:18px;max-width:320px;}
+  footer h5{font-family:var(--serif-en);font-style:italic;font-size:11px;letter-spacing:0.34em;margin-bottom:20px;color:var(--c-red);}
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  footer ul a{font-size:12px;letter-spacing:0.1em;color:var(--c-ink);transition:color 0.3s;}
+  footer ul a:hover{color:var(--c-red);}
+  footer .bottom{border-top:1px solid var(--c-line);margin-top:48px;padding-top:22px;text-align:center;color:var(--c-sub);font-size:10px;letter-spacing:0.32em;font-family:var(--serif-en);font-style:italic;}
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.9s ease,transform 0.9s ease;}
+  .reveal.visible{opacity:1;transform:none;}
+
+  .about-layout{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:start;}
+  .about-photo{aspect-ratio:3/4;background:var(--c-cream-deep);overflow:hidden;position:relative;}
+  .about-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+  .about-photo .cap{position:absolute;bottom:12px;right:14px;font-family:var(--serif-en);font-style:italic;font-size:9px;letter-spacing:0.24em;color:rgba(251,247,238,0.85);background:rgba(42,26,31,0.5);padding:3px 8px;}
+  .about-name{font-family:var(--serif-jp);font-size:clamp(26px,3vw,34px);font-weight:500;letter-spacing:0.1em;line-height:1.4;margin-bottom:4px;}
+  .about-name-en{font-family:var(--serif-en);font-style:italic;font-size:15px;color:var(--c-sub);letter-spacing:0.18em;display:block;margin-bottom:28px;}
+  .about-tag{font-size:16px;letter-spacing:0.1em;font-weight:500;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--c-line);}
+  .about-text p{font-size:14px;line-height:2.2;color:var(--c-ink-soft);margin-bottom:16px;}
+  .about-fact{margin-top:32px;border-top:1px solid var(--c-line);}
+  .about-fact .row{display:grid;grid-template-columns:110px 1fr;padding:12px 0;border-bottom:1px solid var(--c-line);font-size:13px;}
+  .about-fact .k{font-family:var(--serif-en);font-style:italic;font-size:10px;letter-spacing:0.28em;color:var(--c-sub);padding-top:3px;}
+  .commitment{padding:80px 44px;background:var(--c-paper);border-top:1px solid var(--c-line);}
+  .commitment-inner{max-width:1100px;margin:0 auto;}
+  .commitment-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-top:48px;}
+  .commitment-item .num{font-family:var(--serif-en);font-style:italic;font-size:28px;color:var(--c-red);margin-bottom:16px;}
+  .commitment-item h3{font-size:15px;font-weight:500;letter-spacing:0.1em;margin-bottom:12px;}
+  .commitment-item p{font-size:13px;line-height:2;color:var(--c-ink-soft);}
+  @media(max-width:880px){
+    header{padding:14px 20px;}nav ul{display:none;}
+    main{padding:48px 20px 80px;}
+    .about-layout{grid-template-columns:1fr;gap:40px;}
+    .commitment{padding:60px 20px;}
+    .commitment-grid{grid-template-columns:1fr;gap:32px;}
+    .page-hero{padding:48px 20px 40px;}
+    footer{padding:48px 20px 24px;}.footer-inner{grid-template-columns:1fr;gap:32px;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><a href="index.html"><div class="text">WAKU DESIGN<small>Designing for Classical Music</small></div></a></div>
+  <nav><ul>
+    <li><a href="services.html">サービス</a></li>
+    <li><a href="works.html">実績</a></li>
+    <li><a href="about.html">わたしについて</a></li>
+    <li><a href="concerts.html">コンサート情報</a></li>
+    <li><a class="cta" href="index.html#contact">お問合せ</a></li>
+  </ul></nav>
+</header>
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div>
+      <p class="eyebrow">About the Designer</p>
+      <h1>わたしについて</h1>
+    </div>
+    <a class="back-link" href="index.html">← トップに戻る</a>
+  </div>
+</section>
+<main>
+  <div class="about-layout reveal">
+    <div class="about-photo">
+      <img src="images/portrait.jpg" alt="桑田 一哉" />
+      <span class="cap">PORTRAIT · 2026</span>
+    </div>
+    <div class="about-text">
+      <div class="sec-label">Designer</div>
+      <h2 class="about-name">桑田 一哉</h2>
+      <span class="about-name-en">Kazuya Kuwata</span>
+      <p class="about-tag">音楽とデザイン、両方の現場から。</p>
+      <p>音大で研鑽を積みながら、クラシック音楽に特化したデザイン事業 WAKU DESIGN を運営。フライヤー・プログラム・Web・記録写真まで、音楽家の活動に必要なビジュアルを一貫して手がけています。</p>
+      <p>演奏する側だからこそわかる「音の佇まい」と、デザインの力。両方を生かして、音楽家一人ひとりの魅力が長く手元に残るかたちで届くよう心がけています。</p>
+      <p>派手な装飾よりも、長く手元に置きたくなる静けさを大切にしています。演奏者のコンセプトや楽曲の背景を丁寧に汲み取り、音楽の佇まいにふさわしいデザインをひとつひとつ組み立てています。</p>
+      <div class="about-fact">
+        <div class="row"><div class="k">— FIELD</div><div class="v">Classical Music Design</div></div>
+        <div class="row"><div class="k">— SINCE</div><div class="v">2024</div></div>
+        <div class="row"><div class="k">— BASE</div><div class="v">大阪 / Osaka, Japan</div></div>
+        <div class="row"><div class="k">— STUDY</div><div class="v">音楽大学 在学中</div></div>
+        <div class="row"><div class="k">— TOOLS</div><div class="v">Adobe Illustrator / Photoshop / InDesign</div></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<section class="commitment">
+  <div class="commitment-inner">
+    <div class="sec-label reveal">Commitment</div>
+    <h2 style="font-size:clamp(22px,2.4vw,28px);font-weight:500;letter-spacing:0.14em;" class="reveal">WAKU DESIGNのこだわり</h2>
+    <div class="commitment-grid">
+      <div class="commitment-item reveal">
+        <div class="num">01</div>
+        <h3>音楽を知るデザイナーが制作</h3>
+        <p>曲のイメージ、演奏会のテーマ、楽器の特性——音楽を学ぶ側として、演奏家と同じ言語で話せます。説明に時間をかけずに、本質的なデザインの議論ができます。</p>
+      </div>
+      <div class="commitment-item reveal">
+        <div class="num">02</div>
+        <h3>音楽家を魅力的に見せる写真の扱い</h3>
+        <p>アーティスト写真はデザインの核心です。一人ひとりの持つ空気感を最大限に引き出すよう、トリミング・配置・色調を丁寧に整えます。</p>
+      </div>
+      <div class="commitment-item reveal">
+        <div class="num">03</div>
+        <h3>クラシックモダンなデザイン</h3>
+        <p>古くさくなりがちなクラシック音楽のビジュアル。エレガントな雰囲気を大切にしながら、モダンな要素を取り入れ、若い層にも届くデザインを目指しています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="text-align:center;padding:60px 20px;">
+  <a class="more-link" href="index.html#contact">制作のご相談はこちら →</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="name">WAKU DESIGN<small>Designing for Classical Music</small></div>
+      <p class="tag">クラシック音楽家のためのデザインクリエイティブ。フライヤー・Web・写真まで一貫してお手伝いします。</p>
+    </div>
+    <div>
+      <h5>— Site Map</h5>
+      <ul>
+        <li><a href="services.html">サービス</a></li>
+        <li><a href="works.html">制作実績</a></li>
+        <li><a href="about.html">わたしについて</a></li>
+        <li><a href="concerts.html">コンサート情報</a></li>
+        <li><a href="index.html#contact">お問い合わせ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>— Social & Legal</h5>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">プライバシーポリシー</a></li>
+        <li><a href="#">特定商取引法に基づく表記</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="bottom">© 2026 — WAKU DESIGN — KAZUYA KUWATA</div>
+</footer>
+<script>
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
