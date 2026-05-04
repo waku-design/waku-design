@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="コンサートフライヤーA4片面¥10,000〜。プログラム冊子・チケットのデザインも承ります。修正無制限・データ納品。"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="WAKU DESIGN"/>
+<meta property="og:title" content="コンサートデザイン（料金・詳細）| WAKU DESIGN"/>
+<meta property="og:description" content="コンサートフライヤーA4片面¥10,000〜。プログラム冊子・チケットのデザインも承ります。"/>
+<meta property="og:url" content="https://waku-design.vercel.app/service-concert.html"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<title>コンサートデザイン | WAKU DESIGN</title>
+<style>
+
+:root{color-scheme:light;--c-red:#B7402E;--c-red-deep:#8E2F22;--c-ink:#2A1A1F;--c-ink-soft:#4A323A;--c-cream:#F7EFE0;--c-cream-deep:#EBDFC5;--c-bg:#FBF7EE;--c-paper:#FFFFFF;--c-line:#E2DAC4;--c-sub:#6B5A4F;--serif-jp:'Hiragino Mincho ProN','Yu Mincho','YuMincho','MS PMincho',serif;--serif-en:'Hoefler Text','Garamond','Times New Roman',serif;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--serif-jp);color:var(--c-ink);background:var(--c-bg);line-height:1.95;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+
+/* ── Header ── */
+header{position:sticky;top:0;padding:18px 44px;background:rgba(251,247,238,0.96);backdrop-filter:saturate(180%) blur(10px);z-index:100;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--c-line);}
+.logo .text{font-family:var(--serif-jp);font-size:17px;font-weight:600;letter-spacing:0.22em;color:var(--c-ink);line-height:1;}
+.logo .text small{display:block;font-family:var(--serif-en);font-size:9px;letter-spacing:0.32em;color:var(--c-sub);margin-top:6px;font-style:italic;font-weight:400;}
+nav ul{list-style:none;display:flex;gap:28px;align-items:center;}
+nav a{font-size:12px;letter-spacing:0.18em;transition:color 0.3s;}
+nav a:not(.cta){position:relative;}
+nav a:not(.cta)::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--c-red);transition:width 0.3s ease;}
+nav a:not(.cta):hover::after{width:100%;}
+nav .cta{border:1px solid var(--c-ink);color:var(--c-ink);padding:10px 22px;transition:all 0.3s;letter-spacing:0.2em;}
+nav .cta:hover{background:var(--c-ink);color:var(--c-bg);}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px;flex-direction:column;gap:6px;}
+.nav-toggle span{display:block;width:24px;height:1.5px;background:var(--c-ink);transition:transform 0.3s,opacity 0.3s;}
+.nav-toggle.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
+.nav-toggle.open span:nth-child(2){opacity:0;}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
+.nav-overlay{position:fixed;inset:0;background:var(--c-bg);z-index:200;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:36px;opacity:0;pointer-events:none;transition:opacity 0.4s;}
+.nav-overlay.open{opacity:1;pointer-events:auto;}
+.nav-overlay .ov-logo{font-family:var(--serif-jp);font-size:15px;letter-spacing:0.3em;position:absolute;top:24px;left:44px;}
+.nav-overlay .ov-close{position:absolute;top:20px;right:40px;background:none;border:none;font-size:28px;cursor:pointer;color:var(--c-ink);}
+.nav-overlay ul{list-style:none;display:flex;flex-direction:column;align-items:center;gap:28px;}
+.nav-overlay ul a{font-size:clamp(18px,4vw,26px);letter-spacing:0.22em;color:var(--c-ink);}
+.nav-overlay .ov-cta-li a{border:1px solid var(--c-ink);padding:12px 36px;font-size:14px;letter-spacing:0.24em;}
+
+/* ── Page hero ── */
+.page-hero{padding:72px 44px 56px;border-bottom:1px solid var(--c-line);background:var(--c-paper);}
+.page-hero-inner{max-width:900px;margin:0 auto;}
+.breadcrumb{font-size:11px;letter-spacing:0.18em;color:var(--c-sub);margin-bottom:22px;display:flex;gap:10px;align-items:center;}
+.breadcrumb a{transition:color 0.2s;}
+.breadcrumb a:hover{color:var(--c-ink);}
+.breadcrumb span{color:var(--c-line);}
+.page-hero .eyebrow{font-family:var(--serif-en);font-style:italic;font-size:11px;letter-spacing:0.36em;color:var(--c-red);margin-bottom:14px;}
+.page-hero h1{font-size:clamp(26px,3.4vw,40px);font-weight:500;letter-spacing:0.12em;line-height:1.3;margin-bottom:20px;}
+.page-hero .lead{font-size:14px;line-height:2;color:var(--c-ink-soft);max-width:560px;}
+
+/* ── Use cases ── */
+.use-cases{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;}
+.use-tag{font-size:11px;letter-spacing:0.16em;padding:5px 14px;border:1px solid var(--c-line);color:var(--c-sub);}
+
+/* ── Main layout ── */
+main{max-width:900px;margin:0 auto;padding:64px 44px 100px;}
+.sec{margin-bottom:64px;}
+.sec-title{font-size:clamp(16px,2vw,20px);font-weight:500;letter-spacing:0.14em;margin-bottom:28px;padding-bottom:14px;border-bottom:2px solid var(--c-ink);}
+.sec-subtitle{font-size:13px;font-weight:500;letter-spacing:0.12em;margin-bottom:14px;color:var(--c-ink);}
+
+/* ── Price table ── */
+.price-block{margin-bottom:36px;border:1px solid var(--c-line);}
+.price-block-head{padding:16px 24px;background:var(--c-bg);border-bottom:1px solid var(--c-line);display:flex;justify-content:space-between;align-items:center;}
+.price-block-head h3{font-size:15px;letter-spacing:0.12em;font-weight:500;}
+.price-block-head .from{font-size:12px;color:var(--c-sub);}
+.price-row{display:flex;justify-content:space-between;align-items:baseline;padding:14px 24px;border-bottom:1px solid var(--c-line);}
+.price-row:last-child{border-bottom:none;}
+.price-row .label{font-size:13px;color:var(--c-ink-soft);}
+.price-row .amount{font-size:18px;font-weight:500;letter-spacing:0.04em;}
+.price-row .amount small{font-size:11px;font-weight:400;color:var(--c-sub);margin-left:4px;}
+
+/* ── Includes ── */
+.includes{background:var(--c-paper);border:1px solid var(--c-line);padding:22px 24px;margin-top:12px;}
+.includes-title{font-size:11px;letter-spacing:0.26em;color:var(--c-sub);margin-bottom:14px;}
+.includes-list{display:grid;grid-template-columns:repeat(2,1fr);gap:8px 24px;}
+.includes-list li{list-style:none;font-size:13px;line-height:1.6;display:flex;gap:10px;align-items:baseline;}
+.includes-list li::before{content:'✓';color:var(--c-red);font-size:11px;flex-shrink:0;}
+
+/* ── Option table ── */
+.option-table{width:100%;border-collapse:collapse;}
+.option-table th,.option-table td{padding:14px 20px;text-align:left;border-bottom:1px solid var(--c-line);font-size:13px;}
+.option-table th{font-weight:500;letter-spacing:0.1em;background:var(--c-bg);width:40%;}
+.option-table td{color:var(--c-ink-soft);}
+.option-table tr:last-child th,.option-table tr:last-child td{border-bottom:none;}
+
+/* ── Notes ── */
+.notes{margin-top:20px;}
+.notes li{list-style:none;font-size:12px;line-height:2;color:var(--c-sub);padding-left:1.2em;text-indent:-1.2em;}
+.notes li::before{content:'※ ';}
+
+/* ── Process steps ── */
+.process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.step-card{padding:22px 20px 20px;border:1px solid var(--c-line);background:var(--c-paper);}
+.step-card .s-num{font-family:var(--serif-en);font-style:italic;font-size:13px;letter-spacing:0.26em;color:var(--c-red);margin-bottom:10px;}
+.step-card h4{font-size:14px;font-weight:500;letter-spacing:0.1em;margin-bottom:8px;}
+.step-card p{font-size:12px;line-height:1.9;color:var(--c-sub);}
+
+/* ── FAQ ── */
+.faq-list{border-top:1px solid var(--c-line);}
+details{border-bottom:1px solid var(--c-line);}
+summary{padding:18px 0;cursor:pointer;font-size:14px;font-weight:500;letter-spacing:0.08em;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;}
+summary::after{content:'+';font-family:var(--serif-en);font-size:18px;font-weight:300;color:var(--c-red);flex-shrink:0;transition:transform 0.3s;}
+details[open] summary::after{transform:rotate(45deg);}
+.faq-a{padding:0 0 20px;font-size:13px;line-height:2;color:var(--c-ink-soft);}
+
+/* ── CTA block ── */
+.contact-cta{background:var(--c-ink);color:var(--c-bg);padding:72px 44px;text-align:center;}
+.contact-cta h3{font-size:clamp(18px,2.4vw,26px);letter-spacing:0.18em;font-weight:400;margin-bottom:14px;}
+.contact-cta p{font-size:13px;letter-spacing:0.14em;opacity:0.7;margin-bottom:36px;}
+.contact-cta a{display:inline-block;padding:14px 40px;border:1px solid var(--c-bg);font-size:12px;letter-spacing:0.28em;color:var(--c-bg);transition:background 0.3s,color 0.3s;}
+.contact-cta a:hover{background:var(--c-bg);color:var(--c-ink);}
+
+/* ── Footer ── */
+footer{background:var(--c-bg);color:var(--c-ink);padding:64px 44px 28px;border-top:1px solid var(--c-line);}
+.footer-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:56px;align-items:start;}
+footer .name{font-family:var(--serif-jp);font-size:17px;letter-spacing:0.22em;font-weight:600;}
+footer .name small{display:block;font-family:var(--serif-en);font-style:italic;font-size:10px;letter-spacing:0.32em;color:var(--c-sub);margin-top:8px;font-weight:400;}
+footer .tag{font-size:12px;line-height:2;color:var(--c-sub);margin-top:18px;max-width:320px;}
+footer h5{font-family:var(--serif-en);font-style:italic;font-size:11px;letter-spacing:0.34em;margin-bottom:20px;color:var(--c-red);}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+footer ul a{font-size:12px;letter-spacing:0.1em;color:var(--c-ink);transition:color 0.3s;}
+footer ul a:hover{color:var(--c-red);}
+footer .bottom{border-top:1px solid var(--c-line);margin-top:48px;padding-top:22px;text-align:center;color:var(--c-sub);font-size:10px;letter-spacing:0.32em;font-family:var(--serif-en);font-style:italic;}
+
+/* ── Mobile ── */
+@media(max-width:768px){
+  header{padding:16px 20px;}
+  nav ul{display:none;}
+  .nav-toggle{display:flex;}
+  .page-hero{padding:48px 20px 40px;}
+  main{padding:44px 20px 72px;}
+  .process-grid{grid-template-columns:1fr 1fr;}
+  .includes-list{grid-template-columns:1fr;}
+  .footer-inner{grid-template-columns:1fr;gap:36px;}
+  footer{padding:44px 20px 24px;}
+  .contact-cta{padding:56px 20px;}
+}
+@media(max-width:480px){
+  .process-grid{grid-template-columns:1fr;}
+  .price-row .amount{font-size:16px;}
+}
+
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><a href="index.html"><div class="text">WAKU DESIGN<small>Designing for Classical Music</small></div></a></div>
+  <nav><ul>
+    <li><a href="services.html">サービス</a></li>
+    <li><a href="works.html">実績</a></li>
+    <li><a href="about.html">わたしについて</a></li>
+    <li><a href="concerts.html">コンサート情報</a></li>
+    <li><a class="cta" href="index.html#contact">お問合せ</a></li>
+  </ul></nav>
+  <button class="nav-toggle" id="navToggle" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+</header>
+<div class="nav-overlay" id="navOverlay">
+  <span class="ov-logo">WAKU DESIGN</span>
+  <button class="ov-close" id="navClose" aria-label="閉じる">×</button>
+  <ul>
+    <li><a href="services.html">サービス</a></li>
+    <li><a href="works.html">実績</a></li>
+    <li><a href="about.html">わたしについて</a></li>
+    <li><a href="concerts.html">コンサート情報</a></li>
+    <li class="ov-cta-li"><a href="index.html#contact">お問合せ</a></li>
+  </ul>
+</div>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="breadcrumb"><a href="services.html">サービス一覧</a><span>/</span>コンサートデザイン</p>
+    <p class="eyebrow">Concert Design</p>
+    <h1>コンサートデザイン</h1>
+    <p class="lead">フライヤー・プログラム冊子・チケットを一貫してデザイン。演奏会のコンセプトを言語化するところからお手伝いします。音楽を知るデザイナーだからこそできる、演奏家の想いが伝わるビジュアルを制作します。</p>
+    <div class="use-cases">
+      <span class="use-tag">コンサート</span>
+      <span class="use-tag">演奏会</span>
+      <span class="use-tag">発表会</span>
+      <span class="use-tag">リサイタル</span>
+      <span class="use-tag">室内楽</span>
+      <span class="use-tag">オーケストラ</span>
+      <span class="use-tag">合唱</span>
+    </div>
+  </div>
+</section>
+
+<main>
+
+  <!-- 料金プラン -->
+  <div class="sec">
+    <h2 class="sec-title">料金プラン</h2>
+
+    <h3 class="sec-subtitle">フライヤー・ポスター</h3>
+    <div class="price-block">
+      <div class="price-block-head"><h3>Flyer &amp; Poster</h3><span class="from">データ納品（PDF + JPG）</span></div>
+      <div class="price-row"><span class="label">A4片面（表のみ）</span><span class="amount">¥10,000<small>税込</small></span></div>
+      <div class="price-row"><span class="label">A4両面（表＋裏）</span><span class="amount">¥18,000<small>税込</small></span></div>
+      <div class="price-row"><span class="label">B5・A5片面</span><span class="amount">¥10,000<small>税込</small></span></div>
+      <div class="price-row"><span class="label">A3ポスターへリサイズ（フライヤーとセット）</span><span class="amount">+¥3,000<small>税込</small></span></div>
+    </div>
+
+    <h3 class="sec-subtitle">プログラム冊子</h3>
+    <div class="price-block">
+      <div class="price-block-head"><h3>Program Booklet</h3><span class="from">データ納品（PDF）</span></div>
+      <div class="price-row"><span class="label">8ページ（表紙＋中4ページ）</span><span class="amount">¥22,000<small>税込</small></span></div>
+      <div class="price-row"><span class="label">12ページ（表紙＋中8ページ）</span><span class="amount">¥30,000<small>税込</small></span></div>
+      <div class="price-row"><span class="label">16ページ（表紙＋中12ページ）</span><span class="amount">¥38,000<small>税込</small></span></div>
+    </div>
+
+    <h3 class="sec-subtitle">チケット</h3>
+    <div class="price-block">
+      <div class="price-block-head"><h3>Ticket</h3><span class="from">データ納品（PDF + JPG）</span></div>
+      <div class="price-row"><span class="label">A7サイズ・1種類</span><span class="amount">¥8,000<small>税込</small></span></div>
+      <div class="price-row"><span class="label">追加1種類ごと</span><span class="amount">+¥3,000<small>税込</small></span></div>
+    </div>
+
+    <h3 class="sec-subtitle">セット割引</h3>
+    <div class="price-block">
+      <div class="price-block-head"><h3>Set Discount</h3><span class="from">複数点まとめてご依頼の場合</span></div>
+      <div class="price-row"><span class="label">フライヤー＋プログラム冊子</span><span class="amount">−¥3,000<small>税込</small></span></div>
+      <div class="price-row"><span class="label">フライヤー＋チケット</span><span class="amount">−¥2,000<small>税込</small></span></div>
+      <div class="price-row"><span class="label">フライヤー＋プログラム＋チケット（3点セット）</span><span class="amount">−¥6,000<small>税込</small></span></div>
+    </div>
+
+    <div class="includes">
+      <p class="includes-title">— すべてのプランに含まれるもの</p>
+      <ul class="includes-list">
+        <li>修正：無制限（納得いただけるまで）</li>
+        <li>納期：初校まで約1週間</li>
+        <li>データ納品：PDF + JPG</li>
+        <li>支払：銀行振込 / クレジットカード</li>
+        <li>コンセプト相談（メール・DM）</li>
+        <li>納品確認後のお支払い</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- オプション -->
+  <div class="sec">
+    <h2 class="sec-title">オプション</h2>
+    <table class="option-table">
+      <tr><th>印刷手配</th><td>印刷会社への発注・納品手配。印刷費＋手数料でご対応。</td></tr>
+      <tr><th>Illustratorデータ納品</th><td>元データ（ai形式）のお渡し。＋¥10,000</td></tr>
+      <tr><th>急ぎ対応（翌日初校）</th><td>翌営業日に初校提出。＋¥10,000（対応可能な場合のみ）</td></tr>
+      <tr><th>SNS用リサイズ</th><td>正方形・縦長など掲載内容が同じ場合。＋¥3,000〜</td></tr>
+    </table>
+    <ul class="notes">
+      <li>撮影・文章の作成は含まれません。</li>
+      <li>複雑な手書き地図・イラスト作成は別途お見積もりになります。</li>
+      <li>デザイン案は1案のご提案です。複数案ご希望の場合はご相談ください。</li>
+    </ul>
+  </div>
+
+  <!-- 制作の流れ -->
+  <div class="sec">
+    <h2 class="sec-title">制作の流れ</h2>
+    <div class="process-grid">
+      <div class="step-card"><p class="s-num">STEP 01</p><h4>ご相談</h4><p>フォームまたはInstagram DMよりご連絡ください。日程・ご予算・イメージをざっくり共有いただければOKです。</p></div>
+      <div class="step-card"><p class="s-num">STEP 02</p><h4>お見積もり</h4><p>ご要望に合ったプランと金額をご提案。不明点があればこの段階でご確認ください。</p></div>
+      <div class="step-card"><p class="s-num">STEP 03</p><h4>素材のご準備</h4><p>公演情報・出演者プロフィール・写真・ロゴをメールでお送りください。揃っていない部分はご相談を。</p></div>
+      <div class="step-card"><p class="s-num">STEP 04</p><h4>デザイン提案</h4><p>演奏会のテーマやご要望に沿ってデザインを制作し、ご提案します。</p></div>
+      <div class="step-card"><p class="s-num">STEP 05</p><h4>修正・確定</h4><p>ご意見をもとに修正を重ね、デザインを最終決定します。修正は無制限です。</p></div>
+      <div class="step-card"><p class="s-num">STEP 06</p><h4>納品・お支払い</h4><p>PDF/JPGデータを納品。ご確認いただけましたら請求書をお送りします。</p></div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="sec">
+    <h2 class="sec-title">よくある質問</h2>
+    <div class="faq-list">
+      <details>
+        <summary>初めてデザインを依頼するのですが、大丈夫ですか？</summary>
+        <p class="faq-a">はい、大丈夫です。デザインを頼んだことがない方でも、一緒に考えながら進めます。「こんな雰囲気にしたい」「どんな写真を使えばいい？」など、どんな小さな疑問もお気軽にご相談ください。</p>
+      </details>
+      <details>
+        <summary>本番まで日程が迫っていますが対応できますか？</summary>
+        <p class="faq-a">状況によりますが、まずはご相談ください。お急ぎの場合は急ぎ対応オプション（+¥10,000）でご対応できる場合があります。本番3週間前が理想的ですが、スケジュール確認の上できる限り対応いたします。</p>
+      </details>
+      <details>
+        <summary>制作期間はどのくらいですか？</summary>
+        <p class="faq-a">素材（公演情報・写真など）をいただいてから初校まで約1週間が目安です。その後、修正のやりとりを経て最終データ納品まで通常2〜3週間ほどかかります。</p>
+      </details>
+      <details>
+        <summary>写真がなくてもデザインできますか？</summary>
+        <p class="faq-a">はい。フリー素材の活用や、コンサートのテーマに合ったビジュアル表現でデザインいたします。写真撮影のご依頼も承っています（別途お見積もり）。</p>
+      </details>
+      <details>
+        <summary>支払い方法を教えてください。</summary>
+        <p class="faq-a">銀行振込またはクレジットカード（Stripe決済リンク）に対応しています。納品確認後に請求書をお送りします。</p>
+      </details>
+      <details>
+        <summary>印刷はどこに頼めばいいですか？</summary>
+        <p class="faq-a">印刷手配オプションでご対応できます（印刷費＋手数料）。ご自身でご依頼される場合は、グラフィックやラクスルなどの印刷会社をおすすめします。両面カラー100部で1,500円〜が目安です。</p>
+      </details>
+    </div>
+  </div>
+
+</main>
+
+<div class="contact-cta">
+  <h3>まずは一行のご相談から。</h3>
+  <p>日程・ご予算が決まっていなくても大丈夫です。気軽にどうぞ。</p>
+  <a href="index.html#contact">お問合せフォームへ →</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="name">WAKU DESIGN<small>Designing for Classical Music</small></div>
+      <p class="tag">クラシック音楽家のためのデザインクリエイティブ。フライヤー・Web・写真まで一貫してお手伝いします。</p>
+    </div>
+    <div>
+      <h5>— Site Map</h5>
+      <ul>
+        <li><a href="services.html">サービス</a></li>
+        <li><a href="works.html">制作実績</a></li>
+        <li><a href="about.html">わたしについて</a></li>
+        <li><a href="concerts.html">コンサート情報</a></li>
+        <li><a href="index.html#contact">お問い合わせ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>— Social &amp; Legal</h5>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">プライバシーポリシー</a></li>
+        <li><a href="#">特定商取引法に基づく表記</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="bottom">© 2026 — WAKU DESIGN — KAZUYA KUWATA</div>
+</footer>
+<script>
+(function(){
+  var t=document.getElementById('navToggle'),o=document.getElementById('navOverlay'),c=document.getElementById('navClose');
+  if(!t||!o)return;
+  function openNav(){t.classList.add('open');o.classList.add('open');document.body.style.overflow='hidden';}
+  function closeNav(){t.classList.remove('open');o.classList.remove('open');document.body.style.overflow='';}
+  t.addEventListener('click',function(){o.classList.contains('open')?closeNav():openNav();});
+  if(c)c.addEventListener('click',closeNav);
+  o.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeNav);});
+})();
+</script>
+</body>
+</html>
