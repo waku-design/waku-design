@@ -80,6 +80,61 @@
     .commitment-grid{grid-template-columns:1fr;gap:32px;}
     .page-hero{padding:48px 20px 40px;}
     footer{padding:48px 20px 24px;}.footer-inner{grid-template-columns:1fr;gap:32px;}
+  
+    .nav-toggle { display: flex; }
+  }
+
+  /* ═══ HAMBURGER MENU ═══ */
+  .nav-toggle {
+    display: none;
+    flex-direction: column; justify-content: center; gap: 5px;
+    background: none; border: none; cursor: pointer;
+    padding: 6px 4px; z-index: 201; flex-shrink: 0;
+  }
+  .nav-toggle span {
+    display: block; width: 22px; height: 1.5px;
+    background: var(--c-ink);
+    transition: transform 0.32s ease, opacity 0.25s ease;
+    transform-origin: center;
+  }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  /* ─ overlay ─ */
+  .nav-overlay {
+    position: fixed; inset: 0; background: var(--c-ink);
+    z-index: 200; display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+  .nav-overlay.open { opacity: 1; pointer-events: all; }
+  .nav-overlay ul {
+    list-style: none; display: flex; flex-direction: column;
+    align-items: center; gap: 0; padding: 0; margin: 0;
+  }
+  .nav-overlay ul li a {
+    font-family: var(--serif-jp); font-size: 22px; font-weight: 500;
+    letter-spacing: 0.22em; color: var(--c-bg);
+    padding: 16px 40px; display: block; transition: color 0.3s;
+  }
+  .nav-overlay ul li a:hover, .nav-overlay ul li a:active { color: var(--c-red); }
+  .nav-overlay .ov-cta-li { margin-top: 22px; }
+  .nav-overlay .ov-cta-li a {
+    border: 1px solid rgba(251,247,238,0.38); font-size: 14px;
+    letter-spacing: 0.26em; padding: 14px 40px;
+  }
+  .nav-overlay .ov-close {
+    position: absolute; top: 14px; right: 16px;
+    background: none; border: none;
+    color: rgba(251,247,238,0.5); font-size: 32px;
+    cursor: pointer; padding: 10px; line-height: 1; transition: color 0.3s;
+  }
+  .nav-overlay .ov-close:hover { color: var(--c-bg); }
+  .nav-overlay .ov-logo {
+    position: absolute; top: 22px; left: 20px;
+    font-family: var(--serif-jp); font-size: 13px; font-weight: 600;
+    letter-spacing: 0.22em; color: rgba(251,247,238,0.45);
   }
 </style>
 </head>
@@ -93,7 +148,19 @@
     <li><a href="concerts.html">コンサート情報</a></li>
     <li><a class="cta" href="index.html#contact">お問合せ</a></li>
   </ul></nav>
+  <button class="nav-toggle" id="navToggle" aria-label="メニューを開く"><span></span><span></span><span></span></button>
 </header>
+<div class="nav-overlay" id="navOverlay">
+  <span class="ov-logo">WAKU DESIGN</span>
+  <button class="ov-close" id="navClose" aria-label="閉じる">×</button>
+  <ul>
+    <li><a href="services.html">サービス</a></li>
+    <li><a href="works.html">実績</a></li>
+    <li><a href="about.html">わたしについて</a></li>
+    <li><a href="concerts.html">コンサート情報</a></li>
+    <li class="ov-cta-li"><a href="index.html#contact">お問合せ</a></li>
+  </ul>
+</div>
 <section class="page-hero">
   <div class="page-hero-inner">
     <div>
@@ -186,6 +253,20 @@
 <script>
 const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+<script>
+  /* hamburger */
+  (function(){
+    var t=document.getElementById('navToggle'),
+        o=document.getElementById('navOverlay'),
+        c=document.getElementById('navClose');
+    if(!t||!o) return;
+    function openNav(){ t.classList.add('open'); o.classList.add('open'); document.body.style.overflow='hidden'; }
+    function closeNav(){ t.classList.remove('open'); o.classList.remove('open'); document.body.style.overflow=''; }
+    t.addEventListener('click',function(){ o.classList.contains('open')?closeNav():openNav(); });
+    if(c) c.addEventListener('click',closeNav);
+    o.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',closeNav); });
+  })();
 </script>
 </body>
 </html>
