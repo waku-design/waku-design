@@ -64,7 +64,17 @@
   }
   nav ul { list-style: none; display: flex; gap: 28px; align-items: center; }
   nav a { font-size: 12px; letter-spacing: 0.18em; transition: color 0.3s; }
-  nav a:not(.cta):hover { color: var(--c-red); }
+  nav a:not(.cta) {
+    position: relative;
+  }
+  nav a:not(.cta)::after {
+    content: '';
+    position: absolute; bottom: -3px; left: 0;
+    width: 0; height: 1.5px;
+    background: var(--c-red);
+    transition: width 0.3s ease;
+  }
+  nav a:not(.cta):hover::after { width: 100%; }
   nav .cta {
     border: 1px solid var(--c-ink);
     color: var(--c-ink);
@@ -353,12 +363,15 @@
   .work-item .work-title { font-size: 13px; letter-spacing: 0.06em; color: var(--c-ink); line-height: 1.6;}
   .work-item.hide { display: none; }
   .works-cat-link {
+    display: inline-block;
+    padding: 7px 16px;
+    border: 1px solid var(--c-ink);
     font-family: var(--serif-en); font-style: italic;
-    font-size: 11px; letter-spacing: 0.22em; color: var(--c-sub);
-    border-bottom: 1px solid var(--c-line); padding-bottom: 1px;
-    transition: color 0.3s, border-color 0.3s; white-space: nowrap;
+    font-size: 11px; letter-spacing: 0.22em;
+    color: var(--c-ink); white-space: nowrap;
+    transition: background 0.25s, color 0.25s;
   }
-  .works-cat-link:hover { color: var(--c-ink); border-color: var(--c-ink); }
+  .works-cat-link:hover { background: var(--c-ink); color: var(--c-bg); }
   .works-more {
     text-align: center; margin-top: 56px;
   }
@@ -806,7 +819,6 @@
   <div class="sec-head reveal">
     <p class="label">Works</p>
     <h2>制作実績</h2>
-    <p class="meta">— 5+ works · since 2024</p>
   </div>
   <div class="works-inner reveal">
 
@@ -877,7 +889,6 @@
       <p class="label">Services</p>
     </div>
     <h2>提供するデザイン</h2>
-    <p class="meta">— 04 categories</p>
   </div>
   <div class="svc-list reveal">
     <a href="services.html#concert" class="svc-row">
@@ -959,7 +970,6 @@
   <div class="sec-head reveal">
     <p class="label">Concert Info</p>
     <h2>コンサート情報</h2>
-    <p class="meta">— Design works</p>
   </div>
   <div class="concerts-inner reveal">
     <div class="concerts-list">
