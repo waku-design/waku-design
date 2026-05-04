@@ -78,13 +78,12 @@
   .hero {
     position: relative;
     background: var(--c-bg);
-    padding: 90px 44px 110px;
+    padding: 72px 44px 80px;
   }
   .hero-inner {
     max-width: 1240px; margin: 0 auto;
     display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
-    align-items: end;
-    min-height: calc(100vh - 200px);
+    align-items: center;
   }
   .hero-text { padding-bottom: 24px; }
   .hero-text .eyebrow {
@@ -141,12 +140,12 @@
     width: 100%; height: 100%;
     object-fit: cover;
     opacity: 0;
-    animation: hero-fade 20s infinite;
+    animation: hero-fade 32s infinite;
   }
   .hero-slideshow .slide:nth-child(1) { animation-delay: 0s; }
-  .hero-slideshow .slide:nth-child(2) { animation-delay: 5s; }
-  .hero-slideshow .slide:nth-child(3) { animation-delay: 10s; }
-  .hero-slideshow .slide:nth-child(4) { animation-delay: 15s; }
+  .hero-slideshow .slide:nth-child(2) { animation-delay: 8s; }
+  .hero-slideshow .slide:nth-child(3) { animation-delay: 16s; }
+  .hero-slideshow .slide:nth-child(4) { animation-delay: 24s; }
   @keyframes hero-fade {
     0%, 100% { opacity: 0; }
     5%, 22%  { opacity: 1; }
@@ -291,8 +290,10 @@
 
   /* ============= WORKS ============= */
   .works {
-    padding: 130px 44px;
-    background: var(--c-bg);
+    padding: 100px 44px;
+    background: var(--c-paper);
+    border-top: 1px solid var(--c-line);
+    border-bottom: 1px solid var(--c-line);
   }
   .works-inner { max-width: 1240px; margin: 0 auto; }
   .works-category {
@@ -718,7 +719,7 @@
     .sec-head .meta { grid-column: 1; text-align: left;}
   
     .nav-toggle { display: flex; }
-    .hero { padding-top: 52px; padding-bottom: 52px; }
+    .hero { padding-top: 44px; padding-bottom: 44px; }
     .hero-inner { min-height: unset; gap: 32px; }
     .hero-visual { aspect-ratio: unset; height: 240px; }
     .hero-bottom { display: none; }
@@ -785,10 +786,11 @@
     </div>
     <div class="hero-visual">
       <div class="hero-slideshow">
-        <img class="slide" src="images/flyer-miki-relemit.jpg" alt="三木多聞 サクソフォンリサイタル Relemit" />
-        <img class="slide" src="images/flyer-saxophone-orch.jpg" alt="大阪音大サクソフォーンオーケストラ 運命" />
-        <img class="slide" src="images/flyer-ota-so.jpg" alt="太田光 & 曾朗基 スプリング・コンサート" />
-        <img class="slide" src="images/flyer-takagi-wind.jpg" alt="髙木毅 Memorial Wind Band Special Concert" />
+        <!-- hero-1.jpg〜hero-4.jpg を images/ フォルダに入れると自動反映 -->
+        <img class="slide" src="images/hero-1.jpg" alt="WAKU DESIGN works 1" />
+        <img class="slide" src="images/hero-2.jpg" alt="WAKU DESIGN works 2" />
+        <img class="slide" src="images/hero-3.jpg" alt="WAKU DESIGN works 3" />
+        <img class="slide" src="images/hero-4.jpg" alt="WAKU DESIGN works 4" />
       </div>
       <span class="visual-caption">WAKU DESIGN · 2026</span>
     </div>
