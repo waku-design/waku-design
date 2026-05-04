@@ -309,32 +309,37 @@
     background: var(--c-bg);
   }
   .works-inner { max-width: 1240px; margin: 0 auto; }
-  .works-filter {
-    display: flex; flex-wrap: wrap; gap: 24px;
-    margin-bottom: 48px;
-    border-bottom: 1px solid var(--c-line);
-    padding-bottom: 18px;
+  .works-category {
+    margin-bottom: 72px;
   }
-  .works-filter button {
-    background: transparent; border: none;
-    color: var(--c-sub);
-    padding: 6px 0;
-    font-family: var(--serif-jp); font-size: 12px; letter-spacing: 0.18em;
-    cursor: pointer; transition: color 0.3s;
-    position: relative;
+  .works-cat-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    border-top: 1px solid var(--c-line);
+    padding-top: 20px;
+    margin-bottom: 28px;
   }
-  .works-filter button::after {
-    content: ''; position: absolute;
-    left: 0; right: 0; bottom: -19px;
-    height: 1px; background: var(--c-ink);
-    transform: scaleX(0); transition: transform 0.3s;
+  .works-cat-head h3 {
+    font-family: var(--serif-jp); font-size: 15px; font-weight: 500;
+    letter-spacing: 0.2em; color: var(--c-ink);
   }
-  .works-filter button:hover { color: var(--c-ink); }
-  .works-filter button.active { color: var(--c-ink); }
-  .works-filter button.active::after { transform: scaleX(1); }
+  .works-cat-head h3 small {
+    font-family: var(--serif-en); font-style: italic;
+    font-size: 11px; color: var(--c-sub); letter-spacing: 0.26em;
+    margin-left: 14px;
+  }
+  .works-cat-head .cat-count {
+    font-family: var(--serif-en); font-style: italic;
+    font-size: 11px; letter-spacing: 0.28em; color: var(--c-sub);
+  }
   .works-grid {
     display: grid; grid-template-columns: repeat(4, 1fr);
     gap: 24px;
+  }
+  .works-cat-coming {
+    padding: 28px 0 36px;
+    font-family: var(--serif-en); font-style: italic;
+    font-size: 12px; letter-spacing: 0.3em; color: var(--c-sub);
+    opacity: 0.6;
   }
   .work-item { transition: transform 0.4s; cursor: pointer; }
   .work-item:hover { transform: translateY(-6px); }
@@ -782,39 +787,68 @@
   <div class="sec-head reveal">
     <p class="label">Works</p>
     <h2>制作実績</h2>
-    <p class="meta">— 04 projects</p>
+    <p class="meta">— Selected projects</p>
   </div>
   <div class="works-inner reveal">
-    <div class="works-filter">
-      <button class="active" data-filter="all">すべて</button>
-      <button data-filter="concert">コンサート</button>
-      <button data-filter="photo">記録写真</button>
-      <button data-filter="web">Web/LP</button>
-      <button data-filter="sns">SNS素材</button>
+
+    <!-- コンサート -->
+    <div class="works-category">
+      <div class="works-cat-head">
+        <h3>コンサート<small>Concert Design</small></h3>
+        <span class="cat-count">04 works</span>
+      </div>
+      <div class="works-grid">
+        <div class="work-item">
+          <div class="frame"><img src="images/flyer-miki-relemit.jpg" alt="三木多聞 サクソフォンリサイタル Relemit" /></div>
+          <div class="work-cat">FLYER</div>
+          <div class="work-title">三木多聞 サクソフォンリサイタル「Relemit」</div>
+        </div>
+        <div class="work-item">
+          <div class="frame"><img src="images/flyer-saxophone-orch.jpg" alt="大阪音楽大学サクソフォーンオーケストラ 運命" /></div>
+          <div class="work-cat">FLYER</div>
+          <div class="work-title">大阪音楽大学サクソフォーンオーケストラ「運命」</div>
+        </div>
+        <div class="work-item">
+          <div class="frame"><img src="images/flyer-ota-so.jpg" alt="太田光 & 曾朗基 Flute & Guitar スプリング・コンサート" /></div>
+          <div class="work-cat">FLYER</div>
+          <div class="work-title">太田光 &amp; 曾朗基 Flute &amp; Guitar スプリング・コンサート</div>
+        </div>
+        <div class="work-item">
+          <div class="frame"><img src="images/flyer-takagi-wind.jpg" alt="髙木毅 Memorial Wind Band Special Concert" /></div>
+          <div class="work-cat">FLYER</div>
+          <div class="work-title">髙木毅 Memorial Wind Band Special Concert</div>
+        </div>
+      </div>
     </div>
-    <div class="works-grid" id="worksGrid">
-      <div class="work-item" data-cat="concert">
-        <div class="frame"><img src="images/flyer-miki-relemit.jpg" alt="三木多聞 サクソフォンリサイタル Relemit" /></div>
-        <div class="work-cat">FLYER</div>
-        <div class="work-title">三木多聞 サクソフォンリサイタル「Relemit」</div>
+
+    <!-- 記録写真 -->
+    <div class="works-category">
+      <div class="works-cat-head">
+        <h3>記録写真<small>Concert Photography</small></h3>
+        <span class="cat-count">— coming soon</span>
       </div>
-      <div class="work-item" data-cat="concert">
-        <div class="frame"><img src="images/flyer-saxophone-orch.jpg" alt="大阪音楽大学サクソフォーンオーケストラ 運命" /></div>
-        <div class="work-cat">FLYER</div>
-        <div class="work-title">大阪音楽大学サクソフォーンオーケストラ「運命」</div>
-      </div>
-      <div class="work-item" data-cat="concert">
-        <div class="frame"><img src="images/flyer-ota-so.jpg" alt="太田光 & 曾朗基 Flute & Guitar スプリング・コンサート" /></div>
-        <div class="work-cat">FLYER</div>
-        <div class="work-title">太田光 &amp; 曾朗基 Flute &amp; Guitar スプリング・コンサート</div>
-      </div>
-      <div class="work-item" data-cat="concert">
-        <div class="frame"><img src="images/flyer-takagi-wind.jpg" alt="髙木毅 Memorial Wind Band Special Concert" /></div>
-        <div class="work-cat">FLYER</div>
-        <div class="work-title">髙木毅 Memorial Wind Band Special Concert</div>
-      </div>
+      <div class="works-cat-coming">準備中 · To be updated</div>
     </div>
-    <div class="works-more"><a href="#">実績一覧を見る →</a></div>
+
+    <!-- Web / LP -->
+    <div class="works-category">
+      <div class="works-cat-head">
+        <h3>Web / LP<small>Website · Landing Page</small></h3>
+        <span class="cat-count">— coming soon</span>
+      </div>
+      <div class="works-cat-coming">準備中 · To be updated</div>
+    </div>
+
+    <!-- SNS素材 -->
+    <div class="works-category">
+      <div class="works-cat-head">
+        <h3>SNS素材<small>SNS · Jacket · Thumbnail</small></h3>
+        <span class="cat-count">— coming soon</span>
+      </div>
+      <div class="works-cat-coming">準備中 · To be updated</div>
+    </div>
+
+    <div class="works-more"><a href="works.html">実績一覧を見る →</a></div>
   </div>
 </section>
 
@@ -1010,19 +1044,6 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  const buttons = document.querySelectorAll('.works-filter button');
-  const items = document.querySelectorAll('#worksGrid .work-item');
-  buttons.forEach(b => {
-    b.addEventListener('click', () => {
-      buttons.forEach(x => x.classList.remove('active'));
-      b.classList.add('active');
-      const f = b.dataset.filter;
-      items.forEach(it => {
-        if (f === 'all' || it.dataset.cat === f) it.classList.remove('hide');
-        else it.classList.add('hide');
-      });
-    });
-  });
 
   const panel = document.getElementById('tweaksPanel');
   const root = document.documentElement;
