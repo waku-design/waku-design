@@ -61,7 +61,10 @@
   .concert-row .thumb{aspect-ratio:3/4;background:var(--c-cream-deep);overflow:hidden;}
   .concert-row .thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s;}
   .concert-row:hover .thumb img{transform:scale(1.05);}
-  .concert-row .date{font-family:var(--serif-en);font-style:italic;font-size:13px;letter-spacing:0.14em;color:var(--c-red);}
+  .concert-row .date{display:flex;flex-direction:column;gap:3px;justify-content:center;}
+  .concert-row .date .d-date{font-family:var(--serif-en);font-style:italic;font-size:13px;letter-spacing:0.14em;color:var(--c-red);}
+  .concert-row .date .d-time{font-family:var(--serif-en);font-size:10px;letter-spacing:0.14em;color:var(--c-sub);}
+  .concert-row .info .info-date-m{display:none;}
   .concert-row .info h4{font-size:15px;font-weight:500;letter-spacing:0.08em;line-height:1.6;margin-bottom:4px;}
   .concert-row .info .venue{font-family:var(--serif-en);font-style:italic;font-size:10px;letter-spacing:0.22em;color:var(--c-sub);}
   .concert-row .tags{display:flex;gap:8px;flex-wrap:wrap;font-family:var(--serif-en);font-style:italic;font-size:10px;letter-spacing:0.22em;color:var(--c-sub);}
@@ -127,6 +130,7 @@
     main{padding:48px 20px 80px;}
     .page-hero{padding:48px 20px 40px;}
     .concert-row .date{display:none;}
+    .concert-row .info .info-date-m{display:block;font-family:var(--serif-en);font-style:italic;font-size:11px;letter-spacing:0.16em;color:var(--c-red);margin-bottom:5px;}
     .concert-row .tags,.concert-row .arrow{display:none;}
     footer{padding:48px 20px 24px;}.footer-inner{grid-template-columns:1fr;gap:32px;}
   
@@ -174,8 +178,8 @@
 
     <a class="concert-row" href="work-miki-relemit.html">
       <div class="thumb"><img src="images/flyer-miki-relemit.jpg" alt="三木多聞 Relemit"/></div>
-      <div class="date">2027.03.05</div>
-      <div class="info">
+      <div class="date"><span class="d-date">2027.03.05</span><span class="d-time">開演 19:00</span></div>
+      <div class="info">        <span class="info-date-m">2027.03.05（金）· 開演 19:00</span>
         <h4>三木多聞 サクソフォンリサイタル「Relemit」卒業公演</h4>
         <span class="venue">兵庫県立芸術文化センター 神戸女学院小ホール</span>
       </div>
@@ -185,8 +189,8 @@
 
     <a class="concert-row" href="work-saxophone-orch.html">
       <div class="thumb"><img src="images/flyer-saxophone-orch.jpg" alt="大阪音大サクソフォーンオーケストラ 運命"/></div>
-      <div class="date">2025.12.14</div>
-      <div class="info">
+      <div class="date"><span class="d-date">2025.12.14</span><span class="d-time">開演 14:00</span></div>
+      <div class="info">        <span class="info-date-m">2025.12.14（日）· 開演 14:00</span>
         <h4>第40回 大阪音楽大学サクソフォーンオーケストラコンサート「運命」</h4>
         <span class="venue">ザ・カレッジ・オペラハウス</span>
       </div>
@@ -196,8 +200,8 @@
 
     <a class="concert-row" href="work-ota-so.html">
       <div class="thumb"><img src="images/flyer-ota-so.jpg" alt="太田光 & 曾朗基 Spring Concert"/></div>
-      <div class="date">2025.03.22</div>
-      <div class="info">
+      <div class="date"><span class="d-date">2025.03.22</span><span class="d-time">開演 17:00</span></div>
+      <div class="info">        <span class="info-date-m">2025.03.22（土）· 開演 17:00</span>
         <h4>太田光 &amp; 曾朗基 Flute &amp; Guitar スプリング・コンサート</h4>
         <span class="venue">LA PAZ（大阪市北区天神橋）</span>
       </div>
@@ -207,8 +211,8 @@
 
     <a class="concert-row" href="work-takagi-wind.html">
       <div class="thumb"><img src="images/flyer-takagi-wind.jpg" alt="髙木毅 Memorial Wind Band"/></div>
-      <div class="date">2025.02.23</div>
-      <div class="info">
+      <div class="date"><span class="d-date">2025.02.23</span><span class="d-time">開演 13:30</span></div>
+      <div class="info">        <span class="info-date-m">2025.02.23（日）· 開演 13:30</span>
         <h4>髙木毅 Memorial Wind Band Special Concert</h4>
         <span class="venue">三田市総合文化センター 鄕の音ホール・美ホール</span>
       </div>
@@ -218,8 +222,8 @@
 
     <a class="concert-row" href="work-miki-recital.html">
       <div class="thumb"><img src="images/flyer-miki-recital.jpg" alt="三木多聞 初ソロリサイタル"/></div>
-      <div class="date">2024.05.18</div>
-      <div class="info">
+      <div class="date"><span class="d-date">2024.05.18</span><span class="d-time">開演 17:30</span></div>
+      <div class="info">        <span class="info-date-m">2024.05.18（土）· 開演 17:30</span>
         <h4>三木多聞 サクソフォンリサイタル（初ソロリサイタル）</h4>
         <span class="venue">大阪音楽大学 ミレニアムホール</span>
       </div>
