@@ -249,9 +249,10 @@
     position: relative;
     display: grid;
     grid-template-columns: minmax(0, 1fr) 34px;
-    grid-template-rows: auto auto;
+    grid-template-rows: 1fr;
     align-items: center;
     column-gap: 18px;
+    overflow: hidden;
     transition: background 0.25s, color 0.25s;
   }
   .hero-quick a:hover { background: rgba(251,247,238,0.94); color: var(--c-ink); }
@@ -260,7 +261,7 @@
     position: static;
     inset: auto;
     grid-column: 2;
-    grid-row: 2;
+    grid-row: 1;
     align-self: center;
     width: 34px;
     height: 34px;
@@ -284,20 +285,23 @@
     transform: translateX(2px);
   }
   .hero-quick span {
-    grid-column: 1;
-    grid-row: 1;
+    position: absolute;
+    left: clamp(18px, 3.2vw, 48px);
+    top: 14px;
     display: block;
     font-family: var(--serif-en);
     font-style: italic;
     font-size: 10px;
     letter-spacing: 0.24em;
     color: var(--c-red);
-    margin-bottom: 7px;
+    margin: 0;
+    pointer-events: none;
   }
   .hero-quick strong {
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 1;
     display: block;
+    align-self: center;
     font-weight: 500;
     font-size: 15px;
     letter-spacing: 0.08em;
