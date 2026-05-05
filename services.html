@@ -53,6 +53,8 @@ nav .cta:hover{background:var(--c-ink);color:var(--c-bg);}
 .nav-overlay ul{list-style:none;display:flex;flex-direction:column;align-items:center;gap:0;padding:0;margin:0;}
 .nav-overlay ul a{font-family:var(--serif-jp);font-size:22px;font-weight:500;letter-spacing:0.22em;color:var(--c-bg);padding:13px 40px;display:block;transition:color 0.3s;text-align:center;}
 .nav-overlay .ov-sub a{font-size:14px;letter-spacing:0.12em;color:rgba(251,247,238,0.66);padding:7px 40px;}
+.nav-overlay .ov-sub-detail a{font-size:12px;letter-spacing:0.1em;color:rgba(251,247,238,0.54);padding:3px 40px;}
+.nav-overlay .ov-sub-detail a::before{content:'›';margin-right:0.6em;color:var(--c-red);}
 .nav-overlay ul a:hover,.nav-overlay ul a:active{color:var(--c-red);}
 .nav-overlay .ov-cta-li{margin-top:20px;}
 .nav-overlay .ov-cta-li a{border:1px solid rgba(251,247,238,0.38);font-size:14px;letter-spacing:0.26em;padding:14px 40px;}
@@ -243,6 +245,9 @@ footer .bottom{border-top:1px solid var(--c-line);margin-top:48px;padding-top:22
   <ul>
     <li><a href="services.html">サービス</a></li>
     <li class="ov-sub"><a href="service-concert.html">コンサートデザイン</a></li>
+    <li class="ov-sub ov-sub-detail"><a href="service-concert.html#flyer">フライヤー・ポスター</a></li>
+    <li class="ov-sub ov-sub-detail"><a href="service-concert.html#program">プログラム冊子</a></li>
+    <li class="ov-sub ov-sub-detail"><a href="service-concert.html#ticket">チケット</a></li>
     <li class="ov-sub"><a href="service-web.html">Webサイト・公演LP</a></li>
     <li class="ov-sub"><a href="service-photo.html">コンサート記録写真</a></li>
     <li><a href="works.html">実績</a></li>

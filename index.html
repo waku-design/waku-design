@@ -246,10 +246,43 @@
     padding: 19px clamp(18px, 3.2vw, 48px);
     border-right: 1px solid rgba(251,247,238,0.12);
     color: var(--c-bg);
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 34px;
+    align-items: center;
+    column-gap: 18px;
     transition: background 0.25s, color 0.25s;
   }
   .hero-quick a:hover { background: rgba(251,247,238,0.94); color: var(--c-ink); }
+  nav.hero-quick a::after {
+    content: '›';
+    position: static;
+    inset: auto;
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    width: 34px;
+    height: 34px;
+    background: transparent;
+    border: 1px solid rgba(251,247,238,0.42);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-family: var(--serif-en);
+    font-size: 20px;
+    line-height: 1;
+    color: rgba(251,247,238,0.86);
+    opacity: 1;
+    transform: none;
+    transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.25s;
+  }
+  nav.hero-quick a:hover::after {
+    background: var(--c-red);
+    border-color: var(--c-red);
+    color: var(--c-bg);
+    transform: translateX(2px);
+  }
   .hero-quick span {
+    grid-column: 1;
     display: block;
     font-family: var(--serif-en);
     font-style: italic;
@@ -259,6 +292,7 @@
     margin-bottom: 7px;
   }
   .hero-quick strong {
+    grid-column: 1;
     display: block;
     font-weight: 500;
     font-size: 15px;
@@ -1327,6 +1361,25 @@
     letter-spacing: 0.22em; color: var(--c-bg);
     padding: 16px 40px; display: block; transition: color 0.3s;
   }
+  .nav-overlay .ov-service-group { text-align: center; }
+  .nav-overlay .ov-service-group > a { padding-bottom: 10px; }
+  .nav-overlay .ov-child-links {
+    display: grid;
+    gap: 0;
+    margin: -4px 0 2px;
+  }
+  .nav-overlay .ov-child-links a {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    color: rgba(251,247,238,0.66);
+    padding: 4px 40px;
+  }
+  .nav-overlay .ov-child-links a::before {
+    content: '›';
+    margin-right: 0.6em;
+    color: var(--c-red);
+  }
   .nav-overlay ul li a:hover, .nav-overlay ul li a:active { color: var(--c-red); }
   .nav-overlay .ov-cta-li { margin-top: 22px; }
   .nav-overlay .ov-cta-li a {
@@ -1398,6 +1451,16 @@
     .service-card h4 { white-space: normal; font-size: 22px; }
     .service-art { display: none; }
     .service-other-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hero-quick a {
+      min-height: 96px;
+      padding: 18px 20px;
+      grid-template-columns: minmax(0, 1fr) 32px;
+    }
+    nav.hero-quick a::after {
+      width: 32px;
+      height: 32px;
+      font-size: 19px;
+    }
   }
 
 </style>
@@ -1433,7 +1496,14 @@
   <button class="ov-close" id="navClose" type="button" aria-label="閉じる">×</button>
   <ul>
     <li><a href="services.html">サービス</a></li>
-    <li><a href="service-concert.html">コンサートデザイン</a></li>
+    <li class="ov-service-group">
+      <a href="service-concert.html">コンサートデザイン</a>
+      <div class="ov-child-links" aria-label="コンサートデザイン詳細">
+        <a href="service-concert.html#flyer">フライヤー・ポスター</a>
+        <a href="service-concert.html#program">プログラム冊子</a>
+        <a href="service-concert.html#ticket">チケット</a>
+      </div>
+    </li>
     <li><a href="service-web.html">Webサイト・LP</a></li>
     <li><a href="service-photo.html">記録写真</a></li>
     <li><a href="works.html">実績</a></li>

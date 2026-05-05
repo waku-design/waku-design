@@ -51,6 +51,11 @@ nav .cta:hover{background:var(--c-ink);color:var(--c-bg);}
 .nav-overlay ul{list-style:none;display:flex;flex-direction:column;align-items:center;gap:28px;}
 .nav-overlay ul a{font-size:clamp(18px,4vw,26px);letter-spacing:0.22em;color:var(--c-ink);}
 .nav-overlay .ov-cta-li a{border:1px solid var(--c-ink);padding:12px 36px;font-size:14px;letter-spacing:0.24em;}
+.nav-overlay .ov-service-group{text-align:center;}
+.nav-overlay .ov-service-group>a{display:block;margin-bottom:-10px;}
+.nav-overlay .ov-child-links{display:grid;gap:0;margin:2px 0 -4px;}
+.nav-overlay .ov-child-links a{display:block;padding:4px 40px;font-size:13px;letter-spacing:0.12em;color:var(--c-sub);}
+.nav-overlay .ov-child-links a::before{content:'›';margin-right:0.6em;color:var(--c-red);}
 
 /* ── Page hero ── */
 .page-hero{padding:72px 44px 56px;border-bottom:1px solid var(--c-line);background:var(--c-paper);}
@@ -189,6 +194,24 @@ footer .bottom{border-top:1px solid var(--c-line);margin-top:48px;padding-top:22
   footer{padding:44px 20px 24px;}
   .contact-cta{padding:56px 20px;}
 }
+@media(max-width:560px){
+  .price-block{margin-bottom:30px;}
+  .price-block-head{display:block;padding:15px 18px;}
+  .price-block-head h3{font-size:14px;line-height:1.55;letter-spacing:0.08em;}
+  .price-block-head .from{display:block;margin-top:4px;font-size:11px;line-height:1.6;}
+  .price-row{display:grid;grid-template-columns:1fr;gap:5px;align-items:start;padding:16px 18px;}
+  .price-row .label{font-size:13px;line-height:1.75;letter-spacing:0.04em;}
+  .price-row .amount{justify-self:start;display:inline-flex;align-items:baseline;gap:4px;font-size:17px;line-height:1.35;white-space:nowrap;letter-spacing:0.03em;}
+  .price-row .amount small{margin-left:0;white-space:nowrap;}
+  .option-table,.option-table tbody,.option-table tr,.option-table th,.option-table td{display:block;width:100%;}
+  .option-table{border-top:1px solid var(--c-line);}
+  .option-table tr{border-bottom:1px solid var(--c-line);}
+  .option-table th,.option-table td{border-bottom:0;padding-left:18px;padding-right:18px;}
+  .option-table th{background:transparent;padding:16px 18px 2px;font-size:13px;line-height:1.65;letter-spacing:0.06em;}
+  .option-table td{padding:0 18px 16px;font-size:13px;line-height:1.8;}
+  .option-table tr:last-child{border-bottom:none;}
+  .notes li{font-size:12px;line-height:2.05;}
+}
 @media(max-width:480px){
   .reference-grid{grid-template-columns:1fr;}
   .process-grid{grid-template-columns:1fr;}
@@ -222,7 +245,14 @@ footer .bottom{border-top:1px solid var(--c-line);margin-top:48px;padding-top:22
   <button class="ov-close" id="navClose" aria-label="閉じる">×</button>
   <ul>
     <li><a href="services.html">サービス</a></li>
-    <li><a href="service-concert.html">コンサートデザイン</a></li>
+    <li class="ov-service-group">
+      <a href="service-concert.html">コンサートデザイン</a>
+      <div class="ov-child-links" aria-label="コンサートデザイン詳細">
+        <a href="service-concert.html#flyer">フライヤー・ポスター</a>
+        <a href="service-concert.html#program">プログラム冊子</a>
+        <a href="service-concert.html#ticket">チケット</a>
+      </div>
+    </li>
     <li><a href="service-web.html">Webサイト・LP</a></li>
     <li><a href="service-photo.html">記録写真</a></li>
     <li><a href="works.html">実績</a></li>
