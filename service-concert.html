@@ -44,7 +44,7 @@ nav .cta:hover{background:var(--c-ink);color:var(--c-bg);}
 .nav-toggle.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
 .nav-toggle.open span:nth-child(2){opacity:0;}
 .nav-toggle.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
-.nav-overlay{position:fixed;inset:0;background:var(--c-bg);z-index:200;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:36px;opacity:0;pointer-events:none;transition:opacity 0.4s;}
+.nav-overlay{position:fixed;inset:0;background:var(--c-bg);z-index:200;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:36px;padding:96px 20px 48px;overflow-y:auto;opacity:0;pointer-events:none;transition:opacity 0.4s;}
 .nav-overlay.open{opacity:1;pointer-events:auto;}
 .nav-overlay .ov-logo{font-family:var(--serif-jp);font-size:15px;letter-spacing:0.3em;position:absolute;top:24px;left:44px;}
 .nav-overlay .ov-close{position:absolute;top:20px;right:40px;background:none;border:none;font-size:28px;cursor:pointer;color:var(--c-ink);}
@@ -56,6 +56,7 @@ nav .cta:hover{background:var(--c-ink);color:var(--c-bg);}
 .nav-overlay .ov-child-links{display:grid;gap:0;margin:2px 0 -4px;}
 .nav-overlay .ov-child-links a{display:block;padding:4px 40px;font-size:13px;letter-spacing:0.12em;color:var(--c-sub);}
 .nav-overlay .ov-child-links a::before{content:'›';margin-right:0.6em;color:var(--c-red);}
+@media (max-width:560px){.nav-overlay{justify-content:flex-start;padding-top:86px;padding-bottom:34px;}.nav-overlay .ov-logo{top:22px;left:20px;font-size:12px;letter-spacing:0.2em;}.nav-overlay .ov-close{top:16px;right:18px;}.nav-overlay ul{width:min(100%,360px);gap:0;}.nav-overlay ul a{display:block;padding:11px 24px;font-size:clamp(17px,6vw,24px);letter-spacing:0.18em;text-align:center;}.nav-overlay .ov-service-group>a{margin-bottom:0;padding-bottom:8px;}.nav-overlay .ov-child-links{margin:-1px 0 2px;}.nav-overlay .ov-child-links a{padding:3px 24px;font-size:12px;letter-spacing:0.1em;}.nav-overlay .ov-cta-li{margin-top:12px;}.nav-overlay .ov-cta-li a{padding:12px 34px;font-size:13px;}}
 
 /* ── Page hero ── */
 .page-hero{padding:72px 44px 56px;border-bottom:1px solid var(--c-line);background:var(--c-paper);}

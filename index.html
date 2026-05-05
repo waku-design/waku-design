@@ -1348,8 +1348,10 @@
     position: fixed; inset: 0; background: var(--c-ink);
     z-index: 200; display: flex; flex-direction: column;
     justify-content: center; align-items: center;
+    padding: 96px 20px 48px;
     opacity: 0; pointer-events: none;
     transition: opacity 0.35s ease;
+    overflow-y: auto;
   }
   .nav-overlay.open { opacity: 1; pointer-events: all; }
   .nav-overlay ul {
@@ -1362,18 +1364,18 @@
     padding: 16px 40px; display: block; transition: color 0.3s;
   }
   .nav-overlay .ov-service-group { text-align: center; }
-  .nav-overlay .ov-service-group > a { padding-bottom: 10px; }
+  .nav-overlay .ov-service-group > a { padding-bottom: 8px; }
   .nav-overlay .ov-child-links {
     display: grid;
     gap: 0;
-    margin: -4px 0 2px;
+    margin: -2px 0 4px;
   }
   .nav-overlay .ov-child-links a {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 400;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.12em;
     color: rgba(251,247,238,0.66);
-    padding: 4px 40px;
+    padding: 3px 40px;
   }
   .nav-overlay .ov-child-links a::before {
     content: '›';
@@ -1452,14 +1454,72 @@
     .service-art { display: none; }
     .service-other-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .hero-quick a {
-      min-height: 96px;
-      padding: 18px 20px;
+      min-height: 84px;
+      padding: 0 18px 0 28px;
       grid-template-columns: minmax(0, 1fr) 32px;
+      overflow: hidden;
     }
     nav.hero-quick a::after {
       width: 32px;
       height: 32px;
       font-size: 19px;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-quick span {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: 0.02em;
+      line-height: 1;
+      color: rgba(183,64,46,0.16);
+      pointer-events: none;
+    }
+    .hero-quick strong {
+      position: relative;
+      z-index: 1;
+      align-self: center;
+      font-size: 20px;
+      letter-spacing: 0.08em;
+      line-height: 1.45;
+    }
+    .nav-overlay {
+      justify-content: flex-start;
+      padding-top: 86px;
+      padding-bottom: 34px;
+    }
+    .nav-overlay ul {
+      width: min(100%, 360px);
+      gap: 0;
+    }
+    .nav-overlay ul li a {
+      font-size: clamp(17px, 6vw, 24px);
+      padding: 11px 24px;
+      letter-spacing: 0.18em;
+    }
+    .nav-overlay .ov-child-links {
+      margin: -1px 0 2px;
+    }
+    .nav-overlay .ov-child-links a {
+      font-size: 12px;
+      padding: 3px 24px;
+      letter-spacing: 0.1em;
+    }
+    .nav-overlay .ov-cta-li {
+      margin-top: 12px;
+    }
+    .nav-overlay .ov-cta-li a {
+      padding: 12px 34px;
+      font-size: 13px;
+    }
+    .nav-overlay .ov-logo {
+      top: 22px;
+      left: 20px;
+      font-size: 12px;
+      letter-spacing: 0.2em;
     }
   }
 

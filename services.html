@@ -45,7 +45,7 @@ nav .cta:hover{background:var(--c-ink);color:var(--c-bg);}
 .nav-toggle.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
 .nav-toggle.open span:nth-child(2){opacity:0;}
 .nav-toggle.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
-.nav-overlay{position:fixed;inset:0;background:var(--c-ink);z-index:200;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:36px;opacity:0;pointer-events:none;transition:opacity 0.35s ease;}
+.nav-overlay{position:fixed;inset:0;background:var(--c-ink);z-index:200;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:36px;padding:96px 20px 48px;overflow-y:auto;opacity:0;pointer-events:none;transition:opacity 0.35s ease;}
 .nav-overlay.open{opacity:1;pointer-events:auto;}
 .nav-overlay .ov-logo{position:absolute;top:22px;left:20px;font-family:var(--serif-jp);font-size:13px;font-weight:600;letter-spacing:0.22em;color:rgba(251,247,238,0.45);}
 .nav-overlay .ov-close{position:absolute;top:14px;right:16px;background:none;border:none;color:rgba(251,247,238,0.55);font-size:32px;cursor:pointer;padding:10px;line-height:1;transition:color 0.3s;}
@@ -58,6 +58,7 @@ nav .cta:hover{background:var(--c-ink);color:var(--c-bg);}
 .nav-overlay ul a:hover,.nav-overlay ul a:active{color:var(--c-red);}
 .nav-overlay .ov-cta-li{margin-top:20px;}
 .nav-overlay .ov-cta-li a{border:1px solid rgba(251,247,238,0.38);font-size:14px;letter-spacing:0.26em;padding:14px 40px;}
+@media (max-width:560px){.nav-overlay{justify-content:flex-start;padding-top:86px;padding-bottom:34px;}.nav-overlay .ov-logo{font-size:12px;letter-spacing:0.2em;}.nav-overlay ul{width:min(100%,360px);}.nav-overlay ul a{font-size:clamp(17px,6vw,24px);padding:11px 24px;letter-spacing:0.18em;}.nav-overlay .ov-sub a{font-size:12px;padding:4px 24px;}.nav-overlay .ov-sub-detail a{font-size:11px;padding:2px 24px;}.nav-overlay .ov-cta-li{margin-top:12px;}.nav-overlay .ov-cta-li a{padding:12px 34px;font-size:13px;}}
 .page-hero{padding:82px 44px 68px;border-bottom:1px solid var(--c-line);background:linear-gradient(180deg,var(--c-paper),var(--c-bg));}
 .page-hero-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:60px;align-items:end;}
 .page-hero .eyebrow,.section-label{font-family:var(--serif-en);font-style:italic;font-size:11px;letter-spacing:0.36em;color:var(--c-red);margin-bottom:16px;display:flex;align-items:center;gap:12px;}
