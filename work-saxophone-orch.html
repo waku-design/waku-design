@@ -89,8 +89,78 @@
 
   /* IMAGE COL */
   .work-image-col img {
-    width: 100%; display: block;
-    box-shadow: 0 12px 48px rgba(42,26,31,0.14);
+    width: min(100%, 520px); max-height: min(74vh, 780px);
+    display: block; margin: 0 auto; object-fit: contain; background: transparent;
+    filter: drop-shadow(0 12px 34px rgba(42,26,31,0.16));
+  }
+  .work-image-col .ticket-img {
+    max-height: none;
+  }
+  .artifact-stage {
+    width: min(100%, 520px);
+    margin: 18px auto 0;
+    display: grid;
+    place-items: center;
+  }
+  .artifact-stage.is-ticket {
+    min-height: clamp(150px, 21vw, 230px);
+  }
+  .artifact-stage.is-ticket .ticket-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  .program-book-detail {
+    --program-image: url('images/program-saxophone-orch-spread.jpg');
+    position: relative;
+    width: min(100%, 620px);
+    aspect-ratio: 1.414 / 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 20px auto 0;
+    perspective: 1200px;
+    filter: drop-shadow(0 18px 28px rgba(42,26,31,0.15));
+  }
+  .program-book-detail::before {
+    content: '';
+    position: absolute;
+    left: 6%;
+    right: 6%;
+    bottom: -11px;
+    height: 22px;
+    background: radial-gradient(ellipse at center, rgba(42,26,31,0.22), transparent 70%);
+    filter: blur(10px);
+    z-index: -1;
+  }
+  .program-book-detail::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    bottom: -1px;
+    left: 50%;
+    width: 20px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, rgba(42,26,31,0.18), rgba(255,255,255,0.72), rgba(42,26,31,0.12));
+    opacity: 0.84;
+    pointer-events: none;
+  }
+  .program-book-detail .page {
+    background-image: var(--program-image);
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    transform-style: preserve-3d;
+  }
+  .program-book-detail .left {
+    background-position: left center;
+    transform-origin: right center;
+    transform: rotateY(5.5deg);
+    border-radius: 4px 0 0 4px;
+  }
+  .program-book-detail .right {
+    background-position: right center;
+    transform-origin: left center;
+    transform: rotateY(-5.5deg);
+    border-radius: 0 4px 4px 0;
   }
 
   /* INFO COL */
@@ -302,6 +372,8 @@
 
     <div class="work-image-col">
       <img src="images/flyer-saxophone-orch.jpg" alt="第40回 大阪音楽大学サクソフォーンオーケストラコンサート「運命 SYMPHONY No.5」" />
+      <div class="artifact-stage is-ticket"><img class="ticket-img" src="images/ticket-saxophone-orch.jpg" alt="第40回 大阪音楽大学サクソフォーンオーケストラコンサート チケット" /></div>
+      <div class="program-book-detail" aria-label="第40回 大阪音楽大学サクソフォーンオーケストラコンサート プログラム冊子"><span class="page left"></span><span class="page right"></span></div>
     </div>
 
     <div class="work-info-col">

@@ -88,14 +88,29 @@
   }
 
   /* FLYER SLIDER */
-  .flyer-slider { overflow: hidden; }
+  .flyer-slider {
+    overflow: visible;
+    display: grid;
+    grid-template-rows: auto 102px;
+    align-items: start;
+  }
   .slider-main-wrap {
-    display: flex; align-items: center; gap: 14px;
+    display: grid; grid-template-columns: 34px minmax(0, 520px) 34px;
+    align-items: center; justify-content: center; gap: 12px;
+  }
+  .slider-stage {
+    width: min(100%, 520px, 55.5vh);
+    height: auto;
+    aspect-ratio: 3 / 4;
+    display: grid;
+    place-items: center;
+    background: transparent;
   }
   .slider-main-img {
-    flex: 1; width: 100%; display: block;
-    box-shadow: 0 12px 48px rgba(42,26,31,0.14);
-    transition: opacity 0.25s;
+    width: auto; height: auto; max-width: 100%; max-height: 100%; display: block;
+    justify-self: center; align-self: center; object-fit: contain; background: transparent;
+    filter: drop-shadow(0 12px 34px rgba(42,26,31,0.16));
+    transition: opacity 0.25s, filter 0.25s;
   }
   .slider-arrow {
     background: none; border: none;
@@ -108,14 +123,20 @@
   .slider-arrow:hover { color: var(--c-ink); }
   .slider-arrow:disabled { opacity: 0.18; cursor: default; pointer-events: none; }
   .slider-thumbs {
-    display: flex; gap: 10px; margin-top: 12px;
+    display: flex; justify-content:center; align-items:center; gap: 10px; margin-top: 12px;
+    height: 90px;
+    min-height: 90px;
   }
   .slider-thumb {
-    width: 68px; display: block; cursor: pointer;
+    width: 72px; height: 86px; background:transparent; padding:4px; display: grid; place-items:center; cursor: pointer;
     opacity: 0.42; border: 2px solid transparent;
-    box-shadow: 0 2px 10px rgba(42,26,31,0.1);
+    box-shadow: none;
     transition: opacity 0.25s, border-color 0.25s;
+    appearance:none;
+    font:inherit;
   }
+  .slider-thumb img { max-width:100%; max-height:100%; object-fit:contain; display:block; filter:drop-shadow(0 4px 9px rgba(42,26,31,0.12)); }
+  .slider-thumb.is-wide { width: 116px; height: 60px; }
   .slider-thumb.active { opacity: 1; border-color: var(--c-red); }
 
   /* INFO COL */
@@ -278,7 +299,11 @@
   
     .nav-toggle { display: flex; }
     .slider-arrow { font-size: 24px; padding: 4px 2px; }
-    .slider-thumb { width: 56px; }
+    .slider-stage { width: min(100%, 420px); height: auto; }
+    .flyer-slider { grid-template-rows: auto 82px; }
+    .slider-thumbs { height: 72px; min-height: 72px; }
+    .slider-thumb { width: 56px; height: 68px; }
+    .slider-thumb.is-wide { width: 92px; height: 48px; }
   }
 
 </style>
@@ -329,12 +354,13 @@
       <div class="flyer-slider">
         <div class="slider-main-wrap">
           <button class="slider-arrow prev" aria-label="前へ">&#8249;</button>
-          <img class="slider-main-img" src="images/flyer-ota-so.jpg" alt="太田光 &amp; 曾朗基 Flute &amp; Guitar スプリング・コンサート 表面" />
+          <div class="slider-stage"><img class="slider-main-img" src="images/flyer-ota-so.jpg" alt="太田光 &amp; 曾朗基 Flute &amp; Guitar スプリング・コンサート 表面" /></div>
           <button class="slider-arrow next" aria-label="次へ">&#8250;</button>
         </div>
         <div class="slider-thumbs">
-          <img class="slider-thumb active" src="images/flyer-ota-so.jpg" alt="表面" />
-          <img class="slider-thumb" src="images/flyer-ota-so-back.jpg" alt="裏面" />
+          <button class="slider-thumb active" type="button" data-src="images/flyer-ota-so.jpg" data-alt="太田光 &amp; 曾朗基 Flute &amp; Guitar スプリング・コンサート 表面" aria-label="表面を表示" onclick="selectSliderThumb(this)"><img src="images/flyer-ota-so.jpg" alt="" /></button>
+          <button class="slider-thumb" type="button" data-src="images/flyer-ota-so-back.jpg" data-alt="太田光 &amp; 曾朗基 Flute &amp; Guitar スプリング・コンサート 裏面" aria-label="裏面を表示" onclick="selectSliderThumb(this)"><img src="images/flyer-ota-so-back.jpg" alt="" /></button>
+          <button class="slider-thumb is-wide" type="button" data-src="images/ticket-ota-so.jpg" data-alt="太田光 &amp; 曾朗基 Spring Concert チケット" aria-label="チケットを表示" onclick="selectSliderThumb(this)"><img src="images/ticket-ota-so.jpg" alt="" /></button>
         </div>
       </div>
     </div>
@@ -411,28 +437,34 @@
 </footer>
 
 <script>
+  function selectSliderThumb(button) {
+    var slider = button.closest('.flyer-slider');
+    if (!slider) return;
+    var thumbs = Array.from(slider.querySelectorAll('.slider-thumb'));
+    var mainImg = slider.querySelector('.slider-main-img');
+    var prevBtn = slider.querySelector('.slider-arrow.prev');
+    var nextBtn = slider.querySelector('.slider-arrow.next');
+    var index = thumbs.indexOf(button);
+    if (!mainImg || index < 0) return;
+    slider.dataset.current = String(index);
+    mainImg.style.opacity = '0';
+    setTimeout(function() {
+      mainImg.src = button.dataset.src;
+      mainImg.alt = button.dataset.alt || '';
+      mainImg.style.opacity = '1';
+    }, 120);
+    thumbs.forEach(function(t, j) { t.classList.toggle('active', j === index); });
+    if (prevBtn) prevBtn.disabled = index === 0;
+    if (nextBtn) nextBtn.disabled = index === thumbs.length - 1;
+  }
   document.querySelectorAll('.flyer-slider').forEach(slider => {
     const thumbs = Array.from(slider.querySelectorAll('.slider-thumb'));
-    const mainImg = slider.querySelector('.slider-main-img');
     const prevBtn = slider.querySelector('.slider-arrow.prev');
     const nextBtn = slider.querySelector('.slider-arrow.next');
-    let current = 0;
-    function show(i) {
-      current = i;
-      mainImg.style.opacity = '0';
-      setTimeout(() => {
-        mainImg.src = thumbs[i].src;
-        mainImg.alt = thumbs[i].alt;
-        mainImg.style.opacity = '1';
-      }, 120);
-      thumbs.forEach((t, j) => t.classList.toggle('active', j === i));
-      prevBtn.disabled = i === 0;
-      nextBtn.disabled = i === thumbs.length - 1;
-    }
-    prevBtn.addEventListener('click', () => show(current - 1));
-    nextBtn.addEventListener('click', () => show(current + 1));
-    thumbs.forEach((t, j) => t.addEventListener('click', () => show(j)));
-    show(0);
+    function currentIndex() { return Number(slider.dataset.current || '0'); }
+    prevBtn.addEventListener('click', () => selectSliderThumb(thumbs[Math.max(0, currentIndex() - 1)]));
+    nextBtn.addEventListener('click', () => selectSliderThumb(thumbs[Math.min(thumbs.length - 1, currentIndex() + 1)]));
+    selectSliderThumb(thumbs[0]);
   });
 </script>
 <script>

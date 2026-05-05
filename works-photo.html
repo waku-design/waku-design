@@ -7,6 +7,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="WAKU DESIGN" />
 <meta property="og:title" content="記録写真 | WAKU DESIGN" />
+<meta property="og:image" content="https://waku-design.vercel.app/images/photo-works/web/251214_saxorch-147.jpg" />
 <meta property="og:url" content="https://waku-design.vercel.app/works-photo.html" />
 <meta name="twitter:card" content="summary_large_image" />
 <title>記録写真 | WAKU DESIGN</title>
@@ -21,7 +22,7 @@
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;overflow-x:hidden;}
-  body{font-family:var(--serif-jp);color:var(--c-ink);background:var(--c-bg);line-height:1.95;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  body{min-height:100vh;display:flex;flex-direction:column;font-family:var(--serif-jp);color:var(--c-ink);background:var(--c-bg);line-height:1.95;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
   a{color:inherit;text-decoration:none;}
   header{position:sticky;top:0;padding:18px 44px;background:rgba(251,247,238,0.96);backdrop-filter:saturate(180%) blur(10px);z-index:100;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--c-line);}
   .logo{display:flex;align-items:baseline;gap:12px;}
@@ -39,7 +40,7 @@
   .page-hero h1{font-family:var(--serif-jp);font-size:clamp(28px,3.6vw,44px);font-weight:500;letter-spacing:0.12em;color:var(--c-ink);line-height:1.3;}
   .page-hero .back-link{font-family:var(--serif-en);font-style:italic;font-size:12px;letter-spacing:0.22em;color:var(--c-sub);transition:color 0.3s;}
   .page-hero .back-link:hover{color:var(--c-ink);}
-  main{max-width:1240px;margin:0 auto;padding:80px 44px 120px;}
+  main{flex:1;width:100%;max-width:1240px;margin:0 auto;padding:80px 44px 120px;}
   footer{background:var(--c-ink);color:rgba(247,239,224,0.7);padding:64px 44px 32px;}
   .footer-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;padding-bottom:40px;border-bottom:1px solid rgba(247,239,224,0.12);margin-bottom:24px;}
   .footer-brand .name{font-family:var(--serif-jp);font-size:17px;font-weight:600;letter-spacing:0.22em;color:rgba(247,239,224,0.9);margin-bottom:10px;}
@@ -68,9 +69,20 @@
   .nav-overlay .ov-close{position:absolute;top:14px;right:16px;background:none;border:none;color:rgba(251,247,238,0.5);font-size:32px;cursor:pointer;padding:10px;line-height:1;transition:color 0.3s;}
   .nav-overlay .ov-close:hover{color:var(--c-bg);}
   .nav-overlay .ov-logo{position:absolute;top:22px;left:20px;font-family:var(--serif-jp);font-size:13px;font-weight:600;letter-spacing:0.22em;color:rgba(251,247,238,0.45);}
-  .coming-block{padding:80px 0 40px;text-align:center;}
-  .coming-block .coming-label{font-family:var(--serif-en);font-style:italic;font-size:11px;letter-spacing:0.36em;color:var(--c-sub);opacity:0.6;}
-  .coming-block .coming-text{font-family:var(--serif-jp);font-size:15px;letter-spacing:0.18em;color:var(--c-sub);margin-top:20px;}
+  .cat-section{margin-bottom:80px;}
+  .cat-head{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--c-line);padding-top:20px;margin-bottom:32px;}
+  .cat-head h2{font-family:var(--serif-jp);font-size:15px;font-weight:500;letter-spacing:0.2em;color:var(--c-ink);}
+  .cat-head h2 small{font-family:var(--serif-en);font-style:italic;font-size:11px;color:var(--c-sub);letter-spacing:0.26em;margin-left:14px;}
+  .photo-gallery{column-count:2;column-gap:22px;}
+  .photo-item{display:block;width:100%;margin:0 0 22px;padding:0;border:0;background:transparent;break-inside:avoid;cursor:zoom-in;text-align:left;}
+  .photo-item img{width:100%;height:auto;display:block;background:var(--c-paper);box-shadow:0 14px 34px rgba(42,26,31,0.09);transition:transform 0.35s ease,filter 0.35s ease,box-shadow 0.35s ease;}
+  .photo-item:hover img{transform:translateY(-3px);filter:saturate(1.04);box-shadow:0 18px 42px rgba(42,26,31,0.16);}
+  .photo-lightbox[hidden]{display:none;}
+  .photo-lightbox{position:fixed;inset:0;z-index:300;display:grid;place-items:center;padding:48px;background:rgba(42,26,31,0.88);}
+  .photo-lightbox img{max-width:min(92vw,1240px);max-height:82vh;width:auto;height:auto;object-fit:contain;box-shadow:0 24px 80px rgba(0,0,0,0.35);}
+  .photo-lightbox-caption{margin-top:16px;text-align:center;font-family:var(--serif-en);font-style:italic;font-size:11px;letter-spacing:0.28em;color:rgba(247,239,224,0.72);}
+  .photo-lightbox-close{position:absolute;top:22px;right:28px;width:44px;height:44px;border:1px solid rgba(247,239,224,0.38);background:transparent;color:var(--c-bg);font-size:28px;line-height:1;cursor:pointer;font-family:var(--serif-en);}
+  .photo-lightbox-close:hover{background:rgba(247,239,224,0.1);}
   .back-to-hub{display:inline-block;margin-top:48px;font-family:var(--serif-en);font-style:italic;font-size:12px;letter-spacing:0.22em;color:var(--c-sub);transition:color 0.3s;border-bottom:1px solid var(--c-line);padding-bottom:2px;}
   .back-to-hub:hover{color:var(--c-ink);}
   @media(max-width:900px){
@@ -78,6 +90,14 @@
     .page-hero{padding:48px 20px 40px;}main{padding:48px 20px 80px;}
     footer{padding:48px 20px 24px;} .footer-inner{grid-template-columns:1fr;gap:32px;}
     .nav-toggle{display:flex;}
+    .cat-head{display:block;}
+    .cat-head h2 small{display:block;margin-left:0;margin-top:4px;}
+    .photo-gallery{column-count:2;column-gap:12px;}
+    .photo-item{margin-bottom:12px;}
+    .photo-lightbox{padding:20px;}
+  }
+  @media(max-width:560px){
+    .photo-gallery{column-count:1;}
   }
 </style>
 </head>
@@ -117,12 +137,49 @@
 </section>
 
 <main>
-  <div class="coming-block reveal">
-    <p class="coming-label">— Coming Soon</p>
-    <p class="coming-text">準備中です。しばらくお待ちください。</p>
+  <div class="cat-section">
+    <div class="cat-head">
+      <h2>記録写真<small>Concert Photography</small></h2>
+    </div>
+    <div class="photo-gallery" aria-label="記録写真の制作実績">
+      <button class="photo-item" type="button" data-caption="Concert Photography"><img src="images/photo-works/web/251214_saxorch-147.jpg" alt="コンサート記録写真 作例 1" loading="lazy" decoding="async" /></button>
+      <button class="photo-item" type="button" data-caption="Concert Photography"><img src="images/photo-works/web/Kirsch-59.jpg" alt="コンサート記録写真 作例 2" loading="lazy" decoding="async" /></button>
+      <button class="photo-item" type="button" data-caption="Concert Photography"><img src="images/photo-works/web/251214_saxorch-177.jpg" alt="コンサート記録写真 作例 3" loading="lazy" decoding="async" /></button>
+      <button class="photo-item" type="button" data-caption="Concert Photography"><img src="images/photo-works/web/P1157227-強化-NR.jpg" alt="コンサート記録写真 作例 4" loading="lazy" decoding="async" /></button>
+      <button class="photo-item" type="button" data-caption="Concert Photography"><img src="images/photo-works/web/Katsaris_251018-12.jpg" alt="コンサート記録写真 作例 5" loading="lazy" decoding="async" /></button>
+      <button class="photo-item" type="button" data-caption="Concert Photography"><img src="images/photo-works/web/DSC04492-強化-NR.jpg" alt="コンサート記録写真 作例 6" loading="lazy" decoding="async" /></button>
+      <button class="photo-item" type="button" data-caption="Concert Photography"><img src="images/photo-works/web/biroumina-3.jpg" alt="コンサート記録写真 作例 7" loading="lazy" decoding="async" /></button>
+      <button class="photo-item" type="button" data-caption="Concert Photography"><img src="images/photo-works/web/251207_ongakuin-127.jpg" alt="コンサート記録写真 作例 8" loading="lazy" decoding="async" /></button>
+      <button class="photo-item" type="button" data-caption="Concert Photography"><img src="images/photo-works/web/Kirsch-portrait-ob-8.jpg" alt="コンサート記録写真 作例 9" loading="lazy" decoding="async" /></button>
+      <button class="photo-item" type="button" data-caption="Concert Photography"><img src="images/photo-works/web/DSC05615-強化-NR.jpg" alt="コンサート記録写真 作例 10" loading="lazy" decoding="async" /></button>
+      <button class="photo-item" type="button" data-caption="Concert Photography"><img src="images/photo-works/web/Katsaris_251018-44.jpg" alt="コンサート記録写真 作例 11" loading="lazy" decoding="async" /></button>
+      <button class="photo-item" type="button" data-caption="Concert Photography"><img src="images/photo-works/web/251207_ongakuin-295.jpg" alt="コンサート記録写真 作例 12" loading="lazy" decoding="async" /></button>
+      <button class="photo-item" type="button" data-caption="Concert Photography"><img src="images/photo-works/web/251214_saxorch-407.jpg" alt="コンサート記録写真 作例 13" loading="lazy" decoding="async" /></button>
+      <button class="photo-item" type="button" data-caption="Concert Photography"><img src="images/photo-works/web/DSC06165-強化-NR.jpg" alt="コンサート記録写真 作例 14" loading="lazy" decoding="async" /></button>
+      <button class="photo-item" type="button" data-caption="Concert Photography"><img src="images/photo-works/web/Katsaris_251018-55.jpg" alt="コンサート記録写真 作例 15" loading="lazy" decoding="async" /></button>
+      <button class="photo-item" type="button" data-caption="Concert Photography"><img src="images/photo-works/web/P1143546-強化-NR.jpg" alt="コンサート記録写真 作例 16" loading="lazy" decoding="async" /></button>
+      <button class="photo-item" type="button" data-caption="Concert Photography"><img src="images/photo-works/web/biroumina-7.jpg" alt="コンサート記録写真 作例 17" loading="lazy" decoding="async" /></button>
+      <button class="photo-item" type="button" data-caption="Concert Photography"><img src="images/photo-works/web/daionOC_2603-46.jpg" alt="コンサート記録写真 作例 18" loading="lazy" decoding="async" /></button>
+      <button class="photo-item" type="button" data-caption="Concert Photography"><img src="images/photo-works/web/251222_drec-153.jpg" alt="コンサート記録写真 作例 19" loading="lazy" decoding="async" /></button>
+      <button class="photo-item" type="button" data-caption="Concert Photography"><img src="images/photo-works/web/P1156965-強化-NR-2.jpg" alt="コンサート記録写真 作例 20" loading="lazy" decoding="async" /></button>
+      <button class="photo-item" type="button" data-caption="Concert Photography"><img src="images/photo-works/web/Kirsch-15.jpg" alt="コンサート記録写真 作例 21" loading="lazy" decoding="async" /></button>
+      <button class="photo-item" type="button" data-caption="Concert Photography"><img src="images/photo-works/web/daionOC_2603-51.jpg" alt="コンサート記録写真 作例 22" loading="lazy" decoding="async" /></button>
+      <button class="photo-item" type="button" data-caption="Concert Photography"><img src="images/photo-works/web/miyama2025-28.jpg" alt="コンサート記録写真 作例 23" loading="lazy" decoding="async" /></button>
+      <button class="photo-item" type="button" data-caption="Concert Photography"><img src="images/photo-works/web/251207_ongakuin-69.jpg" alt="コンサート記録写真 作例 24" loading="lazy" decoding="async" /></button>
+      <button class="photo-item" type="button" data-caption="Concert Photography"><img src="images/photo-works/web/daionOC_2603-99.jpg" alt="コンサート記録写真 作例 25" loading="lazy" decoding="async" /></button>
+      <button class="photo-item" type="button" data-caption="Concert Photography"><img src="images/photo-works/web/miyama2025-34.jpg" alt="コンサート記録写真 作例 26" loading="lazy" decoding="async" /></button>
+    </div>
   </div>
   <a class="back-to-hub" href="works.html">← 実績一覧に戻る</a>
 </main>
+
+<div class="photo-lightbox" id="photoLightbox" hidden>
+  <button class="photo-lightbox-close" type="button" aria-label="閉じる">×</button>
+  <div>
+    <img src="" alt="" id="photoLightboxImg" />
+    <p class="photo-lightbox-caption" id="photoLightboxCaption"></p>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -155,6 +212,32 @@
     entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);} });
   },{threshold:0.1});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+<script>
+  (function(){
+    var lightbox=document.getElementById('photoLightbox');
+    var lightboxImg=document.getElementById('photoLightboxImg');
+    var caption=document.getElementById('photoLightboxCaption');
+    if(!lightbox||!lightboxImg)return;
+    function close(){
+      lightbox.hidden=true;
+      lightboxImg.src='';
+      document.body.style.overflow='';
+    }
+    document.querySelectorAll('.photo-item').forEach(function(item){
+      item.addEventListener('click',function(){
+        var img=item.querySelector('img');
+        lightboxImg.src=img.src;
+        lightboxImg.alt=img.alt;
+        caption.textContent=item.dataset.caption||'Concert Photography';
+        lightbox.hidden=false;
+        document.body.style.overflow='hidden';
+      });
+    });
+    lightbox.querySelector('.photo-lightbox-close').addEventListener('click',close);
+    lightbox.addEventListener('click',function(event){if(event.target===lightbox)close();});
+    document.addEventListener('keydown',function(event){if(event.key==='Escape'&&!lightbox.hidden)close();});
+  })();
 </script>
 <script>
   (function(){

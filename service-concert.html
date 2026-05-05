@@ -13,7 +13,7 @@
 <title>コンサートデザイン | WAKU DESIGN</title>
 <style>
 
-:root{color-scheme:light;--c-red:#B7402E;--c-red-deep:#8E2F22;--c-ink:#2A1A1F;--c-ink-soft:#4A323A;--c-cream:#F7EFE0;--c-cream-deep:#EBDFC5;--c-bg:#FBF7EE;--c-paper:#FFFFFF;--c-line:#E2DAC4;--c-sub:#6B5A4F;--serif-jp:'Hiragino Mincho ProN','Yu Mincho','YuMincho','MS PMincho',serif;--serif-en:'Hoefler Text','Garamond','Times New Roman',serif;}
+:root{color-scheme:light;--c-red:#B7402E;--c-red-deep:#8E2F22;--c-ink:#2A1A1F;--c-ink-soft:#4A323A;--c-cream:#F7EFE0;--c-cream-deep:#EBDFC5;--c-bg:#FBF7EE;--c-paper:#FFFFFF;--c-line:#E2DAC4;--c-sub:#6B5A4F;--serif-jp:'Hiragino Mincho ProN','Yu Mincho','YuMincho','MS PMincho',serif;--serif-en:'Hoefler Text','Garamond','Times New Roman',serif;--sans-readable:'Hiragino Mincho ProN','Yu Mincho','YuMincho','MS PMincho',serif;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{font-family:var(--serif-jp);color:var(--c-ink);background:var(--c-bg);line-height:1.95;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
@@ -65,13 +65,30 @@ nav .cta:hover{background:var(--c-ink);color:var(--c-bg);}
 
 /* ── Use cases ── */
 .use-cases{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;}
-.use-tag{font-size:11px;letter-spacing:0.16em;padding:5px 14px;border:1px solid var(--c-line);color:var(--c-sub);}
+.use-tag{font-family:var(--sans-readable);font-size:11px;letter-spacing:0.08em;padding:5px 14px;border:1px solid var(--c-line);color:var(--c-sub);}
 
 /* ── Main layout ── */
 main{max-width:900px;margin:0 auto;padding:64px 44px 100px;}
 .sec{margin-bottom:64px;}
 .sec-title{font-size:clamp(16px,2vw,20px);font-weight:500;letter-spacing:0.14em;margin-bottom:28px;padding-bottom:14px;border-bottom:2px solid var(--c-ink);}
 .sec-subtitle{font-size:13px;font-weight:500;letter-spacing:0.12em;margin-bottom:14px;color:var(--c-ink);}
+
+/* ── Reference works ── */
+.reference-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.reference-card{display:block;background:var(--c-paper);border:1px solid var(--c-line);border-radius:8px;padding:14px;color:var(--c-ink);transition:transform 0.25s ease,border-color 0.25s ease,box-shadow 0.25s ease;}
+.reference-card:hover{transform:translateY(-4px);border-color:rgba(183,64,46,0.5);box-shadow:0 16px 32px rgba(42,26,31,0.09);}
+.reference-frame{aspect-ratio:3/4;background:#fff;display:grid;place-items:center;overflow:hidden;}
+.reference-frame.is-ticket{aspect-ratio:16/5.2;}
+.reference-frame.is-program{aspect-ratio:1.414/1;padding:12px;}
+.reference-frame img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 10px 18px rgba(42,26,31,0.14));}
+.program-book{--program-image:url('images/program-saxophone-orch-spread.jpg');position:relative;width:100%;aspect-ratio:1.414/1;display:grid;grid-template-columns:1fr 1fr;perspective:1200px;filter:drop-shadow(0 16px 24px rgba(42,26,31,0.14));}
+.program-book::before{content:'';position:absolute;left:6%;right:6%;bottom:-9px;height:18px;background:radial-gradient(ellipse at center,rgba(42,26,31,0.24),transparent 70%);filter:blur(8px);z-index:-1;}
+.program-book::after{content:'';position:absolute;top:-1px;bottom:-1px;left:50%;width:18px;transform:translateX(-50%);background:linear-gradient(90deg,rgba(42,26,31,0.18),rgba(255,255,255,0.7),rgba(42,26,31,0.12));opacity:0.82;pointer-events:none;}
+.program-book .page{background-image:var(--program-image);background-size:200% 100%;background-repeat:no-repeat;transform-style:preserve-3d;}
+.program-book .left{background-position:left center;transform-origin:right center;transform:rotateY(5.5deg);border-radius:4px 0 0 4px;}
+.program-book .right{background-position:right center;transform-origin:left center;transform:rotateY(-5.5deg);border-radius:0 4px 4px 0;}
+.reference-type{display:block;margin-top:12px;font-family:var(--serif-en);font-style:italic;font-size:10px;letter-spacing:0.24em;color:var(--c-red);}
+.reference-title{display:block;margin-top:4px;font-family:var(--sans-readable);font-size:12px;line-height:1.65;letter-spacing:0.04em;font-weight:600;}
 
 /* ── Price table ── */
 .offer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:0 0 34px;}
@@ -81,23 +98,25 @@ main{max-width:900px;margin:0 auto;padding:64px 44px 100px;}
 .offer-visual.flyer img{position:absolute;top:10px;width:76px;aspect-ratio:3/4;object-fit:cover;box-shadow:0 10px 20px rgba(42,26,31,0.17);}
 .offer-visual.flyer img:nth-child(1){left:31%;transform:rotate(-9deg);}
 .offer-visual.flyer img:nth-child(2){left:49%;top:5px;transform:rotate(8deg);}
-.offer-visual.program::before,.offer-visual.program::after{content:'';position:absolute;top:22px;width:78px;height:76px;background:#F5E6D2;border:1px solid #D9C4A9;box-shadow:0 8px 16px rgba(42,26,31,0.12);}
-.offer-visual.program::before{left:35%;transform:rotate(-7deg);}
-.offer-visual.program::after{left:48%;background:#D8F0DF;transform:rotate(8deg);}
+.offer-visual.program .program-book{position:absolute;left:50%;top:21px;width:190px;transform:translateX(-50%) rotate(-2deg);}
 .offer-visual.ticket::before,.offer-visual.ticket::after{content:'';position:absolute;top:40px;width:122px;height:45px;box-shadow:0 8px 16px rgba(42,26,31,0.13);}
 .offer-visual.ticket::before{left:24%;background:#2A1A1F;transform:rotate(6deg);}
 .offer-visual.ticket::after{left:35%;background:#F6C900;transform:rotate(-6deg);}
+.offer-visual.ticket::before,.offer-visual.ticket::after{display:none;}
+.offer-visual.ticket img{position:absolute;width:158px;aspect-ratio:16/5.2;object-fit:cover;box-shadow:0 8px 16px rgba(42,26,31,0.13);}
+.offer-visual.ticket img:nth-child(1){left:24%;top:34px;transform:rotate(5deg);}
+.offer-visual.ticket img:nth-child(2){left:36%;top:70px;transform:rotate(-7deg);}
 .offer-card .offer-text{padding:18px 18px 20px;}
 .offer-card strong{display:block;font-size:16px;letter-spacing:0.1em;line-height:1.45;font-weight:500;}
-.offer-card small{display:block;margin-top:8px;font-family:var(--serif-en);font-style:italic;font-size:12px;letter-spacing:0.16em;color:var(--c-red);}
+.offer-card small{display:block;margin-top:8px;font-family:var(--sans-readable);font-size:12px;letter-spacing:0.04em;color:var(--c-red);font-weight:600;}
 .price-block{margin-bottom:36px;border:1px solid var(--c-line);}
 .price-block-head{padding:16px 24px;background:var(--c-bg);border-bottom:1px solid var(--c-line);display:flex;justify-content:space-between;align-items:center;}
 .price-block-head h3{font-size:15px;letter-spacing:0.12em;font-weight:500;}
-.price-block-head .from{font-size:12px;color:var(--c-sub);}
+.price-block-head .from{font-family:var(--sans-readable);font-size:12px;letter-spacing:0.04em;color:var(--c-sub);}
 .price-row{display:flex;justify-content:space-between;align-items:baseline;padding:14px 24px;border-bottom:1px solid var(--c-line);}
 .price-row:last-child{border-bottom:none;}
 .price-row .label{font-size:13px;color:var(--c-ink-soft);}
-.price-row .amount{font-size:18px;font-weight:500;letter-spacing:0.04em;}
+.price-row .amount{font-family:var(--sans-readable);font-size:18px;font-weight:600;letter-spacing:0.03em;}
 .price-row .amount small{font-size:11px;font-weight:400;color:var(--c-sub);margin-left:4px;}
 
 /* ── Includes ── */
@@ -161,6 +180,7 @@ footer .bottom{border-top:1px solid var(--c-line);margin-top:48px;padding-top:22
   .page-hero{padding:48px 20px 40px;}
   main{padding:44px 20px 72px;}
   .offer-grid{grid-template-columns:1fr;}
+  .reference-grid{grid-template-columns:1fr 1fr;}
   .process-grid{grid-template-columns:1fr 1fr;}
   .includes-list{grid-template-columns:1fr;}
   .footer-inner{grid-template-columns:1fr;gap:36px;}
@@ -168,6 +188,7 @@ footer .bottom{border-top:1px solid var(--c-line);margin-top:48px;padding-top:22
   .contact-cta{padding:56px 20px;}
 }
 @media(max-width:480px){
+  .reference-grid{grid-template-columns:1fr;}
   .process-grid{grid-template-columns:1fr;}
   .price-row .amount{font-size:16px;}
 }
@@ -229,6 +250,43 @@ footer .bottom{border-top:1px solid var(--c-line);margin-top:48px;padding-top:22
 
 <main>
 
+  <!-- 制作実績 -->
+  <div class="sec">
+    <h2 class="sec-title">制作実績</h2>
+    <div class="reference-grid">
+      <a class="reference-card" href="work-miki-relemit.html">
+        <div class="reference-frame"><img src="images/flyer-miki-relemit.jpg" alt="三木多聞 サクソフォンリサイタル Relemit" /></div>
+        <span class="reference-type">FLYER</span>
+        <span class="reference-title">三木多聞 サクソフォンリサイタル「Relemit」</span>
+      </a>
+      <a class="reference-card" href="work-saxophone-orch.html">
+        <div class="reference-frame"><img src="images/flyer-saxophone-orch.jpg" alt="大阪音楽大学サクソフォーンオーケストラ 運命" /></div>
+        <span class="reference-type">FLYER</span>
+        <span class="reference-title">大阪音楽大学サクソフォーンオーケストラ「運命」</span>
+      </a>
+      <a class="reference-card" href="work-saxophone-orch.html">
+        <div class="reference-frame is-program"><div class="program-book" aria-label="大阪音楽大学サクソフォーンオーケストラ 運命 プログラム冊子"><span class="page left"></span><span class="page right"></span></div></div>
+        <span class="reference-type">PROGRAM</span>
+        <span class="reference-title">大阪音楽大学サクソフォーンオーケストラ「運命」</span>
+      </a>
+      <a class="reference-card" href="work-ota-so.html">
+        <div class="reference-frame"><img src="images/flyer-ota-so.jpg" alt="太田光 &amp; 曾朗基 Flute &amp; Guitar スプリング・コンサート" /></div>
+        <span class="reference-type">FLYER</span>
+        <span class="reference-title">太田光 &amp; 曾朗基 Spring Concert</span>
+      </a>
+      <a class="reference-card" href="work-saxophone-orch.html">
+        <div class="reference-frame is-ticket"><img src="images/ticket-saxophone-orch.jpg" alt="大阪音楽大学サクソフォーンオーケストラ 運命 チケット" /></div>
+        <span class="reference-type">TICKET</span>
+        <span class="reference-title">大阪音楽大学サクソフォーンオーケストラ「運命」</span>
+      </a>
+      <a class="reference-card" href="work-ota-so.html">
+        <div class="reference-frame is-ticket"><img src="images/ticket-ota-so.jpg" alt="太田光 &amp; 曾朗基 Spring Concert チケット" /></div>
+        <span class="reference-type">TICKET</span>
+        <span class="reference-title">太田光 &amp; 曾朗基 Spring Concert</span>
+      </a>
+    </div>
+  </div>
+
   <!-- 料金プラン -->
   <div class="sec">
     <h2 class="sec-title">料金プラン</h2>
@@ -239,11 +297,11 @@ footer .bottom{border-top:1px solid var(--c-line);margin-top:48px;padding-top:22
         <div class="offer-text"><strong>フライヤー・ポスター</strong><small>A4片面 ¥10,000〜</small></div>
       </a>
       <a class="offer-card" href="#program">
-        <div class="offer-visual program"></div>
+        <div class="offer-visual program"><div class="program-book" aria-hidden="true"><span class="page left"></span><span class="page right"></span></div></div>
         <div class="offer-text"><strong>プログラム冊子</strong><small>8P ¥22,000〜</small></div>
       </a>
       <a class="offer-card" href="#ticket">
-        <div class="offer-visual ticket"></div>
+        <div class="offer-visual ticket"><img src="images/ticket-saxophone-orch.jpg" alt="" /><img src="images/ticket-ota-so.jpg" alt="" /></div>
         <div class="offer-text"><strong>チケット</strong><small>1種類 ¥8,000〜</small></div>
       </a>
     </div>
@@ -381,8 +439,8 @@ footer .bottom{border-top:1px solid var(--c-line);margin-top:48px;padding-top:22
       <h5>— Social &amp; Legal</h5>
       <ul>
         <li><a href="#">Instagram</a></li>
-        <li><a href="#">プライバシーポリシー</a></li>
-        <li><a href="#">特定商取引法に基づく表記</a></li>
+        <li><a href="privacy.html">プライバシーポリシー</a></li>
+        <li><a href="transaction.html">特定商取引法に基づく表記</a></li>
       </ul>
     </div>
   </div>

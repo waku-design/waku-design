@@ -13,7 +13,7 @@
 <title>Webサイト・LP制作 | WAKU DESIGN</title>
 <style>
 
-:root{color-scheme:light;--c-red:#B7402E;--c-red-deep:#8E2F22;--c-ink:#2A1A1F;--c-ink-soft:#4A323A;--c-cream:#F7EFE0;--c-cream-deep:#EBDFC5;--c-bg:#FBF7EE;--c-paper:#FFFFFF;--c-line:#E2DAC4;--c-sub:#6B5A4F;--serif-jp:'Hiragino Mincho ProN','Yu Mincho','YuMincho','MS PMincho',serif;--serif-en:'Hoefler Text','Garamond','Times New Roman',serif;}
+:root{color-scheme:light;--c-red:#B7402E;--c-red-deep:#8E2F22;--c-ink:#2A1A1F;--c-ink-soft:#4A323A;--c-cream:#F7EFE0;--c-cream-deep:#EBDFC5;--c-bg:#FBF7EE;--c-paper:#FFFFFF;--c-line:#E2DAC4;--c-sub:#6B5A4F;--serif-jp:'Hiragino Mincho ProN','Yu Mincho','YuMincho','MS PMincho',serif;--serif-en:'Hoefler Text','Garamond','Times New Roman',serif;--sans-readable:'Hiragino Mincho ProN','Yu Mincho','YuMincho','MS PMincho',serif;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{font-family:var(--serif-jp);color:var(--c-ink);background:var(--c-bg);line-height:1.95;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
@@ -65,7 +65,7 @@ nav .cta:hover{background:var(--c-ink);color:var(--c-bg);}
 
 /* ── Use cases ── */
 .use-cases{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;}
-.use-tag{font-size:11px;letter-spacing:0.16em;padding:5px 14px;border:1px solid var(--c-line);color:var(--c-sub);}
+.use-tag{font-family:var(--sans-readable);font-size:11px;letter-spacing:0.08em;padding:5px 14px;border:1px solid var(--c-line);color:var(--c-sub);}
 
 /* ── Main layout ── */
 main{max-width:900px;margin:0 auto;padding:64px 44px 100px;}
@@ -73,15 +73,33 @@ main{max-width:900px;margin:0 auto;padding:64px 44px 100px;}
 .sec-title{font-size:clamp(16px,2vw,20px);font-weight:500;letter-spacing:0.14em;margin-bottom:28px;padding-bottom:14px;border-bottom:2px solid var(--c-ink);}
 .sec-subtitle{font-size:13px;font-weight:500;letter-spacing:0.12em;margin-bottom:14px;color:var(--c-ink);}
 
+/* ── Reference works ── */
+.reference-grid{display:grid;grid-template-columns:1fr;gap:18px;}
+.reference-card{display:block;background:var(--c-paper);border:1px solid var(--c-line);border-radius:8px;padding:14px;color:var(--c-ink);transition:transform 0.25s ease,border-color 0.25s ease,box-shadow 0.25s ease;}
+.reference-card:hover{transform:translateY(-4px);border-color:rgba(183,64,46,0.5);box-shadow:0 16px 32px rgba(42,26,31,0.09);}
+.reference-frame{aspect-ratio:16/9;background:var(--c-ink);padding:12px;overflow:hidden;}
+.site-mini{height:100%;display:grid;grid-template-rows:22px 1fr;border:1px solid var(--c-line);background:var(--c-paper);box-shadow:0 14px 28px rgba(42,26,31,0.16);overflow:hidden;}
+.site-mini-bar{display:flex;align-items:center;gap:5px;padding:0 10px;border-bottom:1px solid var(--c-line);background:var(--c-bg);}
+.site-mini-bar span{width:6px;height:6px;border-radius:50%;background:var(--c-cream-deep);}
+.site-mini-screen{position:relative;background:linear-gradient(90deg,rgba(42,26,31,0.72),rgba(42,26,31,0.36) 46%,rgba(42,26,31,0.2)),url('images/hero-ai-1.jpg') center/cover;overflow:hidden;}
+.site-mini-screen::after{content:'';position:absolute;left:0;right:0;bottom:0;height:26px;background:rgba(42,26,31,0.84);border-top:1px solid rgba(251,247,238,0.16);}
+.site-mini-nav{position:absolute;left:20px;right:20px;top:18px;display:flex;justify-content:space-between;align-items:center;color:rgba(251,247,238,0.82);font-family:var(--sans-readable);font-size:8px;letter-spacing:0.14em;}
+.site-mini-nav span:last-child{width:44%;height:1px;background:rgba(251,247,238,0.55);}
+.site-mini-copy{position:absolute;left:24px;top:50%;transform:translateY(-50%);width:min(64%,340px);color:var(--c-bg);}
+.site-mini-copy small{display:block;font-family:var(--sans-readable);font-size:9px;letter-spacing:0.08em;margin-bottom:10px;opacity:0.74;}
+.site-mini-copy strong{display:block;font-size:clamp(18px,2.6vw,30px);font-weight:500;letter-spacing:0.1em;line-height:1.45;}
+.reference-type{display:block;margin-top:12px;font-family:var(--serif-en);font-style:italic;font-size:10px;letter-spacing:0.24em;color:var(--c-red);}
+.reference-title{display:block;margin-top:4px;font-family:var(--sans-readable);font-size:12px;line-height:1.65;letter-spacing:0.04em;font-weight:600;}
+
 /* ── Price table ── */
 .price-block{margin-bottom:36px;border:1px solid var(--c-line);}
 .price-block-head{padding:16px 24px;background:var(--c-bg);border-bottom:1px solid var(--c-line);display:flex;justify-content:space-between;align-items:center;}
 .price-block-head h3{font-size:15px;letter-spacing:0.12em;font-weight:500;}
-.price-block-head .from{font-size:12px;color:var(--c-sub);}
+.price-block-head .from{font-family:var(--sans-readable);font-size:12px;letter-spacing:0.04em;color:var(--c-sub);}
 .price-row{display:flex;justify-content:space-between;align-items:baseline;padding:14px 24px;border-bottom:1px solid var(--c-line);}
 .price-row:last-child{border-bottom:none;}
 .price-row .label{font-size:13px;color:var(--c-ink-soft);}
-.price-row .amount{font-size:18px;font-weight:500;letter-spacing:0.04em;}
+.price-row .amount{font-family:var(--sans-readable);font-size:18px;font-weight:600;letter-spacing:0.03em;}
 .price-row .amount small{font-size:11px;font-weight:400;color:var(--c-sub);margin-left:4px;}
 
 /* ── Includes ── */
@@ -211,6 +229,27 @@ footer .bottom{border-top:1px solid var(--c-line);margin-top:48px;padding-top:22
 
 <main>
 
+  <!-- 制作実績 -->
+  <div class="sec">
+    <h2 class="sec-title">制作実績</h2>
+    <a class="reference-card" href="work-waku-design.html">
+      <div class="reference-frame">
+        <div class="site-mini" aria-hidden="true">
+          <div class="site-mini-bar"><span></span><span></span><span></span></div>
+          <div class="site-mini-screen">
+            <div class="site-mini-nav"><span>WAKU DESIGN</span><span></span></div>
+            <div class="site-mini-copy">
+              <small>Designing for Classical Music</small>
+              <strong>音楽の魅力が、<br />きちんと届く形へ。</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="reference-type">WEB · BRAND SITE</span>
+      <span class="reference-title">WAKU DESIGN 公式サイト</span>
+    </a>
+  </div>
+
   <!-- 料金プラン -->
   <div class="sec">
     <h2 class="sec-title">料金プラン</h2>
@@ -322,8 +361,8 @@ footer .bottom{border-top:1px solid var(--c-line);margin-top:48px;padding-top:22
       <h5>— Social &amp; Legal</h5>
       <ul>
         <li><a href="#">Instagram</a></li>
-        <li><a href="#">プライバシーポリシー</a></li>
-        <li><a href="#">特定商取引法に基づく表記</a></li>
+        <li><a href="privacy.html">プライバシーポリシー</a></li>
+        <li><a href="transaction.html">特定商取引法に基づく表記</a></li>
       </ul>
     </div>
   </div>

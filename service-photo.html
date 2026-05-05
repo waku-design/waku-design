@@ -9,11 +9,12 @@
 <meta property="og:title" content="コンサート記録写真（料金・詳細）| WAKU DESIGN"/>
 <meta property="og:description" content="コンサート記録写真・撮影。2時間¥20,000〜。本番・リハーサル・楽屋まで。"/>
 <meta property="og:url" content="https://waku-design.vercel.app/service-photo.html"/>
+<meta property="og:image" content="https://waku-design.vercel.app/images/photo-works/web/251214_saxorch-147.jpg"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <title>コンサート記録写真 | WAKU DESIGN</title>
 <style>
 
-:root{color-scheme:light;--c-red:#B7402E;--c-red-deep:#8E2F22;--c-ink:#2A1A1F;--c-ink-soft:#4A323A;--c-cream:#F7EFE0;--c-cream-deep:#EBDFC5;--c-bg:#FBF7EE;--c-paper:#FFFFFF;--c-line:#E2DAC4;--c-sub:#6B5A4F;--serif-jp:'Hiragino Mincho ProN','Yu Mincho','YuMincho','MS PMincho',serif;--serif-en:'Hoefler Text','Garamond','Times New Roman',serif;}
+:root{color-scheme:light;--c-red:#B7402E;--c-red-deep:#8E2F22;--c-ink:#2A1A1F;--c-ink-soft:#4A323A;--c-cream:#F7EFE0;--c-cream-deep:#EBDFC5;--c-bg:#FBF7EE;--c-paper:#FFFFFF;--c-line:#E2DAC4;--c-sub:#6B5A4F;--serif-jp:'Hiragino Mincho ProN','Yu Mincho','YuMincho','MS PMincho',serif;--serif-en:'Hoefler Text','Garamond','Times New Roman',serif;--sans-readable:'Hiragino Mincho ProN','Yu Mincho','YuMincho','MS PMincho',serif;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{font-family:var(--serif-jp);color:var(--c-ink);background:var(--c-bg);line-height:1.95;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
@@ -65,7 +66,7 @@ nav .cta:hover{background:var(--c-ink);color:var(--c-bg);}
 
 /* ── Use cases ── */
 .use-cases{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;}
-.use-tag{font-size:11px;letter-spacing:0.16em;padding:5px 14px;border:1px solid var(--c-line);color:var(--c-sub);}
+.use-tag{font-family:var(--sans-readable);font-size:11px;letter-spacing:0.08em;padding:5px 14px;border:1px solid var(--c-line);color:var(--c-sub);}
 
 /* ── Main layout ── */
 main{max-width:900px;margin:0 auto;padding:64px 44px 100px;}
@@ -73,15 +74,26 @@ main{max-width:900px;margin:0 auto;padding:64px 44px 100px;}
 .sec-title{font-size:clamp(16px,2vw,20px);font-weight:500;letter-spacing:0.14em;margin-bottom:28px;padding-bottom:14px;border-bottom:2px solid var(--c-ink);}
 .sec-subtitle{font-size:13px;font-weight:500;letter-spacing:0.12em;margin-bottom:14px;color:var(--c-ink);}
 
+/* ── Reference works ── */
+.reference-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.reference-card{display:block;background:var(--c-paper);border:1px solid var(--c-line);border-radius:8px;padding:14px;color:var(--c-ink);transition:transform 0.25s ease,border-color 0.25s ease,box-shadow 0.25s ease;}
+.reference-card:hover{transform:translateY(-4px);border-color:rgba(183,64,46,0.5);box-shadow:0 16px 32px rgba(42,26,31,0.09);}
+.reference-frame{aspect-ratio:4/3;background:var(--c-cream);overflow:hidden;position:relative;}
+.reference-frame.is-portrait{aspect-ratio:3/4;}
+.reference-frame img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.45s ease;}
+.reference-card:hover .reference-frame img{transform:scale(1.04);}
+.reference-type{display:block;margin-top:12px;font-family:var(--serif-en);font-style:italic;font-size:10px;letter-spacing:0.24em;color:var(--c-red);}
+.reference-title{display:block;margin-top:4px;font-family:var(--sans-readable);font-size:12px;line-height:1.65;letter-spacing:0.04em;font-weight:600;}
+
 /* ── Price table ── */
 .price-block{margin-bottom:36px;border:1px solid var(--c-line);}
 .price-block-head{padding:16px 24px;background:var(--c-bg);border-bottom:1px solid var(--c-line);display:flex;justify-content:space-between;align-items:center;}
 .price-block-head h3{font-size:15px;letter-spacing:0.12em;font-weight:500;}
-.price-block-head .from{font-size:12px;color:var(--c-sub);}
+.price-block-head .from{font-family:var(--sans-readable);font-size:12px;letter-spacing:0.04em;color:var(--c-sub);}
 .price-row{display:flex;justify-content:space-between;align-items:baseline;padding:14px 24px;border-bottom:1px solid var(--c-line);}
 .price-row:last-child{border-bottom:none;}
 .price-row .label{font-size:13px;color:var(--c-ink-soft);}
-.price-row .amount{font-size:18px;font-weight:500;letter-spacing:0.04em;}
+.price-row .amount{font-family:var(--sans-readable);font-size:18px;font-weight:600;letter-spacing:0.03em;}
 .price-row .amount small{font-size:11px;font-weight:400;color:var(--c-sub);margin-left:4px;}
 
 /* ── Includes ── */
@@ -144,6 +156,7 @@ footer .bottom{border-top:1px solid var(--c-line);margin-top:48px;padding-top:22
   .nav-toggle{display:flex;}
   .page-hero{padding:48px 20px 40px;}
   main{padding:44px 20px 72px;}
+  .reference-grid{grid-template-columns:1fr;}
   .process-grid{grid-template-columns:1fr 1fr;}
   .includes-list{grid-template-columns:1fr;}
   .footer-inner{grid-template-columns:1fr;gap:36px;}
@@ -210,6 +223,23 @@ footer .bottom{border-top:1px solid var(--c-line);margin-top:48px;padding-top:22
 </section>
 
 <main>
+
+  <!-- 制作実績 -->
+  <div class="sec">
+    <h2 class="sec-title">制作実績</h2>
+    <div class="reference-grid">
+      <a class="reference-card" href="works-photo.html">
+        <div class="reference-frame"><img src="images/photo-works/web/251214_saxorch-147.jpg" alt="コンサート記録写真 本番撮影" loading="lazy" decoding="async" /></div>
+        <span class="reference-type">CONCERT PHOTO</span>
+        <span class="reference-title">本番・リハーサル記録</span>
+      </a>
+      <a class="reference-card" href="works-photo.html">
+        <div class="reference-frame is-portrait"><img src="images/photo-works/web/Kirsch-59.jpg" alt="コンサート記録写真 ポートレート撮影" loading="lazy" decoding="async" /></div>
+        <span class="reference-type">PROFILE PHOTO</span>
+        <span class="reference-title">フライヤー用宣材写真</span>
+      </a>
+    </div>
+  </div>
 
   <!-- 料金プラン -->
   <div class="sec">
@@ -314,8 +344,8 @@ footer .bottom{border-top:1px solid var(--c-line);margin-top:48px;padding-top:22
       <h5>— Social &amp; Legal</h5>
       <ul>
         <li><a href="#">Instagram</a></li>
-        <li><a href="#">プライバシーポリシー</a></li>
-        <li><a href="#">特定商取引法に基づく表記</a></li>
+        <li><a href="privacy.html">プライバシーポリシー</a></li>
+        <li><a href="transaction.html">特定商取引法に基づく表記</a></li>
       </ul>
     </div>
   </div>

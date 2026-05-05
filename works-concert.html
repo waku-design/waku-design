@@ -23,7 +23,7 @@
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;overflow-x:hidden;}
-  body{font-family:var(--serif-jp);color:var(--c-ink);background:var(--c-bg);line-height:1.95;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  body{min-height:100vh;display:flex;flex-direction:column;font-family:var(--serif-jp);color:var(--c-ink);background:var(--c-bg);line-height:1.95;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
   a{color:inherit;text-decoration:none;}
   header{position:sticky;top:0;padding:18px 44px;background:rgba(251,247,238,0.96);backdrop-filter:saturate(180%) blur(10px);z-index:100;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--c-line);}
   .logo{display:flex;align-items:baseline;gap:12px;}
@@ -41,7 +41,7 @@
   .page-hero h1{font-family:var(--serif-jp);font-size:clamp(28px,3.6vw,44px);font-weight:500;letter-spacing:0.12em;color:var(--c-ink);line-height:1.3;}
   .page-hero .back-link{font-family:var(--serif-en);font-style:italic;font-size:12px;letter-spacing:0.22em;color:var(--c-sub);transition:color 0.3s;}
   .page-hero .back-link:hover{color:var(--c-ink);}
-  main{max-width:1240px;margin:0 auto;padding:80px 44px 120px;}
+  main{flex:1;width:100%;max-width:1240px;margin:0 auto;padding:80px 44px 120px;}
   footer{background:var(--c-ink);color:rgba(247,239,224,0.7);padding:64px 44px 32px;}
   .footer-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;padding-bottom:40px;border-bottom:1px solid rgba(247,239,224,0.12);margin-bottom:24px;}
   .footer-brand .name{font-family:var(--serif-jp);font-size:17px;font-weight:600;letter-spacing:0.22em;color:rgba(247,239,224,0.9);margin-bottom:10px;}
@@ -74,13 +74,21 @@
   .cat-head{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--c-line);padding-top:20px;margin-bottom:32px;}
   .cat-head h2{font-family:var(--serif-jp);font-size:15px;font-weight:500;letter-spacing:0.2em;color:var(--c-ink);}
   .cat-head h2 small{font-family:var(--serif-en);font-style:italic;font-size:11px;color:var(--c-sub);letter-spacing:0.26em;margin-left:14px;}
-  .cat-head .count{font-family:var(--serif-en);font-style:italic;font-size:11px;letter-spacing:0.28em;color:var(--c-sub);}
   .works-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px 24px;}
   .work-item{cursor:pointer;transition:transform 0.4s;}
   .work-item:hover{transform:translateY(-6px);}
-  .work-item .frame{aspect-ratio:3/4;background:var(--c-paper);border:1px solid var(--c-line);box-shadow:0 16px 34px rgba(42,26,31,0.07);padding:12px;position:relative;overflow:hidden;margin-bottom:14px;}
+  .work-item .frame{aspect-ratio:3/4;background:transparent;border:0;box-shadow:none;padding:12px;position:relative;overflow:visible;margin-bottom:14px;}
   .work-item .frame img{width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 12px 16px rgba(42,26,31,0.18));transition:transform 0.5s ease;}
   .work-item:hover .frame img{transform:scale(1.04);}
+  .work-item.is-program{grid-column:span 2;}
+  .work-item.is-program .frame{aspect-ratio:1.414/1;padding:18px;display:grid;place-items:center;background:transparent;}
+  .program-book{--program-image:url('images/program-saxophone-orch-spread.jpg');position:relative;width:100%;aspect-ratio:1.414/1;display:grid;grid-template-columns:1fr 1fr;perspective:1200px;filter:drop-shadow(0 16px 24px rgba(42,26,31,0.14));transition:transform 0.5s ease;}
+  .program-book::before{content:'';position:absolute;left:6%;right:6%;bottom:-10px;height:20px;background:radial-gradient(ellipse at center,rgba(42,26,31,0.22),transparent 70%);filter:blur(9px);z-index:-1;}
+  .program-book::after{content:'';position:absolute;top:-1px;bottom:-1px;left:50%;width:18px;transform:translateX(-50%);background:linear-gradient(90deg,rgba(42,26,31,0.18),rgba(255,255,255,0.72),rgba(42,26,31,0.12));opacity:0.84;pointer-events:none;}
+  .program-book .page{background-image:var(--program-image);background-size:200% 100%;background-repeat:no-repeat;transform-style:preserve-3d;}
+  .program-book .left{background-position:left center;transform-origin:right center;transform:rotateY(5.5deg);border-radius:4px 0 0 4px;}
+  .program-book .right{background-position:right center;transform-origin:left center;transform:rotateY(-5.5deg);border-radius:0 4px 4px 0;}
+  .work-item.is-program:hover .program-book{transform:scale(1.02);}
   .work-item .work-cat{font-family:var(--serif-en);font-style:italic;font-size:10px;letter-spacing:0.28em;color:var(--c-red);margin-bottom:4px;}
   .work-item .work-title{font-size:13px;letter-spacing:0.06em;color:var(--c-ink);line-height:1.6;}
   .cat-coming{padding:28px 0;font-family:var(--serif-en);font-style:italic;font-size:12px;letter-spacing:0.3em;color:var(--c-sub);opacity:0.55;}
@@ -90,6 +98,7 @@
     header{padding:16px 20px;}nav ul{display:none;}
     .page-hero{padding:48px 20px 40px;}main{padding:48px 20px 80px;}
     .works-grid{grid-template-columns:repeat(2,1fr);}
+    .work-item.is-program{grid-column:1 / -1;}
     footer{padding:48px 20px 24px;}.footer-inner{grid-template-columns:1fr;gap:32px;}
     .nav-toggle{display:flex;}
   }
@@ -137,7 +146,6 @@
   <div class="cat-section reveal">
     <div class="cat-head">
       <h2>コンサートフライヤー・プログラム<small>Concert Design</small></h2>
-      <span class="count">05 works</span>
     </div>
     <div class="works-grid">
       <a class="work-item" href="work-miki-relemit.html">
@@ -149,6 +157,11 @@
         <div class="frame"><img src="images/flyer-saxophone-orch.jpg" alt="大阪音楽大学サクソフォーンオーケストラ 運命" /></div>
         <div class="work-cat">FLYER</div>
         <div class="work-title">大阪音楽大学サクソフォーンオーケストラ「運命」</div>
+      </a>
+      <a class="work-item is-program" href="work-saxophone-orch.html">
+        <div class="frame"><div class="program-book" aria-label="大阪音楽大学サクソフォーンオーケストラ 運命 プログラム冊子"><span class="page left"></span><span class="page right"></span></div></div>
+        <div class="work-cat">PROGRAM</div>
+        <div class="work-title">大阪音楽大学サクソフォーンオーケストラ「運命」プログラム冊子</div>
       </a>
       <a class="work-item" href="work-ota-so.html">
         <div class="frame"><img src="images/flyer-ota-so.jpg" alt="太田光 &amp; 曾朗基 Flute &amp; Guitar スプリング・コンサート" /></div>
