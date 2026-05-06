@@ -236,22 +236,24 @@
     width: 100%;
     margin: 0;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     border-top: 1px solid rgba(251,247,238,0.18);
+    border-bottom: 1px solid rgba(251,247,238,0.12);
     background:
       linear-gradient(90deg, rgba(42,26,31,0.98), rgba(74,50,58,0.96), rgba(42,26,31,0.98));
   }
   .hero-quick a {
-    min-height: 88px;
-    padding: 19px clamp(18px, 3.2vw, 48px);
+    min-height: clamp(66px, 4.9vw, 86px);
+    padding: 12px clamp(14px, 1.8vw, 28px) 12px clamp(28px, 3.3vw, 50px);
     border-right: 1px solid rgba(251,247,238,0.12);
+    border-bottom: 1px solid rgba(251,247,238,0.12);
     color: var(--c-bg);
     position: relative;
     display: grid;
     grid-template-columns: minmax(0, 1fr) 34px;
     grid-template-rows: 1fr;
     align-items: center;
-    column-gap: 18px;
+    column-gap: 12px;
     overflow: hidden;
     transition: background 0.25s, color 0.25s;
   }
@@ -263,10 +265,11 @@
     grid-column: 2;
     grid-row: 1;
     align-self: center;
+    justify-self: end;
     width: 34px;
     height: 34px;
     background: transparent;
-    border: 1px solid rgba(251,247,238,0.42);
+    border: 1px solid rgba(251,247,238,0.48);
     border-radius: 50%;
     display: grid;
     place-items: center;
@@ -275,25 +278,27 @@
     line-height: 1;
     color: rgba(251,247,238,0.86);
     opacity: 1;
-    transform: none;
+    transform: translateY(1px);
     transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.25s;
   }
   nav.hero-quick a:hover::after {
     background: var(--c-red);
     border-color: var(--c-red);
     color: var(--c-bg);
-    transform: translateX(2px);
+    transform: translate(2px, 1px);
   }
   .hero-quick span {
     position: absolute;
-    left: clamp(18px, 3.2vw, 48px);
-    top: 14px;
+    left: clamp(-12px, -0.8vw, -5px);
+    top: 50%;
+    transform: translateY(-50%);
     display: block;
     font-family: var(--serif-en);
     font-style: italic;
-    font-size: 10px;
-    letter-spacing: 0.24em;
-    color: var(--c-red);
+    font-size: clamp(64px, 5.9vw, 108px);
+    letter-spacing: 0;
+    line-height: 0.86;
+    color: rgba(183,64,46,0.22);
     margin: 0;
     pointer-events: none;
   }
@@ -302,10 +307,13 @@
     grid-row: 1;
     display: block;
     align-self: center;
+    position: relative;
+    z-index: 1;
     font-weight: 500;
-    font-size: 15px;
-    letter-spacing: 0.08em;
-    line-height: 1.5;
+    font-size: clamp(12px, 0.95vw, 16px);
+    letter-spacing: 0.01em;
+    line-height: 1.25;
+    white-space: nowrap;
   }
 
   /* ============= COMMON SECTION ============= */
@@ -1418,8 +1426,7 @@
     .hero-copy h1 { font-size: 38px; letter-spacing: 0.06em; }
     .hero-copy .lead { font-size: 13px; line-height: 2; }
     .hero-actions a { width: 100%; }
-    .hero-quick { grid-template-columns: 1fr 1fr; }
-    .hero-quick a { min-height: 88px; padding: 17px 16px; }
+    .hero-quick { display: none; }
     .works-grid { grid-template-columns: repeat(2, 1fr); }
     .work-item.web-feature { grid-column: 1 / -1; max-width: none; }
     .about-inner { grid-template-columns: 1fr; gap: 36px; }
@@ -1452,52 +1459,18 @@
   }
 
   @media (max-width: 560px) {
-    .hero-stage { min-height: 600px; }
+    .hero-stage {
+      min-height: min(520px, calc(100svh - 74px));
+      align-items: center;
+      padding: 54px 20px;
+    }
     .hero-copy h1 { font-size: 32px; }
-    .hero-quick,
     .service-card-grid,
     .service-flow { grid-template-columns: 1fr; }
     .service-card { min-height: 0; grid-template-columns: 1fr 34px; gap: 12px; }
     .service-card h4 { white-space: normal; font-size: 22px; }
     .service-art { display: none; }
     .service-other-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .hero-quick a {
-      min-height: 84px;
-      padding: 0 18px 0 28px;
-      grid-template-columns: minmax(0, 1fr) 32px;
-      grid-template-rows: 1fr;
-      overflow: hidden;
-    }
-    nav.hero-quick a::after {
-      width: 32px;
-      height: 32px;
-      font-size: 19px;
-      position: relative;
-      grid-row: 1;
-      align-self: center;
-      z-index: 2;
-    }
-    .hero-quick span {
-      position: absolute;
-      left: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      margin: 0;
-      font-size: 48px;
-      letter-spacing: 0.02em;
-      line-height: 1;
-      color: rgba(183,64,46,0.16);
-      pointer-events: none;
-    }
-    .hero-quick strong {
-      position: relative;
-      z-index: 1;
-      grid-row: 1;
-      align-self: center;
-      font-size: 20px;
-      letter-spacing: 0.08em;
-      line-height: 1.45;
-    }
     .nav-overlay {
       justify-content: flex-start;
       padding-top: 86px;
